@@ -1,0 +1,245 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+    margin: 5px;
+}
+
+a {
+    text-decoration: none ;
+    color: black !important;
+}
+
+main {
+    margin-top: 56px !important; /* Adicione a mesma altura da barra de navegação */
+    margin-left: 300px; /* Adicione a mesma largura do menu lateral */
+    min-height: calc(100vh - 56px);  /*Subtrai a altura da barra de navegação da altura total da viewport */
+    z-index: 999;
+}
+
+#head {
+    margin-bottom: 100px;
+}
+
+.separator {
+    margin: 0 5px;
+}
+
+.header_font{
+    color: white !important;
+}
+
+.sub_header {
+    border-bottom: 1px solid rgb(211, 205, 205); /* Define a borda preta de 1px */
+    padding: 10px; /* Adiciona um preenchimento interno para evitar que o conteúdo encoste na borda */
+    display: flex;
+    align-content: center;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.navegador {
+    font-size: 18px;
+    text-align: right;
+}
+
+.header_icon {
+    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.header_icon_user {
+    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    cursor: pointer;
+}
+
+.menu_icon {
+    width: 25px; /* Largura máxima ajustada para evitar esticamento */
+    align-content: center;
+    margin: 5px;
+}
+
+.option_icon {
+    width: 18px; /* Largura máxima ajustada para evitar esticamento */
+    align-content: center;
+    margin-bottom: 5px;
+    margin: 5px;
+}
+
+.page_icon {
+    width: 40px; /* Largura máxima ajustada para evitar esticamento */
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+.seta {
+    width: 10px;
+    float: right;
+}
+
+.rotacionar {
+    transform: rotate(-90deg);
+}
+
+.logo {
+    margin-left: 15px;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 200px;
+    height: 100%;
+     /* Isso faz com que a imagem cubra todo o espaço mantendo as proporções */
+}
+
+.seu_logo {
+    max-width: 220px;
+    margin-top: 15px;
+    border-radius: 1rem;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    position: fixed;
+    top: 56px; /* Ajuste conforme necessário para alinhar com a altura do seu cabeçalho */
+    bottom: 0;
+    left: 0;
+    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo do menu for maior que a altura do navegador */
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.container{
+    margin-left: 80%;
+}
+
+.container1 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.container_cliente {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Opcional: ocupar toda a largura da tela */
+}
+
+.botoes {
+    display: flex; /* Utilizando flexbox para alinhar os elementos na mesma linha */
+    align-items: center; /* Alinha os itens verticalmente */
+    flex-wrap: nowrap; /* Impede que os elementos quebrem em várias linhas */
+}
+
+.botoes_cliente {
+    background-color: black;
+    height: 50px;
+    margin: 10px; /* Adiciona um espaço entre os botões */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.caixa_pesquisa {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+#input_pesquisa {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    height: 50px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px; /* Adiciona borda arredondada à borda superior esquerda */
+    border-bottom-left-radius: 5px; /* Adiciona borda arredondada à borda inferior esquerda */
+    width: 100%;
+}
+
+#botao_pesquisa {
+    height: 50px;
+    background-color: black;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#botao_pesquisa img {
+    vertical-align: middle; /* Centraliza a imagem verticalmente */
+}
+
+#busca_avancada {
+    background-color: black;
+    height: 50px;
+    margin: 10px; /* Adiciona um espaço entre os botões */
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.cliente_icon {
+    margin: 20px;
+    width: 200px; /* Defina o tamanho desejado */
+    height: auto; /* Mantém a proporção original da imagem */
+    opacity: 0.3; /* Define a opacidade da imagem (0.0 é completamente transparente, 1.0 é totalmente opaco) */
+}
+
+.icon_conteudo {
+    display: flex;
+}
+
+.conteudo {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    margin: 10px;
+}
+
+.add_botao {
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 8px;
+}
+
+ol {
+    list-style-type: disc; /* Define flechinhas como marcadores */
+}
+
+table {
+    border-collapse: collapse; /* Mescla as bordas das células para uma aparência mais limpa */
+    width: 100%; /* Define a largura da tabela como 100% do contêiner pai */
+}
+
+table form{
+    display: inline-block;
+}
+
+th, td {
+    border: 1px solid #000; /* Adiciona uma borda sólida de 1px com a cor preta */
+    padding: 8px; /* Adiciona espaço interno para o conteúdo dentro das células */
+}

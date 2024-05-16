@@ -1,0 +1,195 @@
+body { 
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+    margin: 5px;
+}
+
+a {
+    text-decoration: none ;
+    color: black !important;
+}
+
+main {
+    margin-top: 56px !important; /* Adicione a mesma altura da barra de navegação */
+    margin-left: 231px; /* Adicione a mesma largura do menu lateral */
+    min-height: calc(100vh - 56px);  /*Subtrai a altura da barra de navegação da altura total da viewport */
+    z-index: 999;
+}
+
+#head {
+    margin-bottom: 100px;
+}
+
+.separator {
+    margin: 0 5px;
+}
+
+.header_font{
+    color: white !important;
+}
+
+.sub_header {
+    border-bottom: 1px solid black; /* Define a borda preta de 1px */
+    padding: 10px; /* Adiciona um preenchimento interno para evitar que o conteúdo encoste na borda */
+    display: flex;
+    align-content: center;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.navegador {
+    font-size: 18px;
+    text-align: right;
+}
+
+.header_icon {
+    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.header_icon_user {
+    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    cursor: pointer;
+}
+
+.menu_icon {
+    width: 25px; /* Largura máxima ajustada para evitar esticamento */
+    align-content: center;
+    margin: 5px;
+}
+
+.option_icon {
+    width: 18px; /* Largura máxima ajustada para evitar esticamento */
+    align-content: center;
+    margin-bottom: 5px;
+    margin: 5px;
+}
+
+.page_icon {
+    width: 40px; /* Largura máxima ajustada para evitar esticamento */
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+.seta {
+    width: 10px;
+    float: right;
+}
+
+.rotacionar {
+    transform: rotate(-90deg);
+}
+
+.logo {
+    margin-left: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+     /* Isso faz com que a imagem cubra todo o espaço mantendo as proporções */
+}
+
+.seu_logo {
+    max-width: 220px;
+    margin-top: 15px;
+    border-radius: 1rem;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    position: fixed;
+    top: 56px; /* Ajuste conforme necessário para alinhar com a altura do seu cabeçalho */
+    bottom: 0;
+    left: 0;
+    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo do menu for maior que a altura do navegador */
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.container{
+    margin-left: 87%;
+}
+
+.container1 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 100px;
+    margin-top: 50px;
+    display: inline-block;
+}
+
+
+.receber-dashboard, .pagar-dashboard, .dashboardMensal {
+    text-align: left;
+    border-radius: 0.2rem;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.receber-dashboard {
+    background-color: cadetblue;
+    width: 350px;
+    height: 180px;
+}
+
+.pagar-dashboard {
+    background-color: red;
+    width: 350px;
+    height: 180px;
+    margin-left: 10px;
+}
+
+.dashboardMensal {
+    background-color: #007bff;
+    width: 650px;
+    height: 180px;
+    margin-left: 10px;
+}
+
+.receber-dashboard button, .pagar-dashboard button, .dashboardMensal button {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.pagar-dashboard button {
+    background-color: rgb(204, 83, 83);
+}
+
+.receber-dashboard button {
+    background-color: rgb(128, 159, 160);
+}
+
+.dashboardMensal button {
+    background-color: blue;
+    position: absolute;
+    bottom: 0;
+}

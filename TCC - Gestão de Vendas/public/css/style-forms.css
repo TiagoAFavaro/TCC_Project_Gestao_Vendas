@@ -1,0 +1,152 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+    margin: 5px;
+}
+
+a {
+    text-decoration: none ;
+    color: black !important;
+}
+
+.header_font{
+    color: white !important;
+}
+
+.header_icon {
+    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.header_icon_user {
+    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    cursor: pointer;
+}
+
+.logo {
+    margin-left: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+     /* Isso faz com que a imagem cubra todo o espaço mantendo as proporções */
+}
+
+.navbar {
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+}
+
+.container{
+    margin-left: 80%;
+}
+
+.sub_header {
+    border-bottom: 1px solid rgb(211, 205, 205); /* Define a borda preta de 1px */
+    padding: 10px; /* Adiciona um preenchimento interno para evitar que o conteúdo encoste na borda */
+    display: flex;
+    align-content: center;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.navegador {
+    font-size: 18px;
+    text-align: right;
+}
+
+.cadastros {
+    width: 97%;
+    margin: 0 auto;
+}
+
+.bloco {
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(211, 205, 205);
+}
+
+.bloco img {
+    margin: 5px;
+    max-width: 30px;
+    height: auto;
+}
+
+.bloco hr {
+    width: 100%;
+}
+
+h3 {
+    margin-top: 0;
+    margin: 15px;
+}
+
+.cadastros .bloco form {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.table_form {
+    width: 100%;
+    margin: 10px; /* Adicione margem direita para separar as divs */
+}
+
+.table_form_min {
+    width: 25%;
+    margin: 10px
+}
+
+.table_form input[type="text"],
+.table_form input[type="email"],
+.table_form input[type="tel"],
+.table_form select,
+.table_form_min input[type="text"] {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(211, 205, 205);
+}
+
+
+.cadastros .bloco form {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.table_form {
+    width: 100%;
+    margin: 10px; /* Adicione margem direita para separar as divs */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+button {
+    font-weight: bold;
+    width: 30%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button a {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: black;
+}
