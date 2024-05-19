@@ -65,8 +65,8 @@
             <form id="cadastrarProdutos">
             @csrf
                 <div class="table_form">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" name="descricao" required>
                 </div>
                 <div class="table_form">
                     <label for="preco">Preço</label>

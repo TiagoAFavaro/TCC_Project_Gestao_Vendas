@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\CadastroClienteController;
+use App\Http\Controllers\CadastroFornecedoresController;
+use App\Http\Controllers\CadastroProdutosController;
+use App\Http\Controllers\CadastroVendasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,9 +45,19 @@ Route::delete('/clientes/delete/{id}', [CadastroClienteController::class, 'destr
 
 
 // ROTAS CADASTRO DE FORNECEDORES
-Route::get('/fornecedores/list', function() { return view('/fornecedores'); });
-Route::get('/cadastrar-fornecedores', function() { return view('/cadastrofornecedores'); }); 
+Route::get('/fornecedores/list', [CadastroFornecedoresController::class, 'index']);
+Route::get('/cadastrar-fornecedores', function() { return view('/cadastrofornecedores'); });
+Route::post('/criar_cadastro_fornecedores', [CadastroFornecedoresController::class, 'store']); 
+Route::delete('/fornecedores/delete/{id}', [CadastroFornecedoresController::class, 'destroy']); 
 
-// ROTAS CADASTRO DE FORNECEDORES
-Route::get('/produtos/list', function() { return view('/produtos'); });
+// ROTAS CADASTRO DE PRODUTOS
+Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
 Route::get('/cadastrar-produtos', function() { return view('/cadastroprodutos'); });
+Route::post('/criar_cadastro_produtos', [CadastroProdutosController::class, 'store']); 
+Route::delete('/produtos/delete/{id}', [CadastroProdutosController::class, 'destroy']); 
+
+// ROTAS CADASTRO DE VENDAS
+Route::get('/vendas/list', [CadastroVendasController::class, 'index']);
+Route::get('/cadastrar-vendas', function() { return view('/cadastrovendas'); });
+Route::post('/criar_cadastro_vendas', [CadastroVendasController::class, 'store']); 
+Route::delete('/vendas/delete/{id}', [CadastroVendasController::class, 'destroy']);

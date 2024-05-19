@@ -205,7 +205,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>NOME</th>
+                            <th>DESCRIÇÃO</th>
                             <th>PREÇO</th>
                             <th>AÇÕES</th>
                         </tr>

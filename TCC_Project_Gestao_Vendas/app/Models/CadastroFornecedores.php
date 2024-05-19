@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CadastroCliente extends Model
+class CadastroFornecedores extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nome',
-        'cpf',
+        'cnpj',
         'endereco',
-        'numeroCasa',
+        'numero',
         'cidade',
         'estado',
         'cep',
+        'contato',
         'telefone',
         'email',
-    ];    
+    ];
 }
