@@ -9,7 +9,7 @@
 <body>
 
     <div class="login-container">
-        <img src="{{ asset('/img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" width="200px">
+        <img src="{{ asset('/img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" style="width=50%; margin-bottom: 10px">
         <form>
             <input type="text" placeholder="Usuário" required>
             <input type="password" placeholder="Senha" required>
@@ -17,7 +17,7 @@
                 <a type="input" href="/home">ENTRAR</a>
             </button>
             <button>
-                <a href="/cadastrarusuario" target="_blank">CRIE SUA CONTA EM MENOS DE 1 MINUTO ! <br> É GRATIS !!</a>
+                <a href="/cadastrarusuario" target="_blank">CRIE SUA CONTA EM MENOS DE 1 MINUTO ! <br> É GRÁTIS!</a>
             </button>
             <a href="/recuperarsenha" style="font-size: 15px;" target="_blank">Esqueceu sua senha ?</a>
         </form>
