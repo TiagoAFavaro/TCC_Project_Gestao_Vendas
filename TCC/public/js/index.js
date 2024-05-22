@@ -56,3 +56,15 @@ trocarLogo.addEventListener('click', function() {
     window.location.href = "/pagina-de-upload-de-imagem";
 });
 
+// Função para carregar um arquivo HTML e inserir no elemento alvo
+function loadComponent(url, elementId) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => document.getElementById(elementId).innerHTML = data)
+        .catch(error => console.error('Erro ao carregar componente:', error));
+}
+
+// Carregar os componentes de cabeçalho e barra lateral
+function loadHeaderAndSidebar() {
+    loadComponent('components.html', 'components');
+}

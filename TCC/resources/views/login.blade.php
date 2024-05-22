@@ -14,12 +14,12 @@
             <input type="text" placeholder="Usuário" required>
             <input type="password" placeholder="Senha" required>
             <button>
-                <a type="input" href="/home">ENTRAR</a>
+                <a type="input" href="/home" style="color: white">ENTRAR</a>
             </button>
             <button>
-                <a href="/cadastrarusuario" target="_blank">CRIE SUA CONTA EM MENOS DE 1 MINUTO ! <br> É GRÁTIS!</a>
+                <a href="/cadastrarusuario" target="_blank" style="color: white">CRIE SUA CONTA EM MENOS DE 1 MINUTO ! <br> É GRÁTIS!</a>
             </button>
-            <a href="/recuperarsenha" style="font-size: 15px;" target="_blank">Esqueceu sua senha ?</a>
+            <a href="/recuperarsenha" style="font-size: 15px;" target="_blank">Esqueci minha senha</a>
         </form>
     </div>
 

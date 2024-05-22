@@ -9,15 +9,15 @@
 <body>
 
     <div class="login-container">
-        <img src=" {{ asset('img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" width="200px">
-        <h2>Crie uma Conta Agora, é Grátis !</h2>
+        <img src=" {{ asset('img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" width="60%">
+        <h2>Crie uma Conta Agora, é Grátis!</h2>
         <form>
             <input type="text" placeholder="Nome completo" required>
             <input type="text" placeholder="Email válido" required>
             <input type="password" placeholder="Senha" required>
             <input type="password" placeholder="Confirmar senha" required>
             <button>
-                <a type="input" href="">CADASTRAR</a>
+                <a type="input" href="" style="color: white" >CADASTRAR</a>
             </button>
         </form>
     </div>
