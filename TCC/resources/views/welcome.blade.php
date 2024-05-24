@@ -2,6 +2,10 @@
 
 @section('title', 'Sales Swift')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/clientes.css') }}">
+@endpush
+
 @section('content')
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
     <div class="container01">
