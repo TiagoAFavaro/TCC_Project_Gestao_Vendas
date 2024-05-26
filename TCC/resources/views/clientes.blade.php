@@ -49,8 +49,8 @@
                 <th>CPF</th>
                 <th>E-MAIL</th>
                 <th>CEP</th>
-                <th>ENDEREÇO</th>
-                <th>NÚMERO DA CASA</th>
+                <th>RUA</th>
+                <th>NÚMERO</th>
                 <th>CIDADE</th>
                 <th>ESTADO</th>
                 <th>AÇÕES</th>

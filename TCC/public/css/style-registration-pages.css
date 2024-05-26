@@ -12,16 +12,15 @@ a {
     color: black !important;
 }
 
-main {
-    margin-top: 56px !important; /* Adicione a mesma altura da barra de navegação */
-    margin-left: 300px; /* Adicione a mesma largura do menu lateral */
-    min-height: calc(100vh - 56px);  /*Subtrai a altura da barra de navegação da altura total da viewport */
-    z-index: 999;
-}
+/* main {
+    margin-top: 56px !important; 
+    margin-left: 300px;
+    min-height: calc(100vh - 56px);
+} */
 
-#head {
+/* #head {
     margin-bottom: 100px;
-}
+} */
 
 .separator {
     margin: 0 5px;
@@ -31,25 +30,25 @@ main {
     color: white !important;
 }
 
-.sub_header {
-    border-bottom: 1px solid rgb(211, 205, 205); /* Define a borda preta de 1px */
-    padding: 10px; /* Adiciona um preenchimento interno para evitar que o conteúdo encoste na borda */
-    display: flex;
-    align-content: center;
-    justify-content: space-between; 
-    align-items: center;
-}
-
 .navegador {
     font-size: 18px;
     text-align: right;
 }
 
 .header_icon {
-    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    max-width: 20px; 
     margin-left: 10px;
     cursor: pointer;
 }
+
+/* .sub_header {
+    border-bottom: 1px solid rgb(211, 205, 205); 
+    padding: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between; 
+    align-items: center;
+} */
 
 .header_icon_user {
     max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
@@ -70,7 +69,7 @@ main {
 }
 
 .page_icon {
-    width: 40px; /* Largura máxima ajustada para evitar esticamento */
+    width: 40px; 
     align-content: center;
     margin-bottom: 10px;
 }
@@ -95,27 +94,28 @@ main {
 }
 
 .seu_logo {
-    max-width: 220px;
+    /* max-width: 220px; */
+    max-width: 100%;
     margin-top: 15px;
     border-radius: 1rem;
 }
 
 .navbar {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     width: 100%;
-    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+    z-index: 1000; 
 }
 
-#sidebar {
+#sidebar01 {
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    position: fixed;
-    top: 56px; /* Ajuste conforme necessário para alinhar com a altura do seu cabeçalho */
+    /* position: fixed;
+    top: 56px; 
     bottom: 0;
-    left: 0;
+    left: 0; */
     z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo do menu for maior que a altura do navegador */
 }
@@ -132,12 +132,14 @@ main {
     margin-left: 80%;
 }
 
-.container1 {
+.container01 {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-left: 10px; */
     margin-top: 20px;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .container_cliente {
@@ -242,4 +244,48 @@ table form{
 th, td {
     border: 1px solid #000; /* Adiciona uma borda sólida de 1px com a cor preta */
     padding: 8px; /* Adiciona espaço interno para o conteúdo dentro das células */
+}
+
+@media (max-width: 768px) {
+    #sidebar01 {
+        display: none; /* Ocultar sidebar em telas pequenas */
+    }
+    #content {
+        margin-left: 0;
+    }
+}
+
+
+@media (min-width:992px) and (max-width: 1257px){
+    .seu_logo{
+        width: 100%;
+    }
+    #sidebar {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1114px) {
+    .seta {
+        display: none;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .seta {
+        display: none;
+    }
+    .seu_logo{
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    #sidebar01 {
+        display: none; /* Ocultar sidebar em telas pequenas */
+    }
+    #content {
+        margin-left: 0;
+    }
 }
