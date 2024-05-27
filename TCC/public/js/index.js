@@ -19,20 +19,22 @@ dropdownButtons.forEach(function (button) {
         }
     });
 });
+
 // Função para formatar o número de telefone conforme o usuário digita
-document.getElementById('cpf').addEventListener('input', function (e) {
-    var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após os 3 primeiros dígitos
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após os próximos 3 dígitos
-    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona hífen e os últimos 2 dígitos
-    e.target.value = cpf;
-});
-document.getElementById('tel').addEventListener('input', function (e) {
-    var tel = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    tel = tel.replace(/(\d{2})(\d)/, '($1) $2'); // Adiciona parênteses após os 2 primeiros dígitos
-    tel = tel.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona hífen após os próximos 5 dígitos
-    e.target.value = tel;
-});
+// document.getElementById('cpf').addEventListener('input', function (e) {
+//     var cpf = e.target.value.replace(/\D/g, ''); 
+//     cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+//     cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); 
+//     cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+//     e.target.value = cpf;
+// });
+
+// document.getElementById('tel').addEventListener('input', function (e) {
+//     var tel = e.target.value.replace(/\D/g, ''); 
+//     tel = tel.replace(/(\d{2})(\d)/, '($1) $2'); 
+//     tel = tel.replace(/(\d{5})(\d)/, '$1-$2');
+//     e.target.value = tel;
+// });
 
 // Função para remover formatação antes de enviar para o banco de dados
 function enviarParaBancoDeDados() {
@@ -41,11 +43,11 @@ function enviarParaBancoDeDados() {
     console.log("Telefone sem formatação:", telefoneSemFormatacao);
 }
 
-document.getElementById('cep').addEventListener('input', function (e) {
-    var cep = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    cep = cep.replace(/^(\d{5})(\d)/, '$1-$2'); // Adiciona hífen após os primeiros 5 dígitos
-    e.target.value = cep;
-});
+// document.getElementById('cep').addEventListener('input', function (e) {
+//     var cep = e.target.value.replace(/\D/g, ''); 
+//     cep = cep.replace(/^(\d{5})(\d)/, '$1-$2'); 
+//     e.target.value = cep;
+// });
 
 // Seleciona o elemento da imagem do logo
 var trocarLogo = document.getElementById('trocarLogo');
@@ -68,3 +70,12 @@ function loadComponent(url, elementId) {
 function loadHeaderAndSidebar() {
     loadComponent('components.html', 'components');
 }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     var toggleSidebarButton = document.getElementById('toggleSidebar');
+//     var sidebar = document.getElementById('sidebar01');
+
+//     toggleSidebarButton.addEventListener('click', function () {
+//         sidebar.classList.toggle('hidden-sidebar');
+//     });
+// });

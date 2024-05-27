@@ -3,7 +3,7 @@
 @section('title', 'Sales Swift')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/clientes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-home.css') }}">
 @endpush
 
 @section('content')

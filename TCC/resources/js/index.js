@@ -19,14 +19,25 @@ dropdownButtons.forEach(function (button) {
         }
     });
 });
+
 // Função para formatar o número de telefone conforme o usuário digita
 document.getElementById('cpf').addEventListener('input', function (e) {
-    var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após os 3 primeiros dígitos
-    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após os próximos 3 dígitos
-    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona hífen e os últimos 2 dígitos
+    var cpf = e.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+    
+    if (cpf.length > 3) {
+        cpf = cpf.substring(0, 3) + '.' + cpf.substring(3);
+    }
+    if (cpf.length > 7) {
+        cpf = cpf.substring(0, 7) + '.' + cpf.substring(7);
+    }
+    if (cpf.length > 11) {
+        cpf = cpf.substring(0, 11) + '-' + cpf.substring(11, 13);
+    }
+    
     e.target.value = cpf;
 });
+
+
 document.getElementById('tel').addEventListener('input', function (e) {
     var tel = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
     tel = tel.replace(/(\d{2})(\d)/, '($1) $2'); // Adiciona parênteses após os 2 primeiros dígitos
@@ -47,3 +58,12 @@ document.getElementById('cep').addEventListener('input', function (e) {
     e.target.value = cep;
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM totalmente carregado.');
+    var toggleSidebarButton = document.getElementById('toggleSidebar');
+    var sidebar = document.getElementById('sidebar01');
+
+    toggleSidebarButton.addEventListener('click', function () {
+        sidebar.classList.toggle('hidden-sidebar');
+    });
+});

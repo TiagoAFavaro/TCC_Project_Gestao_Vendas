@@ -55,13 +55,65 @@
         </div>
     </div>
     <br>
-    <div class="cadastros">
+    <div class="cadastro">
+        <div style="display: flex;">
+            <img src="{{ asset('/img/edit.png') }}">
+            <h5>Cadastro de Clientes</h5>
+        </div>
+        <hr>
+        <div class="forms">
+        <form id="cadastrarFornecedores">
+            @csrf
+                <div class="table_form">
+                    <label class="obg" for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" maxlength="18" required>
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="contato">Contato</label>
+                    <input type="text" id="contato" name="contato" required>
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" maxlength="15" required>
+                </div>
+                <div class="table_form">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" maxlength="9">
+                </div>
+                <div class="table_form">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" name="endereco">
+                </div>
+                <div class="table_form">
+                    <label for="numero">Número</label>
+                    <input type="text" id="numero" name="numero">
+                </div>
+                <div class="table_form">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade">
+                </div>
+                <div class="table_form">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" name="estado">
+                </div>
+                <div class="button-container">
+                    <button type="submit"> CADASTRAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="cadastros">
         <div class="bloco">
             <div style="display: flex;">
                 <img src="{{ asset('/img/edit.png') }}">
                 <h5>Cadastro de Fornecedores</h5>
             </div>
             <hr>
+
             <form id="cadastrarFornecedores">
             @csrf
                 <div class="table_form">
@@ -105,7 +157,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
 
 

@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Sales Swift</title>
+    <title>Cadastro de Produtos</title>
 </head>
 
 <body>
@@ -55,30 +55,29 @@
         </div>
     </div>
     <br>
-    <div class="cadastros">
-        <div class="bloco">
-            <div style="display: flex;">
-                <img src="{{ asset('/img/edit.png') }}">
-                <h5>Cadastro de Produtos</h5>
-            </div>
-            <hr>
-            <form id="cadastrarProdutos">
+    <div class="cadastro">
+        <div style="display: flex;">
+            <img src="{{ asset('/img/edit.png') }}">
+            <h5>Cadastro de Clientes</h5>
+        </div>
+        <hr>
+        <div class="forms">
+        <form id="cadastrarProdutos">
             @csrf
-                <div class="table_form">
-                    <label for="descricao">Descrição</label>
+                <div class="table_form01">
+                    <label class="obg" for="descricao">Descrição</label>
                     <input type="text" id="descricao" name="descricao" required>
                 </div>
-                <div class="table_form">
-                    <label for="preco">Preço</label>
-                    <input type="int" id="preco" name="preco">
+                <div class="table_form01">
+                    <label class="obg" for="preco">Preço</label>
+                    <input type="int" id="preco" name="preco" required>
                 </div>
-                <div class="button-container">
-                    <button type="submit">ENVIAR</button>
+                <div class="button-container" style="margin-top: 20px;">
+                    <button type="submit">CADASTRAR</button>
                 </div>
             </form>
         </div>
     </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
