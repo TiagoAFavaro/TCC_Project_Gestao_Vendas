@@ -21,7 +21,7 @@
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
                 <span class="separator">&gt;</span>
-                <a href="#">Produtos</a>
+                <a href="/produtos/list">Produtos</a>
             </div>
         </div>
 
