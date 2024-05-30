@@ -13,8 +13,7 @@
     <div id="header">
         @include('partials.header')
     </div>
-    <div id="sidebar">
-        @include('partials.sidebar')
+    <div id="content">
         @yield('content')
     </div>
 

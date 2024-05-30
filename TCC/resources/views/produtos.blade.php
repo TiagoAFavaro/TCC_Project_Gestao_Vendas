@@ -9,12 +9,14 @@
 @section('content')
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="sub_header">
-            <h1 style="margin: 5px; display: inline-block;">
+            <h1>
                 <span class="align-middle">
-                    <img src="{{ asset('/img/customer.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
+                    <img src="{{ asset('/img/box.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
                 </span>
                 Produtos
             </h1>
+            <hr>
+            <br>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
