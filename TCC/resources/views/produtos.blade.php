@@ -15,8 +15,6 @@
                 </span>
                 Produtos
             </h1>
-            <hr>
-            <br>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
