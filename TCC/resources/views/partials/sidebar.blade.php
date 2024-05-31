@@ -80,7 +80,7 @@
                             <div class="collapse" id="vendaCollapse">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/vendas">
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/offer.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>

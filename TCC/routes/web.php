@@ -37,6 +37,11 @@ Route::get('/home', function () {
         return view('welcome');
 });
 
+// ROTA PARA PÁGINA DE VENDAS
+Route::get('/vendas', function () {
+    return view('vendas');
+});
+
 // ROTAS CADASTRO DE CLIENTES
 Route::get('/clientes/list', [CadastroClienteController::class, 'index']);
 Route::get('/cadastrar-cliente', function() { return view('/cadastrocliente'); }); 

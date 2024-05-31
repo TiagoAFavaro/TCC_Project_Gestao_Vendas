@@ -22,7 +22,7 @@
     <div class="cadastro">
         <div style="display: flex;">
             <img src="{{ asset('/img/edit.png') }}">
-            <h5>Cadastro de Clientes</h5>
+            <h5>Cadastro de Produtos</h5>
         </div>
         <hr>
         <div class="forms">
