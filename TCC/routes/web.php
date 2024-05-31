@@ -4,23 +4,14 @@ use App\Http\Controllers\CadastroClienteController;
 use App\Http\Controllers\CadastroFornecedoresController;
 use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\Autenticador;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 //ROTA DE LOGIN
-Route::get('/', function() {
-    return view('login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('store');
 
 //ROTA PARA CADASTRAR USUARIO
 Route::get('/cadastrarusuario', function() {
@@ -35,7 +26,7 @@ Route::get('/recuperarsenha', function() {
 //ROTA DE HOMEPAGE
 Route::get('/home', function () {
         return view('welcome');
-});
+})->middleware(Autenticador::class);
 
 // ROTAS CADASTRO DE CLIENTES
 Route::get('/clientes/list', [CadastroClienteController::class, 'index']);

@@ -9,7 +9,7 @@
 <body>
 
     <div class="login-container">
-        <img src=" {{ asset('img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" width="60%">
+        <img src=" {{ asset('img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" class="logo">
         <h2>Crie uma Conta Agora, é Grátis!</h2>
         <form>
             <input type="text" placeholder="Nome completo" required>

@@ -7,6 +7,20 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column; /* Permite empilhar a alerta acima do login-container */
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    background-color: #f8d7da; /* Cor de fundo */
+    color: #721c24; /* Cor do texto */
+    z-index: 9999; /* Define um índice de camada alto para garantir que a mensagem de alerta seja exibida sobre outros elementos */
 }
 
 .login-container {
@@ -14,8 +28,16 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
+    width: 80%;
+    max-width: 400px;
     text-align: center;
+    margin-top: 10px; /* Espaçamento entre o alerta e a caixa de login */
+}
+
+.login-container .logo {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
 }
 
 .login-container h2 {
@@ -24,11 +46,12 @@ body {
 }
 
 .login-container input {
-    width: calc(100% - 20px);
+    width: 100%;
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .login-container button {
@@ -47,9 +70,48 @@ body {
     text-decoration: none;
     font-family: Arial, sans-serif;
     font-size: 16px;
-    color: black;
+    color: white;
 }
 
 .login-container button:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .alert {
+        width: 90%;
+    }
+
+    .login-container input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .alert {
+        width: 100%;
+    }
+
+    .login-container input {
+        width: 100%;
+    }
+
+    .login-container button a {
+        font-size: 14px;
+    }
+
+    .login-container button {
+        padding: 8px;
+        font-size: 14px;
+    }
 }
