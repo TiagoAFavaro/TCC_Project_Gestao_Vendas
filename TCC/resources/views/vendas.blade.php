@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Produtos')
+@section('title', 'Vendas')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/style-registration-pages.css') }}">
@@ -11,21 +11,21 @@
         <div class="sub_header">
             <h1>
                 <span class="align-middle">
-                    <img src="{{ asset('/img/box.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
+                    <img src="{{ asset('/img/offer.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
                 </span>
-                Produtos
+                Vendas
             </h1>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
                 <span class="separator">&gt;</span>
-                <a href="/produtos/list">Produtos</a>
+                <a href="/vendas">Vendas</a>
             </div>
         </div>
 
         <div class="container_cliente">
             <div class="botoes">
-                <a href="/cadastrar-produtos">
+                <a href="/cadastrar-vendas">
                     <button class="botoes_cliente" style="background-color: green;">
                         <img src="{{ asset('/img/plus.png') }}" alt="Mais">
                         Adicionar
@@ -44,14 +44,40 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>DESCRIÇÃO</th>
-                    <th>PREÇO</th>
+                    <th>ID Cliente</th>
+                    <th>ID Produto</th>
+                    <th>Situação</th>
+                    <th>Data de Entrega</th>
+                    <th>Data de Recebimento</th>
+                    <th>Detalhes</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                    <th>Desconto</th>
+                    <th>Subtotal</th>
+                    <th>Observações</th>
+                    <th>Valor Total</th>
                     <th>AÇÕES</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr>
+                    <td>20</td>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
         </table>
-        </form>
+
         <br>
-        Mostrando 1 a 1 de um total de 1
     </main>
 @endsection
