@@ -11,15 +11,22 @@
     <div class="login-container">
         <img src=" {{ asset('img/logo_img_corte-removebg-preview.png') }}" alt="logotipo" class="logo">
         <h2>Crie uma Conta Agora, é Grátis!</h2>
-        <form>
-            <input type="text" placeholder="Nome completo" required>
-            <input type="text" placeholder="Email válido" required>
-            <input type="password" placeholder="Senha" required>
-            <input type="password" placeholder="Confirmar senha" required>
-            <button>
-                <a type="input" href="" style="color: white" >CADASTRAR</a>
-            </button>
+
+        <form method="POST" action="{{ route('cadastrarusuariostore') }}">
+            @csrf
+            <label for="name" class="form-label"></label>
+            <input type="name" name="name" id="name" class="form-control" placeholder="Nome">
+
+            <label for="email" class="form-label"></label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="E-mail">
+
+            <label for="password" class="form-label"></label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+
+            <button type="submit" class="btn btn-primary">CADASTRAR</button>
+
         </form>
+
     </div>
 
 </body>

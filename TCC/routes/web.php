@@ -5,6 +5,7 @@ use App\Http\Controllers\CadastroFornecedoresController;
 use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
 use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,9 +15,9 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('store');
 
 //ROTA PARA CADASTRAR USUARIO
-Route::get('/cadastrarusuario', function() {
-    return view('criarConta');
-});
+Route::get('/cadastrarusuario', [UsersController::class, 'create'])->name('cadastrarusuario');
+Route::post('/cadastrarusuario', [UsersController::class, 'store'])->name('cadastrarusuariostore');
+
 
 //ROTA PARA RECUPERAR SENHA
 Route::get('/recuperarsenha', function() {
