@@ -15,14 +15,17 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        if (!User::where('email', $request->email)->exists()) {
-            return response()->json(['message', 'E-mail não cadastrado']);
-        }
-        
         if (!Auth::attempt($request->only('email', 'password'))) {
             return redirect()->back()->withErrors(['message' => 'Usuário ou senha inválidos']);
         }
 
         return redirect('/home');
+    }
+
+    public function destroy() {
+        Auth::logout();
+
+        return to_route('login');
+        
     }
 }

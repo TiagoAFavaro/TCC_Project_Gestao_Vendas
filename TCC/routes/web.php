@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 //ROTA DE LOGIN
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('store');
+Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
+
 
 //ROTA PARA CADASTRAR USUARIO
 Route::get('/cadastrarusuario', [UsersController::class, 'create'])->name('cadastrarusuario');
@@ -24,14 +26,21 @@ Route::get('/recuperarsenha', function() {
     return view('/recuperarSenha');
 });
 
+
+
+//TODAS AS ROTAS OU PÁGINAS QUE NECESSITAM QUE O USUÁRIO ESTEJA LOGADO, DEVEM ESTAR DENTRO DO MIDDLEWARE ABAIXO:
+
+Route::middleware([Autenticador::class])->group(function() {
+
+
 //ROTA DE HOMEPAGE
 Route::get('/home', function () {
-        return view('welcome');
-})->middleware(Autenticador::class);
+    return view('welcome');
+});
 
 // ROTA PARA PÁGINA DE VENDAS
 Route::get('/vendas', function () {
-    return view('vendas');
+return view('vendas');
 });
 
 // ROTAS CADASTRO DE CLIENTES
@@ -58,3 +67,6 @@ Route::get('/vendas/list', [CadastroVendasController::class, 'index']);
 Route::get('/cadastrar-vendas', function() { return view('/cadastrovendas'); });
 Route::post('/criar_cadastro_vendas', [CadastroVendasController::class, 'store']); 
 Route::delete('/vendas/delete/{id}', [CadastroVendasController::class, 'destroy']);
+
+});
+
