@@ -2,9 +2,6 @@
     <a class="navbar-brand" href="/home">
         <img class="logo inline align-top" src="{{ asset('/img/logo_img_corte.jpg') }}" alt="Logotipo">
     </a>
-    <!-- <button id="toggleSidebar" class="navbar-toggler" type="button" style="display: block; z-index: 1000; margin-left: 15%">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
