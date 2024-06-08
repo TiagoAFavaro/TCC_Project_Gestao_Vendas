@@ -27,14 +27,14 @@
             <button>Ir para contas a pagar -></button>
         </div>
 
-        <div class="dashboardMensal">
+        <!-- <div class="dashboardMensal">
             <h3>
                 <br />
                 Recebimentos do mês: Pagamentos do mês:
             </h3>
             <p>Realizado: R$ 0,00 Falta: R$ 0,00 Previsto: R$ 0,00</p>
             <button>Ir para o fluxo de caixa -></button>
-        </div>
+        </div> -->
     </div>
     <div class="grafico-container">
         <div class="col-md-6 col-sm-12 grafico ">

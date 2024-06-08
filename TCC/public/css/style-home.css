@@ -115,9 +115,13 @@ a {
 }
 
 .grafico {
-    width: 50%;
+    width: 49%;
     height: auto;
     margin-top: 20px;
+}
+
+#grafico2{
+    margin-left: 10px;
 }
 
 .receber-dashboard, .pagar-dashboard, .dashboardMensal {
@@ -130,13 +134,15 @@ a {
 
 .receber-dashboard {
     background-color: cadetblue;
-    width: 24%;
+    width: 49%;
+    /* width: 24%; */
     height: auto;
 }
 
 .pagar-dashboard {
     background-color: red;
-    width: 24%;
+    width: 49%;
+    /* width: 24%; */
     height: auto;
     margin-left: 10px;
 }
