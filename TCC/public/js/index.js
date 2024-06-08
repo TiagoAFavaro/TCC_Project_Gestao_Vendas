@@ -79,3 +79,41 @@ function loadHeaderAndSidebar() {
 //         sidebar.classList.toggle('hidden-sidebar');
 //     });
 // });
+
+document.getElementById('addRowButton').addEventListener('click', function() {
+    var table = document.getElementById('vendasTable').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+
+    var cells = ['produto', 'detalhes', 'quantidade', 'valor', 'subtotal'];
+    cells.forEach(function(cell) {
+        var newCell = newRow.insertCell();
+        var input;
+        if (cell === 'detalhes') {
+            input = document.createElement('textarea');
+            input.id = cell;
+            input.name = cell;
+            input.required = true;
+            input.style.height = '30px';  // Match the height of other inputs
+        } else {
+            input = document.createElement('input');
+            input.type = cell === 'quantidade' || cell === 'valor' || cell === 'subtotal' ? 'number' : 'text';
+            input.id = cell;
+            input.name = cell;
+            input.required = cell !== 'desconto';
+            input.step = cell === 'valor' || cell === 'subtotal' ? '0.01' : undefined;
+        }
+        input.style.width = '100%';
+        input.style.height = '30px';
+        input.style.borderRadius = '5px';
+        input.style.border = '1px solid rgb(211, 205, 205)';
+        input.style.boxSizing = 'border-box';
+        newCell.appendChild(input);
+    });
+
+    // Adiciona o botão de cadastrar na nova linha
+    var actionCell = newRow.insertCell();
+    var submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.innerText = 'CADASTRAR';
+    actionCell.appendChild(submitButton);
+});
