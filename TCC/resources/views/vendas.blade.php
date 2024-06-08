@@ -25,7 +25,7 @@
 
         <div class="container_cliente">
             <div class="botoes">
-                <a href="/cadastrar-vendas">
+                <a href="/vendas/cadastro">
                     <button class="botoes_cliente" style="background-color: green;">
                         <img src="{{ asset('/img/plus.png') }}" alt="Mais">
                         Adicionar

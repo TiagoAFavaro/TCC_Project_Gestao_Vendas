@@ -15,6 +15,10 @@ class CadastroClienteController extends Controller
         return view('clientes')->with('cadastros', $cadastros);
     }
 
+    public function paginaCadastro()
+    {
+        return view('cadastrocliente');
+    }
 
     public function store(Request $request)
     {

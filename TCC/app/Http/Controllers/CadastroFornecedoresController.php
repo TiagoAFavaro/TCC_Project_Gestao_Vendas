@@ -14,6 +14,11 @@ class CadastroFornecedoresController extends Controller
         return view('fornecedores')->with('cadastros', $cadastros);
     }
 
+    public function paginaCadastro()
+    {
+        return view('cadastrofornecedores');
+    }
+
     public function store(Request $request)
     {
         $cadastro = new CadastroFornecedores();

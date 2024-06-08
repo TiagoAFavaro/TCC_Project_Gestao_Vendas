@@ -14,13 +14,18 @@ class CadastroProdutosController extends Controller
         return view('produtos')->with('cadastros', $cadastros);
     }
 
+    public function paginaCadastro()
+    {
+        return view('cadastroprodutos');
+    }
+
     public function store(Request $request)
     {
         $cadastro = new CadastroProdutos();
         $cadastro->descricao = $request->input('descricao');
-        $cadastro->descricao = $request->input('fornecedor');
-        $cadastro->preco = $request->input('precoCusto');
-        $cadastro->preco = $request->input('precoVenda');
+        $cadastro->fornecedor = $request->input('fornecedor');
+        $cadastro->precoCusto = $request->input('precoCusto');
+        $cadastro->precoVenda = $request->input('precoVenda');
 
         $cadastro->save();
 
