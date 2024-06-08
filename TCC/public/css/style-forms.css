@@ -4,8 +4,9 @@ body {
 }
 
 hr {
-    margin: 5px;
+    margin: 5px 0;
     width: 100%;
+    box-sizing: border-box; /* Inclui o padding e a border no tamanho total do elemento */
 }
 
 a {
@@ -80,6 +81,59 @@ h3 {
     border-radius: 5px;
     border: 1px solid rgb(211, 205, 205);
 }
+
+table input[type="text"],
+table input[type="email"],
+table input[type="tel"],
+table select,
+table input[type="int"],
+table input[type="date"],
+table textarea,
+table input[type="number"] {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(211, 205, 205);
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #ddd; /* Adiciona uma borda em volta da tabela */
+    background-color: #fff; /* Define o fundo da tabela como branco */
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+.add-row-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    max-width: 15%;
+    height: auto;
+}
+
+.add-row-button:hover {
+    background-color: #333;
+}
+
 
 .table_form01 input[type="text"],
 .table_form01 input[type="int"] {
