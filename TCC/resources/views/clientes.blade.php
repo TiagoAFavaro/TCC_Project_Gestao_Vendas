@@ -45,12 +45,8 @@
             <thead>
                 <tr>
                     <th>NOME</th>
-                    <th>TELEFONE</th>
                     <th>CPF</th>
-                    <th>E-MAIL</th>
-                    <th>CEP</th>
-                    <th>RUA</th>
-                    <th>NÚMERO</th>
+                    <th>TELEFONE</th>
                     <th>CIDADE</th>
                     <th>ESTADO</th>
                     <th>AÇÕES</th>
@@ -60,12 +56,8 @@
                 @foreach($cadastros as $cadastro)
                 <tr>
                     <td>{{ $cadastro->nome }}</td>
-                    <td>{{ $cadastro->telefone }}</td>
                     <td>{{ $cadastro->cpf }}</td>
-                    <td>{{ $cadastro->email }}</td>
-                    <td>{{ $cadastro->cep }}</td>
-                    <td>{{ $cadastro->endereco }}</td>
-                    <td>{{ $cadastro->numeroCasa }}</td>
+                    <td>{{ $cadastro->telefone }}</td>
                     <td>{{ $cadastro->cidade }}</td>
                     <td>{{ $cadastro->estado }}</td>
                     <td>

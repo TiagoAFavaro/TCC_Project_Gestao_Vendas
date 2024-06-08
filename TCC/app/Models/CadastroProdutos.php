@@ -11,6 +11,8 @@ class CadastroProdutos extends Model
 
     protected $fillable = [
         'descricao',
-        'preco'
+        'fornecedor',
+        'precoCusto',
+        'precoVenda'
     ];
 }

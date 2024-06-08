@@ -48,13 +48,31 @@
                     <th>CNPJ</th>
                     <th>CONTATO</th>
                     <th>TELEFONE</th>
-                    <th>CEP</th>
-                    <th>ENDEREÇO</th>
-                    <th>NÚMERO</th>
-                    <th>CIDADE</th>
-                    <th>ESTADO</th>
+                    <th>E-MAIL</th>
                     <th>AÇÕES</th>
                 </tr>
+                <tbody>
+                @foreach($cadastros as $cadastro)
+                <tr>
+                    <td>{{ $cadastro->nome }}</td>
+                    <td>{{ $cadastro->cnpj }}</td>
+                    <td>{{ $cadastro->contato }}</td>
+                    <td>{{ $cadastro->telefone }}</td>
+                    <td>{{ $cadastro->email }}</td>
+                    <td>
+                        <a href="#" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon>Edit</a>
+                        <form action="/fornecedores/delete/{{ $cadastro->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger delete-btn">
+                                <ion-icon name="trash-outline"></ion-icon>Delete
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
             </thead>
         </table>
         </form>
