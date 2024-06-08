@@ -18,7 +18,7 @@ class CadastroFornecedoresController extends Controller
     {
         $cadastro = new CadastroFornecedores();
         $cadastro->nome = $request->input('nome');
-        $cadastro->nome = $request->input('contato');
+        $cadastro->contato = $request->input('contato');
         $cadastro->telefone = $request->input('telefone');
         $cadastro->cnpj = $request->input('cnpj');
         $cadastro->email = $request->input('email');
@@ -38,7 +38,7 @@ class CadastroFornecedoresController extends Controller
 
         $cadastro->save();
 
-        return redirect('/vendas/list');
+        return redirect('/fornecedores/list');
     }
 
     public function update(Request $request, string $id)
@@ -50,6 +50,6 @@ class CadastroFornecedoresController extends Controller
     {
         CadastroFornecedores::findOrFail($id)->delete();
 
-        return redirect('/vendas/list')->with('msg', 'Cadastro excluido com sucesso !');
+        return redirect('/fornecedores/list')->with('msg', 'Cadastro excluido com sucesso !');
     }
 }

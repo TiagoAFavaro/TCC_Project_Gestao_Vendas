@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('cadastro_produtos', function (Blueprint $table) {
             $table->id();
             $table->string('descricao');
-            $table->double('preco', 8,2);
+            $table->string('fornecedor');
+            $table->double('precoCusto', 8,2);
+            $table->double('precoVenda', 8,2);
             $table->timestamps();
         });
     }

@@ -18,7 +18,9 @@ class CadastroProdutosController extends Controller
     {
         $cadastro = new CadastroProdutos();
         $cadastro->descricao = $request->input('descricao');
-        $cadastro->preco = $request->input('preco');
+        $cadastro->descricao = $request->input('fornecedor');
+        $cadastro->preco = $request->input('precoCusto');
+        $cadastro->preco = $request->input('precoVenda');
 
         $cadastro->save();
 

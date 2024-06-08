@@ -33,8 +33,16 @@
                     <input type="text" id="descricao" name="descricao" required>
                 </div>
                 <div class="table_form01">
-                    <label class="obg" for="preco">Preço</label>
-                    <input type="int" id="preco" name="preco" required>
+                    <label class="obg" for="fornecedor">Fornecedor</label>
+                    <input type="text" id="fornecedor" name="fornecedor" required>
+                </div>
+                <div class="table_form01">
+                    <label class="obg" for="precoCusto">Preço de Custo</label>
+                    <input type="number" id="precoCusto" name="precoCusto" required>
+                </div>
+                <div class="table_form01">
+                    <label class="obg" for="precoVenda">Preço</label>
+                    <input type="number" id="precoVenda" name="precoVenda" required>
                 </div>
                 <div class="button-container" style="margin-top: 20px;">
                     <button type="submit">CADASTRAR</button>

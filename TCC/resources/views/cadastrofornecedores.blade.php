@@ -26,7 +26,7 @@
         </div>
         <hr>
         <div class="forms">
-        <form id="cadastrarFornecedores">
+        <form id="cadastrarFornecedores" action="/criar_cadastro_fornecedores" method="post">
             @csrf
                 <div class="table_form">
                     <label class="obg" for="nome">Nome</label>
@@ -43,6 +43,10 @@
                 <div class="table_form">
                     <label class="obg" for="telefone">Telefone</label>
                     <input type="text" id="telefone" name="telefone" maxlength="15" required>
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="table_form">
                     <label for="cep">CEP</label>

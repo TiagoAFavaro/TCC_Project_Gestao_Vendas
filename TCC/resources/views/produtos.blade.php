@@ -45,7 +45,9 @@
             <thead>
                 <tr>
                     <th>DESCRIÇÃO</th>
-                    <th>PREÇO</th>
+                    <th>FORNECEDOR</th>
+                    <th>PREÇO DE CUSTO</th>
+                    <th>PREÇO DE VENDA</th>
                     <th>AÇÕES</th>
                 </tr>
             </thead>
