@@ -21,21 +21,37 @@ class CadastroVendasController extends Controller
 
     public function store(Request $request)
     {
-        $cadastro = new CadastroVendas();
-        $cadastro->cliente_id = $request->input('cliente_id');
-        $cadastro->produtos_id = $request->input('produtos_id');
-        $cadastro->situacao = $request->input('situacao');
-        $cadastro->dataEntregaMercadoria = $request->input('dataEntregaMercadoria');
-        $cadastro->dataRecebimento = $request->input('dataRecebimento');
-        $cadastro->detalhes = $request->input('detalhes');
-        $cadastro->quantidade = $request->input('quantidade');
-        $cadastro->valor = $request->input('valor');
-        $cadastro->desconto = $request->input('desconto');
-        $cadastro->subtotal = $request->input('subtotal');
-        $cadastro->observacoes = $request->input('observacoes');
-        $cadastro->valorTotal = $request->input('valorTotal');
+        $request->validate([
+            'cliente_id' => 'required|exists:cadastro_clientes,id',
+            'produto_id' => 'required|exists:cadastro_produtos,id',
+            'situacao' => 'required|string|max:255',
+            'dataEntregaMercadoria' => 'required|date',
+            'dataRecebimento' => 'required|date',
+            'detalhes' => 'required|string|max:255',
+            'quantidade' => 'required|integer|min:1',
+            'valor' => 'required|numeric|min:0',
+            'desconto' => 'nullable|numeric|min:0',
+            'subtotal' => 'required|numeric|min:0',
+            'observacoes' => 'nullable|string',
+            'valorTotal' => 'required|numeric|min:0',
+        ]);
 
-        $cadastro->save();
+        $venda = CadastroVendas::create([
+            'cliente_id' => $request->input('cliente_id'),
+            'situacao' => $request->input('situacao'),
+            'dataEntregaMercadoria' => $request->input('dataEntregaMercadoria'),
+            'dataRecebimento' => $request->input('dataRecebimento'),
+            'observacoes' => $request->input('observacoes'),
+            'valorTotal' => $request->input('valorTotal'),
+        ]);
+
+        $venda->produtos()->attach($request->input('produto_id'), [
+            'detalhes' => $request->input('detalhes'),
+            'quantidade' => $request->input('quantidade'),
+            'desconto' => $request->input('desconto') ?? 0,
+            'subtotal' => $request->input('subtotal'),
+            'valor' => $request->input('valor'),
+        ]);
 
         return redirect('/vendas/list');
     }
@@ -47,8 +63,9 @@ class CadastroVendasController extends Controller
 
     public function destroy($id)
     {
-        CadastroVendas::findOrFail($id)->delete();
+        $venda = CadastroVendas::findOrFail($id);
+        $venda->delete();
 
-        return redirect('/vendas/list')->with('msg', 'Cadastro excluido com sucesso !');
+        return redirect()->route('vendas.index')->with('success', 'Venda excluída com sucesso!');
     }
 }

@@ -15,4 +15,11 @@ class CadastroProdutos extends Model
         'precoCusto',
         'precoVenda'
     ];
+
+    public function vendas()
+    {
+        return $this->belongsToMany(CadastroVendas::class, 'venda_produto')
+            ->withPivot('detalhes', 'quantidade', 'desconto', 'subtotal', 'valor')
+            ->withTimestamps();
+    }
 }

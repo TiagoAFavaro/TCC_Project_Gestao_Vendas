@@ -67,4 +67,10 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas/cadastro', [CadastroVendasController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_vendas', [CadastroVendasController::class, 'store']);
     Route::delete('/vendas/delete/{id}', [CadastroVendasController::class, 'destroy']);
+
+    // ROTAS VINCULAR VENDAS E PRODUTOS
+    Route::get('/vendas', [CadastroVendasController::class, 'index'])->name('vendas.index');
+    Route::get('/vendas/cadastrar', [CadastroVendasController::class, 'paginaCadastro'])->name('vendas.create');
+    Route::post('/vendas', [CadastroVendasController::class, 'store'])->name('vendas.store');
+    Route::delete('/vendas/{id}', [CadastroVendasController::class, 'destroy'])->name('vendas.destroy');
 });
