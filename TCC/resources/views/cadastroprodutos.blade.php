@@ -26,7 +26,7 @@
         </div>
         <hr>
         <div class="forms">
-        <form id="cadastrarProdutos">
+        <form id="cadastrarProdutos" action="/criar_cadastro_produtos" method="post">
             @csrf
                 <div class="table_form01">
                     <label class="obg" for="descricao">Descrição</label>
@@ -41,7 +41,7 @@
                     <input type="number" id="precoCusto" name="precoCusto" required>
                 </div>
                 <div class="table_form01">
-                    <label class="obg" for="precoVenda">Preço</label>
+                    <label class="obg" for="precoVenda">Preço de Venda</label>
                     <input type="number" id="precoVenda" name="precoVenda" required>
                 </div>
                 <div class="button-container" style="margin-top: 20px;">

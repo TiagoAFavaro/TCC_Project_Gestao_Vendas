@@ -45,34 +45,32 @@ Route::middleware([Autenticador::class])->group(function () {
 
     // ROTAS CADASTRO DE CLIENTES
     Route::get('/clientes/list', [CadastroClienteController::class, 'index']);
-    Route::get('/cadastrar-cliente', function () {
-        return view('/cadastrocliente');
-    });
+    Route::get('/clientes/cadastro', [CadastroClienteController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_clientes', [CadastroClienteController::class, 'store']);
     Route::delete('/clientes/delete/{id}', [CadastroClienteController::class, 'destroy']);
 
 
     // ROTAS CADASTRO DE FORNECEDORES
     Route::get('/fornecedores/list', [CadastroFornecedoresController::class, 'index']);
-    Route::get('/cadastrar-fornecedores', function () {
-        return view('/cadastrofornecedores');
-    });
+    Route::get('/fornecedores/cadastro', [CadastroFornecedoresController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_fornecedores', [CadastroFornecedoresController::class, 'store']);
     Route::delete('/fornecedores/delete/{id}', [CadastroFornecedoresController::class, 'destroy']);
 
     // ROTAS CADASTRO DE PRODUTOS
     Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
-    Route::get('/cadastrar-produtos', function () {
-        return view('/cadastroprodutos');
-    });
+    Route::get('/produtos/cadastro', [CadastroProdutosController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_produtos', [CadastroProdutosController::class, 'store']);
     Route::delete('/produtos/delete/{id}', [CadastroProdutosController::class, 'destroy']);
 
     // ROTAS CADASTRO DE VENDAS
     Route::get('/vendas/list', [CadastroVendasController::class, 'index']);
-    Route::get('/cadastrar-vendas', function () {
-        return view('/cadastrovendas');
-    });
+    Route::get('/vendas/cadastro', [CadastroVendasController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_vendas', [CadastroVendasController::class, 'store']);
     Route::delete('/vendas/delete/{id}', [CadastroVendasController::class, 'destroy']);
+
+    // ROTAS VINCULAR VENDAS E PRODUTOS
+    Route::get('/vendas', [CadastroVendasController::class, 'index'])->name('vendas.index');
+    Route::get('/vendas/cadastrar', [CadastroVendasController::class, 'paginaCadastro'])->name('vendas.create');
+    Route::post('/vendas', [CadastroVendasController::class, 'store'])->name('vendas.store');
+    Route::delete('/vendas/{id}', [CadastroVendasController::class, 'destroy'])->name('vendas.destroy');
 });
