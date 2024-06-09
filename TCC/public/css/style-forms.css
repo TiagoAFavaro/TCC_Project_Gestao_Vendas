@@ -134,6 +134,10 @@ table th {
     background-color: #333;
 }
 
+.botao_endpage {
+    margin-bottom: 20px;
+    width: 15%;
+}
 
 .table_form01 input[type="text"],
 .table_form01 input[type="int"] {
