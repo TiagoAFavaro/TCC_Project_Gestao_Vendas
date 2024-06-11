@@ -233,6 +233,21 @@ h1 {
     padding: 8px;
 }
 
+.more-btn {
+    background-color: yellow;
+    border-radius: 4px;
+    padding: 5px 10px; /* Ajusta o tamanho do botão */
+    border: none; /* Remove a borda padrão */
+    display: inline-flex; /* Para alinhar a imagem no centro */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+.more-btn img {
+    width: 26px; /* Largura fixa da imagem */
+    height: 26px; /* Altura fixa da imagem */
+}
+
 ol {
     list-style-type: disc; /* Define flechinhas como marcadores */
 }

@@ -61,8 +61,6 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>20</td>
-                    <td>01</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -74,6 +72,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-warning more-btn">
+                            <img src="{{ asset('/img/more.png') }}" alt="Mais">
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>

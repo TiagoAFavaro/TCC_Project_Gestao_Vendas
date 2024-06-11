@@ -69,7 +69,11 @@
                                 <ion-icon name="trash-outline"></ion-icon>Delete
                             </button>
                         </form>
-
+                        <a href="/visualizarCliente">
+                            <button class="btn btn-warning more-btn">
+                                <img src="{{ asset('/img/more.png') }}" alt="Mais">
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

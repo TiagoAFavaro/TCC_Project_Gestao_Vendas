@@ -48,6 +48,10 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/clientes/cadastro', [CadastroClienteController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_clientes', [CadastroClienteController::class, 'store']);
     Route::delete('/clientes/delete/{id}', [CadastroClienteController::class, 'destroy']);
+    Route::get('/visualizarCliente', function () {
+        return view('vizualizarCliente');
+    });
+    
 
 
     // ROTAS CADASTRO DE FORNECEDORES
