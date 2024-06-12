@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Visualização de Cliente')
-    
+@section('title', 'Visualização de Fornecedor')
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
 @endpush
@@ -9,55 +9,63 @@
 @section('content')
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="sub_header">
-            <h4>Visualização de Cliente</h4>
+            <h4>Visualização de Fornecedor</h4>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
                 <span class="separator">&gt;</span>
-                <a href="/clientes/list">Clientes</a>
+                <a href="/fornecedores/list">Clientes</a>
                 <span class="separator">&gt;</span>
-                <a href="/visualizarCliente">Visualizar</a>
+                <a href="/visualizarForecedor">Visualizar</a>
             </div>
         </div>
         <br>
-        <h1>"Nome do cliente"</h1>
+        <h1>"Nome do fornecedor"</h1>
         <div class="table-responsive">
             <table class="table">
                 <tbody>
                     <tr>
-                        <td><label for="nome">Nome</label></td>
+                        <td>Nome</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="telefone">Telefone</label></td>
+                        <td>CNPJ</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="cpf">CPF</label></td>
+                        <td>Contato</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="email">E-mail</label></td>
+                        <td>Telefone</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="cep">CEP</label></td>
+                        <td>E-mail</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="endereco">Endereço</label></td>
+                        <td>CEP</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="numeroCasa">Número da Casa</label></td>
+                        <td>Endereço</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="cidade">Cidade</label></td>
+                        <td>Número</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><label for="estado">Estado</label></td>
+                        <td>Bairro</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cidade</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
                         <td></td>
                     </tr>
                 </tbody>

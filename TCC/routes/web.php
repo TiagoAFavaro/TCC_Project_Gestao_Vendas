@@ -59,6 +59,9 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/fornecedores/cadastro', [CadastroFornecedoresController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_fornecedores', [CadastroFornecedoresController::class, 'store']);
     Route::delete('/fornecedores/delete/{id}', [CadastroFornecedoresController::class, 'destroy']);
+    Route::get('/vizualizarFornecedor', function () {
+        return view('vizualizarFornecedor');
+    });
 
     // ROTAS CADASTRO DE PRODUTOS
     Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
