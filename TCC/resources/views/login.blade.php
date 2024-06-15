@@ -30,7 +30,7 @@
             <label for="password" class="form-label"></label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
 
-            <button type="submit" style="color: white;" class="btn btn-primary">ENTRAR</button>
+            <button type="submit" style="color: white; text-decoration: none;" class="btn btn-primary">ENTRAR</button>
 
             <button class="btn btn-secondary">
                 <a href="/cadastrarusuario" style="color: white; text-decoration: none;">CRIE SUA CONTA EM MENOS DE 1 MINUTO! É GRÁTIS!</a>

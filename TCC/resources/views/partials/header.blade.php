@@ -5,11 +5,11 @@
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="">
                         <img src="{{ asset('/img/engrenagens.png') }}" class="header_icon" style="margin-top: 10px; width: 30px">
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle header_font" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
                         <img class="header_icon_user inline" src="{{ asset('/img/do-utilizador.png') }}">

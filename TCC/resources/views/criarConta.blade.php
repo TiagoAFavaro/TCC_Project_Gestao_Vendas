@@ -38,7 +38,7 @@
             <label for="password_confirmation" class="form-label"></label>
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirme a Senha" required>
 
-            <button type="submit" class="btn btn-primary">CADASTRAR</button>
+            <button type="submit" class="btn btn-primary" style="color: white;">CADASTRAR</button>
 
         </form>
 

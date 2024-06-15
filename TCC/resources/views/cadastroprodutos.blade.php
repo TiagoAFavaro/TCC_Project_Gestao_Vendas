@@ -45,7 +45,7 @@
                     <input type="number" id="precoVenda" name="precoVenda" required>
                 </div>
                 <div class="button-container" style="margin-top: 20px;">
-                    <button type="submit">CADASTRAR</button>
+                    <button type="submit" style="color: white;">CADASTRAR</button>
                 </div>
             </form>
         </div>

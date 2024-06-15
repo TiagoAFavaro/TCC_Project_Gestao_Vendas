@@ -81,7 +81,5 @@
         </table>
 
         </form>
-        <br>
-        Mostrando 1 a 1 de um total de 1
     </main>
 @endsection

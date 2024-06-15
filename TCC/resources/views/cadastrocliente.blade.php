@@ -65,7 +65,7 @@
                     <input type="text" id="estado" name="estado">
                 </div>
                 <div class="button-container">
-                    <button type="submit">CADASTRAR</button>
+                    <button type="submit" style="color: white;">CADASTRAR</button>
                 </div>
             </form>
         </div>
