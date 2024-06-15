@@ -240,7 +240,7 @@
             var actionCell = newRow.insertCell();
             var removeButton = document.createElement('a');
             var removeImg = document.createElement('img');
-            removeImg.src = '{{ asset('/img/x.png') }}';
+            removeImg.src = "{{ asset('/img/x.png') }}";
             removeImg.style.maxWidth = '25px';
             removeButton.appendChild(removeImg);
             removeButton.href = '#';
