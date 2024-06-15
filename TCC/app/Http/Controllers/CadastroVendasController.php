@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CadastroCliente;
 use App\Models\CadastroVendas;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,22 @@ class CadastroVendasController extends Controller
     public function paginaCadastro()
     {
         return view('cadastrovendas');
+    }
+
+    public function indexClientes()
+    {
+        // $cadastros = CadastroCliente::all()->toArray();
+
+        return CadastroCliente::select([ 
+            'nome',
+            'telefone',
+            'cpf',
+            'email',
+            'cep',
+            'endereco',
+            'numeroCasa',
+            'cidade',
+            'estado'])->all()->toArray();
     }
 
     public function store(Request $request)
