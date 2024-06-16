@@ -135,10 +135,10 @@
                             <td>
                                 <input type="number" id="subtotal" name="subtotal" step="0.01" required>
                             </td>
-                            <td>
-                                <a href="">
+                            <td class="cell-img">
+                                <!-- <a href=""> -->
                                     <img src="{{ asset('/img/x.png') }}" style="max-width: 25px;">
-                                </a>
+                                <!-- </a> -->
                             </td>
                         </tr>
                     </tbody>

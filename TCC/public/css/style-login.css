@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column; /* Permite empilhar a alerta acima do login-container */
+    flex-direction: column;
 }
 
 .alert {
@@ -18,9 +18,9 @@ body {
     width: 80%;
     max-width: 500px;
     text-align: center;
-    background-color: #f8d7da; /* Cor de fundo */
-    color: #721c24; /* Cor do texto */
-    z-index: 9999; /* Define um índice de camada alto para garantir que a mensagem de alerta seja exibida sobre outros elementos */
+    background-color: #f8d7da;
+    color: #721c24;
+    z-index: 9999;
 }
 
 .login-container {
@@ -31,7 +31,7 @@ body {
     width: 80%;
     max-width: 400px;
     text-align: center;
-    margin-top: 10px; /* Espaçamento entre o alerta e a caixa de login */
+    margin-top: 10px;
 }
 
 .login-container .logo {
@@ -51,7 +51,7 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    box-sizing: border-box; 
 }
 
 .login-container button {

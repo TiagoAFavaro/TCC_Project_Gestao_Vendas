@@ -2,10 +2,9 @@
         <div class="row">
             <nav id="sidebar01" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
-                    <a href="/pagina-de-upload-de-imagem">
-                        <!-- Link para trocar o logo da empresa-->
+                    <!-- <a href="/pagina-de-upload-de-imagem"> -->
                         <img src="{{ asset('img/Seu_Logo.png') }}" class="seu_logo img-fluid mb-3" alt="Imagem do Menu" id="trocarLogo">
-                    </a>
+                    <!-- </a> -->
                     <hr>
                     <ul class="nav flex-column custom-dropdown">
                         <li class="nav-item">
