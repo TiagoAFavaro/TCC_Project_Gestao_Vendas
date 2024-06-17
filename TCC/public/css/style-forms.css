@@ -6,7 +6,7 @@ body {
 hr {
     margin: 5px 0;
     width: 100%;
-    box-sizing: border-box; /* Inclui o padding e a border no tamanho total do elemento */
+    box-sizing: border-box;
 }
 
 a {
@@ -19,13 +19,13 @@ a {
 }
 
 .header_icon {
-    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    max-width: 20px;
     margin-right: 10px;
     cursor: pointer;
 }
 
 .header_icon_user {
-    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    max-width: 20px;
     cursor: pointer;
 }
 
@@ -36,13 +36,12 @@ a {
     left: 0;
     width: 200px;
     height: 100%;
-     /* Isso faz com que a imagem cubra todo o espaço mantendo as proporções */
 }
 
 .navbar {
     top: 0;
     width: 100%;
-    z-index: 1000; /* Certifique-se de que o z-index seja maior que outros elementos na página */
+    z-index: 1000; 
 }
 
 .container{
@@ -50,8 +49,8 @@ a {
 }
 
 .sub_header {
-    border-bottom: 1px solid rgb(211, 205, 205); /* Define a borda preta de 1px */
-    padding: 10px; /* Adiciona um preenchimento interno para evitar que o conteúdo encoste na borda */
+    border-bottom: 1px solid rgb(211, 205, 205); 
+    padding: 10px;
     display: flex;
     align-content: center;
     justify-content: space-between; 
@@ -94,14 +93,14 @@ table input[type="number"] {
     height: 30px;
     border-radius: 5px;
     border: 1px solid rgb(211, 205, 205);
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box; 
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid #ddd; /* Adiciona uma borda em volta da tabela */
-    background-color: #fff; /* Define o fundo da tabela como branco */
+    border: 2px solid #ddd;
+    background-color: #fff;
 }
 
 table th, table td {
@@ -173,6 +172,12 @@ button a {
     color: black;
 }
 
+.cell-img {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
 .cadastro form {
     display: contents;
 }
@@ -202,7 +207,7 @@ button a {
 
 .table td:first-child {
     width: 20%;
-    background-color: #f7f7f7; /* cinza claro */
+    background-color: #f7f7f7;
 }
 
 .table td:last-child {
@@ -214,7 +219,7 @@ button a {
     border-spacing: 0;
     border: 1px solid #ddd;
     border-radius: 8px;
-    overflow: hidden; /* para arredondar as bordas internas também */
+    overflow: hidden; 
 }
 
 .table td, .table th {
@@ -234,19 +239,18 @@ button a {
     border-radius: 10px;
     padding: 20px;
     border: 1px solid rgb(211, 205, 205);
-    margin-left: auto; /* Centraliza o elemento à esquerda */
-    margin-right: auto; /* Centraliza o elemento à direita */
-    margin-bottom: 20px; /* Adiciona uma margem de 20px na parte inferior */
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 20px;
 }
 
 .obg::before {
     content: "* ";
     color: red;
-    margin-left: 5px; /* Adiciona um espaço entre a palavra e o asterisco */
-    float: right; /* Alinha o asterisco à direita do texto */
+    margin-left: 5px; 
+    float: right; 
 }   
 
-/* Para telas maiores que 700px e menores que 1070px */
 @media screen and (min-width: 700px) and (max-width: 1070px) {
     .table_form {
         width: 30%;
@@ -260,7 +264,6 @@ button a {
     }
 }
 
-/* Para telas menores que 700px */
 @media screen and (max-width: 700px) {
     .table_form {
         width: 40%;
@@ -274,7 +277,6 @@ button a {
     }
 }
 
-/* Para telas menores que 400px */
 @media screen and (max-width: 600px) {
     .table_form {
         width: 100%;

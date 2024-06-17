@@ -17,16 +17,6 @@ h1 {
     display: inline-block;
 }
 
-/* main {
-    margin-top: 56px !important; 
-    margin-left: 300px;
-    min-height: calc(100vh - 56px);
-} */
-
-/* #head {
-    margin-bottom: 100px;
-} */
-
 .separator {
     margin: 0 5px;
 }
@@ -46,22 +36,13 @@ h1 {
     cursor: pointer;
 }
 
-/* .sub_header {
-    border-bottom: 1px solid rgb(211, 205, 205); 
-    padding: 10px;
-    display: flex;
-    align-content: center;
-    justify-content: space-between; 
-    align-items: center;
-} */
-
 .header_icon_user {
-    max-width: 20px; /* Largura máxima ajustada para evitar esticamento */
+    max-width: 20px;
     cursor: pointer;
 }
 
 .menu_icon {
-    width: 25px; /* Largura máxima ajustada para evitar esticamento */
+    width: 25px;
     align-content: center;
     margin: 5px;
 }
@@ -181,8 +162,8 @@ h1 {
     height: 50px;
     padding: 8px;
     border: 1px solid #ccc;
-    border-top-left-radius: 5px; /* Adiciona borda arredondada à borda superior esquerda */
-    border-bottom-left-radius: 5px; /* Adiciona borda arredondada à borda inferior esquerda */
+    border-top-left-radius: 5px; 
+    border-bottom-left-radius: 5px; 
     width: 100%;
 }
 
@@ -195,13 +176,13 @@ h1 {
 }
 
 #botao_pesquisa img {
-    vertical-align: middle; /* Centraliza a imagem verticalmente */
+    vertical-align: middle;
 }
 
 #busca_avancada {
     background-color: black;
     height: 50px;
-    margin: 10px; /* Adiciona um espaço entre os botões */
+    margin: 10px; 
     color: white;
     border: none;
     font-size: 18px;
@@ -210,9 +191,9 @@ h1 {
 
 .cliente_icon {
     margin: 20px;
-    width: 200px; /* Defina o tamanho desejado */
-    height: auto; /* Mantém a proporção original da imagem */
-    opacity: 0.3; /* Define a opacidade da imagem (0.0 é completamente transparente, 1.0 é totalmente opaco) */
+    width: 200px; 
+    height: auto;
+    opacity: 0.3; 
 }
 
 .icon_conteudo {
@@ -220,7 +201,7 @@ h1 {
 }
 
 .conteudo {
-    flex: 1; /* Ocupa todo o espaço disponível */
+    flex: 1; 
     margin: 10px;
 }
 
@@ -236,25 +217,25 @@ h1 {
 .more-btn {
     background-color: yellow;
     border-radius: 4px;
-    padding: 5px 10px; /* Ajusta o tamanho do botão */
-    border: none; /* Remove a borda padrão */
-    display: inline-flex; /* Para alinhar a imagem no centro */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
+    padding: 5px 10px; 
+    border: none; 
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
 }
 
 .more-btn img {
-    width: 26px; /* Largura fixa da imagem */
-    height: 26px; /* Altura fixa da imagem */
+    width: 26px; 
+    height: 26px; 
 }
 
 ol {
-    list-style-type: disc; /* Define flechinhas como marcadores */
+    list-style-type: disc; 
 }
 
 table {
-    border-collapse: collapse; /* Mescla as bordas das células para uma aparência mais limpa */
-    width: 100%; /* Define a largura da tabela como 100% do contêiner pai */
+    border-collapse: collapse; 
+    width: 100%; 
 }
 
 table form{
@@ -262,13 +243,13 @@ table form{
 }
 
 th, td {
-    border: 1px solid #000; /* Adiciona uma borda sólida de 1px com a cor preta */
-    padding: 8px; /* Adiciona espaço interno para o conteúdo dentro das células */
+    border: 1px solid #000; 
+    padding: 8px; 
 }
 
 @media (max-width: 768px) {
     #sidebar01 {
-        display: none; /* Ocultar sidebar em telas pequenas */
+        display: none; 
     }
     #content {
         margin-left: 0;
@@ -303,7 +284,7 @@ th, td {
 
 @media (max-width: 400px) {
     #sidebar01 {
-        display: none; /* Ocultar sidebar em telas pequenas */
+        display: none; 
     }
     #content {
         margin-left: 0;
