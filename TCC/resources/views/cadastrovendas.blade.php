@@ -3,7 +3,7 @@
 @section('title', 'Cadastro de Vendas')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
 @endpush
 
 @section('content')
@@ -38,20 +38,20 @@
                 </select>
             </div>
             <div class="table_form">
-                <label class="obg" for="endereco_rua">Rua</label>
-                <input type="text" id="endereco_rua" name="endereco_rua" required>
+                <label for="endereco_rua">Rua</label>
+                <input type="text" id="endereco_rua" name="endereco_rua" disabled>
             </div>
             <div class="table_form">
-                <label class="obg" for="endereco_numero">Número</label>
-                <input type="text" id="endereco_numero" name="endereco_numero" required>
+                <label for="endereco_numero">Número</label>
+                <input type="text" id="endereco_numero" name="endereco_numero" disabled>
             </div>
             <div class="table_form">
-                <label class="obg" for="endereco_cidade">Cidade</label>
-                <input type="text" id="endereco_cidade" name="endereco_cidade" required>
+                <label for="endereco_cidade">Cidade</label>
+                <input type="text" id="endereco_cidade" name="endereco_cidade" disabled>
             </div>
             <div class="table_form">
-                <label class="obg" for="endereco_estado">Estado</label>
-                <input type="text" id="endereco_estado" name="endereco_estado" required>
+                <label for="endereco_estado">Estado</label>
+                <input type="text" id="endereco_estado" name="endereco_estado" disabled>
             </div>
             <div class="table_form">
                 <label class="obg" for="data_entrega">Data de Entrega</label>
@@ -85,7 +85,7 @@
                     <th>Produto<span style="color: red;"> *</span></th>
                     <th>Detalhes</th>
                     <th>Quantidade<span style="color: red;"> *</span></th>
-                    <th>Valor<span style="color: red;"> *</span></th>
+                    <th>Valor</th>
                     <th>Subtotal</th>
                     <th>Ações</th>
                 </tr>
@@ -107,10 +107,10 @@
                         <input type="number" id="quantidade" name="quantidade" required>
                     </td>
                     <td>
-                        <input type="text" id="precoVenda" name="precoVenda" required>
+                        <input type="text" id="precoVenda" name="precoVenda" disabled>
                     </td>
                     <td>
-                        <input type="number" id="subtotal" name="subtotal" step="0.01" required>
+                        <input type="number" id="subtotal" name="subtotal" step="0.01" disabled>
                     </td>
                     <td>
                         <a href="">
@@ -136,25 +136,25 @@
         <table>
             <thead>
                 <tr>
-                    <th>Produtos<span style="color: red;"> *</span></th>
-                    <th>Serviços<span style="color: red;"> *</span></th>
-                    <th>Descontos<span style="color: red;"> *</span></th>
-                    <th>Valor Total<span style="color: red;"> *</span></th>
+                    <th>Produtos</th>
+                    <th>Serviços</th>
+                    <th>Descontos</th>
+                    <th>Valor Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <input type="number" id="produtos" name="produtos" required>
+                        <input type="number" id="produtos" name="produtos" disabled>
                     </td>
                     <td>
-                        <input type="number" id="servicos" name="servicos" required>
+                        <input type="number" id="servicos" name="servicos" disabled>
                     </td>
                     <td>
-                        <input type="number" id="descontos" name="descontos" step="0.01" required>
+                        <input type="number" id="descontos" name="descontos" step="0.01" disabled>
                     </td>
                     <td>
-                        <input type="number" id="valorTotal" name="valorTotal" step="0.01" required>
+                        <input type="number" id="valorTotal" name="valorTotal" step="0.01" disabled>
                     </td>
                 </tr>
             </tbody>
