@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('store');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
-
+Route::get('/', function () {
+    return redirect('/home');
+});
 
 //ROTA PARA CADASTRAR USUARIO
 Route::get('/cadastrarusuario', [UsersController::class, 'create'])->name('cadastrarusuario');
@@ -51,7 +53,7 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/visualizarCliente', function () {
         return view('vizualizarCliente');
     });
-    
+
 
 
     // ROTAS CADASTRO DE FORNECEDORES
