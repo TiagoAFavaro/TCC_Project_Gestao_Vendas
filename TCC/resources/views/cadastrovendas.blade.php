@@ -30,7 +30,7 @@
         <div class="forms">
             <div class="table_form">
                 <label class="obg" for="cliente_nome">Cliente</label>
-                <select id="cliente_nome" name="cliente_nome" onchange="populateData(this.value)" required>
+                <select id="cliente_nome" name="cliente_nome" onchange="populateClienteData(this.value)" required>
                     <option value="" disabled selected>Selecione o cliente</option>
                     @foreach($cadastrosClientes as $cadastro)
                     <option value="{{ $cadastro->id }}" data-cadastro="{{ json_encode($cadastro) }}">{{ $cadastro->nome }}</option>
@@ -178,9 +178,9 @@
         <button class="botao_endpage" style="background-color: red; color: white;">CANCELAR</button>
     </a>
 </div>
-    </form>
+</form>
 <script>
-    function populateData(clienteId) {
+    function populateClienteData(clienteId) {
         const clienteSelect = document.querySelector(`#cliente_nome option[value="${clienteId}"]`);
         const cadastro = JSON.parse(clienteSelect.getAttribute('data-cadastro'));
 
@@ -223,13 +223,11 @@
             var input;
 
             if (index === 0) {
-                // Cria um select para o primeiro campo
                 input = document.createElement('select');
                 input.id = cell + '_' + rowId;
                 input.name = cell + '[]';
                 input.required = true;
 
-                // Opção padrão
                 var optionDefault = document.createElement('option');
                 optionDefault.value = '';
                 optionDefault.text = 'Selecione um produto';
@@ -237,7 +235,17 @@
                 optionDefault.selected = true;
                 input.appendChild(optionDefault);
 
-                // Popula o select com opções do banco de dados
+                input.addEventListener('change', function(e) {
+                    const produtoId = e.target.value;
+                    console.log(produtoId, rowId);
+                    const produtoSelect = document.querySelector(`#produto_descricao option[value="${produtoId}"]`);
+                    const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));
+
+                    document.getElementById('precoVenda_' + rowId).value = produto.precoVenda;
+                })
+
+                console.log(rowId);
+
                 @foreach($cadastrosProdutos as $produto)
                 var option = document.createElement('option');
                 option.value = '{{ $produto->id }}';
@@ -245,34 +253,8 @@
                 input.appendChild(option);
                 @endforeach
 
-                function populateProductData(produtoId) {
-                    const produtoSelect = document.querySelector(`#produto_descricao option[value="${produtoId}"]`);
-                    const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));
-
-                    document.getElementById('precoVenda').value = produto.precoVenda;
-                }
-
-                document.getElementById('quantidade').addEventListener('input', function() {
-                    const quantidade = document.getElementById('quantidade').value;
-                    const precoVenda = document.getElementById('precoVenda').value;
-                    const subtotal = quantidade * precoVenda;
-                    document.getElementById('subtotal').value = subtotal.toFixed(2); // Atualizando subtotal
-                });
-
-                document.getElementById('precoVenda').addEventListener('input', function() {
-                    const quantidade = document.getElementById('quantidade').value;
-                    const precoVenda = document.getElementById('precoVenda').value;
-                    const subtotal = quantidade * precoVenda;
-                    document.getElementById('subtotal').value = subtotal.toFixed(2); // Atualizando subtotal
-                });
-
-            } else if (cell === 'detalhes') {
-                input = document.createElement('textarea');
-                input.id = cell + '_' + rowId;
-                input.name = cell + '[]';
-                input.required = true;
             } else {
-                input = document.createElement('textarea');
+                input = document.createElement('input');
                 input.type = cell === 'quantidade' || cell === 'precoVenda' || cell === 'subtotal' ? 'number' : 'text';
                 input.id = cell + '_' + rowId;
                 input.name = cell + '[]';
@@ -280,6 +262,26 @@
                 if (cell === 'precoVenda' || cell === 'subtotal') {
                     input.step = '0.01';
                 }
+            }
+
+            switch (cell) {
+                case "quantidade":
+                    input.addEventListener('input', function() {
+                        const quantidade = document.getElementById('quantidade_' + rowId).value;
+                        const precoVenda = document.getElementById('precoVenda_' + rowId).value;
+                        const subtotal = quantidade * precoVenda;
+                        document.getElementById('subtotal_' + rowId).value = subtotal.toFixed(2);
+                    });
+                    break
+
+                case "precoVenda":
+                    input.addEventListener('input', function() {
+                        const quantidade = document.getElementById('quantidade_' + rowId).value;
+                        const precoVenda = document.getElementById('precoVenda_' + rowId).value;
+                        const subtotal = quantidade * precoVenda;
+                        document.getElementById('subtotal_' + rowId).value = subtotal.toFixed(2);
+                    });
+                    break
             }
 
             input.style.width = '100%';
