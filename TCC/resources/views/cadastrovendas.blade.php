@@ -145,16 +145,16 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type="number" id="produtos" name="produtos" disabled>
+                        <input type="number" id="produtos" name="produtos" readonly>
                     </td>
                     <td>
                         <input type="number" id="servicos" name="servicos" disabled>
                     </td>
                     <td>
-                        <input type="number" id="descontos" name="descontos" step="0.01" disabled>
+                        <input type="text" id="descontos" name="descontos" disabled>
                     </td>
                     <td>
-                        <input type="number" id="valorTotal" name="valorTotal" step="0.01" disabled>
+                        <input type="text" id="valorTotal" name="valorTotal" readonly>
                     </td>
                 </tr>
             </tbody>
@@ -212,6 +212,17 @@
         document.getElementById('precoVenda').value = valorFormatado;
     }
 
+
+
+
+
+
+
+
+
+
+    
+
     document.getElementById('quantidade').addEventListener('input', function() {
         const quantidadeInput = document.getElementById('quantidade');
         const precoVendaText = document.getElementById('precoVenda').value;
@@ -231,13 +242,6 @@
         } else {
             document.getElementById('subtotal').value = "0";
         }
-    });
-
-    document.getElementById('precoVenda').addEventListener('input', function() {
-        const quantidade = document.getElementById('quantidade').value;
-        const precoVenda = document.getElementById('precoVenda').value;
-        const subtotal = quantidade * precoVenda;
-        document.getElementById('subtotal').value = subtotal.toFixed(2); 
     });
 
     document.getElementById('addRowButton').addEventListener('click', function(event) {
