@@ -181,19 +181,27 @@
 </form>
 <script>
     function tornarFloat(valorString) {
-        const valorFloat01 = valorString.replace('R$', '');
-        const valorFloat02 = valorFloat01.replace(',', '.');
-        const valorFloat = parseFloat(valorFloat02);
-        return valorFloat;
+        if (typeof valorString !== 'string') {
+            return valorString;
+        } else {
+            const valorFloat01 = valorString.replace('R$ ', '');
+            const valorFloat02 = valorFloat01.replace(',', '.');
+            const valorFloat = parseFloat(valorFloat02);
+            return isNaN(valorFloat) ? valorString : valorFloat;
+        }
     }
 
     function tornarString(valorFloat) {
-        const valorString01 = valorFloat.toFixed(2);
-        const valorString02 = valorString01.replace('.', ',');
-        const valorString = 'R$ ' + valorString02; 
-        return valorString;
+        if (typeof valorFloat !== 'number') {
+            return valorFloat;
+        } else {
+            const valorString01 = valorFloat.toFixed(2);
+            const valorString02 = valorString01.replace('.', ',');
+            const valorString = 'R$ ' + valorString02; 
+            return valorString;
+        }
     }
-
+    
     function populateClienteData(clienteId) {
         const clienteSelect = document.querySelector(`#cliente_nome option[value="${clienteId}"]`);
         const cadastro = JSON.parse(clienteSelect.getAttribute('data-cadastro'));
@@ -208,42 +216,69 @@
         const produtoSelect = document.querySelector(`#produto_descricao option[value="${produtoId}"]`);
         const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));
 
-        const valorFormatado = produto.precoVenda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        const valorFormatado = tornarString(produto.precoVenda);
         document.getElementById('precoVenda').value = valorFormatado;
     }
 
+    function atualizarDados() {
+        const linhasTabela = document.querySelectorAll('table tbody tr');
+        let totalQuantidade = 0;
+        let total = 0;
 
+        linhasTabela.forEach((row, index) => {
+            let quantidade, subtotal;
 
+            if (index === 0) {
+                // Primeira linha com IDs fixos
+                quantidade = document.getElementById('quantidade');
+                subtotal = document.getElementById('subtotal');
+            } else {
+                // Linhas adicionadas com IDs dinâmicos
+                let rowId = index; // IDs dinâmicos começam em 1
+                quantidade = document.getElementById(`quantidade_${rowId}`);
+                subtotal = document.getElementById(`subtotal_${rowId}`);
+            }
 
+            // Verifique se os elementos existem antes de tentar acessar seus valores
+            if (quantidade && subtotal) {
+                let valorQnt = parseFloat(quantidade.value);
+                totalQuantidade += isNaN(valorQnt) ? 0 : valorQnt;
 
+                let valorSubtotal = parseFloat(subtotal.value.replace('R$', '').replace(',', '.'));
+                total += isNaN(valorSubtotal) ? 0 : valorSubtotal;
+            }
+        });
 
+        document.getElementById('produtos').value = totalQuantidade;
+        document.getElementById('valorTotal').value = tornarString(total);
+        document.getElementById('servicos').value = '0';
+        document.getElementById('descontos').value = '0%';
+    }   
 
-
-
-
-    
-
-    document.getElementById('quantidade').addEventListener('input', function() {
-        const quantidadeInput = document.getElementById('quantidade');
-        const precoVendaText = document.getElementById('precoVenda').value;
+     document.getElementById('quantidade').addEventListener('input', function() {
+         const quantidadeInput = document.getElementById('quantidade');
+         const precoVendaText = document.getElementById('precoVenda').value;
         
-        let quantidade = parseFloat(quantidadeInput.value);
-        if (isNaN(quantidade)) {
-            quantidade = 0; 
-        }
+         let quantidade = parseFloat(quantidadeInput.value);
+         if (isNaN(quantidade)) {
+             quantidade = 0; 
+         }
 
-        const precoVenda = tornarFloat(precoVendaText)
+         const precoVenda = tornarFloat(precoVendaText)
 
-        if (!isNaN(quantidade) && !isNaN(precoVenda)) {
-            let subtotal = quantidade * precoVenda;
+         if (!isNaN(quantidade) && !isNaN(precoVenda)) {
+             let subtotal = quantidade * precoVenda;
 
-            const subtotalFormatado = tornarString(subtotal);
-            document.getElementById('subtotal').value = subtotalFormatado;
-        } else {
-            document.getElementById('subtotal').value = "0";
-        }
-    });
+             const subtotalFormatado = tornarString(subtotal);
+             document.getElementById('subtotal').value = subtotalFormatado;
+         } else {
+             document.getElementById('subtotal').value = "0";
+         }
 
+         atualizarDados();
+     });
+
+    // Event listener para adicionar nova linha
     document.getElementById('addRowButton').addEventListener('click', function(event) {
         event.preventDefault();
         var table = document.querySelector('table tbody');
@@ -270,16 +305,14 @@
 
                 input.addEventListener('change', function(e) {
                     const produtoId = e.target.value;
-                    console.log(produtoId, rowId);
                     const produtoSelect = document.querySelector(`#produto_descricao option[value="${produtoId}"]`);
                     const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));
 
                     const precoString = tornarString(produto.precoVenda);
-                    
                     document.getElementById('precoVenda_' + rowId).value = precoString;
-                });
 
-                console.log(rowId);
+                    atualizarSubtotal(rowId); // Atualiza subtotal quando o produto é selecionado
+                });
 
                 @foreach($cadastrosProdutos as $produto)
                 var option = document.createElement('option');
@@ -305,20 +338,9 @@
 
             switch (cell) {
                 case "quantidade":
-                    input.addEventListener('input', function() {
-                        const quantidade = document.getElementById('quantidade_' + rowId).value;
-                        const precoVenda = tornarFloat(document.getElementById('precoVenda_' + rowId).value);
-                        const subtotal = quantidade * precoVenda;
-                        document.getElementById('subtotal_' + rowId).value = tornarString(subtotal);
-                    });
-                    break;
-
                 case "precoVenda":
                     input.addEventListener('input', function() {
-                        const quantidade = document.getElementById('quantidade_' + rowId).value;
-                        const precoVenda = tornarFloat(document.getElementById('precoVenda_' + rowId).value);
-                        const subtotal = quantidade * precoVenda;
-                        document.getElementById('subtotal_' + rowId).value = tornarString(subtotal);
+                        atualizarSubtotal(rowId);
                     });
                     break;
             }
@@ -342,8 +364,37 @@
         removeButton.addEventListener('click', function(event) {
             event.preventDefault();
             table.removeChild(newRow);
+            atualizarDados(); // Atualiza os dados após remover a linha
         });
         actionCell.appendChild(removeButton);
+    });
+
+// Função para atualizar subtotal
+    function atualizarSubtotal(rowId) {
+        let quantidade, precoVenda, subtotalElement;
+
+        if (rowId === 1) { // Verifica se é a primeira linha
+            quantidade = document.getElementById('quantidade').value;
+            precoVenda = tornarFloat(document.getElementById('precoVenda').value);
+            subtotalElement = document.getElementById('subtotal');
+        } else { // Linhas dinâmicas
+            quantidade = document.getElementById('quantidade_' + rowId).value;
+            precoVenda = tornarFloat(document.getElementById('precoVenda_' + rowId).value);
+            subtotalElement = document.getElementById('subtotal_' + rowId);
+        }
+
+        const subtotal = quantidade * precoVenda;
+        subtotalElement.value = tornarString(subtotal);
+
+        atualizarDados();
+    }   
+
+    // Event listeners para a primeira linha
+    document.getElementById('quantidade').addEventListener('input', function() {
+        atualizarSubtotal(1);
+    });
+    document.getElementById('precoVenda').addEventListener('input', function() {
+        atualizarSubtotal(1);
     });
 </script>
 @endsection
