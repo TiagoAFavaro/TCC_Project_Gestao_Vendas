@@ -30,11 +30,12 @@
             <label for="password" class="form-label"></label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
 
-            <button type="submit" style="color: white; text-decoration: none;" class="btn btn-primary">ENTRAR</button>
+            <button type="submit" style="color: white; text-decoration: none; font-weight: bold; font-size: 16px;" class="btn btn-primary">ENTRAR</button>
 
-            <button class="btn btn-secondary">
+            <button class="btn btn-secondary" style="font-size: 16px;">
                 <a href="/cadastrarusuario" style="color: white; text-decoration: none;">CRIE SUA CONTA EM MENOS DE 1 MINUTO! É GRÁTIS!</a>
             </button>
+
 
             <a href="/recuperarsenha" style="font-size: 15px;" target="_blank">Esqueci minha senha</a>
         </form>

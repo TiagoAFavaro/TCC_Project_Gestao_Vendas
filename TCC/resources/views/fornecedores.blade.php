@@ -68,7 +68,7 @@
                                 <ion-icon name="trash-outline"></ion-icon>Delete
                             </button>
                         </form>
-                        <a href="/vizualizarFornecedor">
+                        <a href="/visualizarFornecedor">
                             <button class="btn btn-warning more-btn">
                                 <img src="{{ asset('/img/more.png') }}" alt="Mais">
                             </button>

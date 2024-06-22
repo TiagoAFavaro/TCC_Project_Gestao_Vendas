@@ -44,17 +44,17 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID Cliente</th>
-                    <th>ID Produto</th>
-                    <th>Situação</th>
+                    <th>Cliente</th>
+                    <th>Produtos</th>
+                    <!-- <th>Situação</th> -->
                     <th>Data de Entrega</th>
                     <th>Data de Recebimento</th>
-                    <th>Detalhes</th>
-                    <th>Quantidade</th>
+                    <!-- <th>Detalhes</th> -->
+                    <!-- <th>Quantidade</th>
                     <th>Valor</th>
                     <th>Desconto</th>
                     <th>Subtotal</th>
-                    <th>Observações</th>
+                    <th>Observações</th> -->
                     <th>Valor Total</th>
                     <th>AÇÕES</th>
                 </tr>
@@ -66,17 +66,19 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <!-- <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td> -->
                     <td>
-                        <button class="btn btn-warning more-btn">
-                            <img src="{{ asset('/img/more.png') }}" alt="Mais">
-                        </button>
+                        <a href="/visualizarVendas">
+                            <button class="btn btn-warning more-btn">
+                                <img src="{{ asset('/img/more.png') }}" alt="Mais">
+                            </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>

@@ -40,6 +40,11 @@ Route::middleware([Autenticador::class])->group(function () {
         return view('welcome');
     });
 
+    //ROTA DE PPERFIL
+    Route::get('/perfil', function () {
+        return view('perfil');
+    });
+
     // ROTA PARA PÁGINA DE VENDAS
     Route::get('/vendas', function () {
         return view('vendas');
@@ -51,7 +56,7 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::post('/criar_cadastro_clientes', [CadastroClienteController::class, 'store']);
     Route::delete('/clientes/delete/{id}', [CadastroClienteController::class, 'destroy']);
     Route::get('/visualizarCliente', function () {
-        return view('vizualizarCliente');
+        return view('visualizarCliente');
     });
 
 
@@ -61,8 +66,8 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/fornecedores/cadastro', [CadastroFornecedoresController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_fornecedores', [CadastroFornecedoresController::class, 'store']);
     Route::delete('/fornecedores/delete/{id}', [CadastroFornecedoresController::class, 'destroy']);
-    Route::get('/vizualizarFornecedor', function () {
-        return view('vizualizarFornecedor');
+    Route::get('/visualizarFornecedor', function () {
+        return view('visualizarFornecedor');
     });
 
     // ROTAS CADASTRO DE PRODUTOS
@@ -76,6 +81,9 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas/cadastro', [CadastroVendasController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_vendas', [CadastroVendasController::class, 'store']);
     Route::delete('/vendas/delete/{id}', [CadastroVendasController::class, 'destroy']);
+    Route::get('/visualizarVendas', function () {
+        return view('visualizarVendas');
+    });
 
     // ROTAS VINCULAR VENDAS E PRODUTOS
     Route::get('/vendas', [CadastroVendasController::class, 'index'])->name('vendas.index');

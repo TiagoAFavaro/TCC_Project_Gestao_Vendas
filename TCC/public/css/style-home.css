@@ -25,6 +25,34 @@ a {
     text-align: right;
 }
 
+.img_perfil {
+    max-width: 250px; /* Ajuste o tamanho conforme necessário */
+    border-radius: 10px;
+    margin-bottom: 0;
+}
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.ml-3 {
+    margin-left: 20px; /* Ajuste o valor conforme necessário */
+}
+
+.text-center a {
+    margin-top: 0; /* Remove qualquer margem superior extra */
+}
+
+.alterar-foto-link {
+    text-decoration: underline;
+    margin-top: 0; /* Remove qualquer margem superior extra */
+}
+
 .header_icon {
     max-width: 20px; 
     margin-right: 10px;
