@@ -69,6 +69,10 @@ h1 {
     transform: rotate(-90deg);
 }
 
+.icone_botao {
+    max-width: 20px;
+}
+
 .logo {
     margin-left: 15px;
     position: absolute;

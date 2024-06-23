@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Clientes')
+@section('title', 'Contas a Pagar')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/style-registration-pages.css') }}">
@@ -11,21 +11,21 @@
         <div class="sub_header">
             <h1>
                 <span class="align-middle">
-                    <img src="{{ asset('/img/customer.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
+                    <img src="{{ asset('/img/wallet.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
                 </span>
-                Clientes
+                Contas a Pagar
             </h1>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
                 <span class="separator">&gt;</span>
-                <a href="/clientes/list">Clientes</a>
+                <a href="/contaspagar">A Pagar</a>
             </div>
         </div>
 
         <div class="container_cliente">
             <div class="botoes">
-                <a href="/clientes/cadastro">
+                <a href="cadastropagar">
                     <button class="botoes_cliente" style="background-color: green;">
                         <img src="{{ asset('/img/plus.png') }}" alt="Mais">
                         Adicionar
@@ -44,46 +44,46 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>NOME</th>
-                    <th>CPF</th>
-                    <th>TELEFONE</th>
-                    <th>CIDADE</th>
-                    <th>ESTADO</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <!-- <th>Situação</th> -->
+                    <th>Data de Vencimento</th>
+                    <th>Juros</th>
+                    <!-- <th>Detalhes</th> -->
+                    <!-- <th>Quantidade</th>
+                    <th>Valor</th>
+                    <th>Desconto</th>
+                    <th>Subtotal</th>
+                    <th>Observações</th> -->
+                    <th>Total</th>
                     <th>AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($cadastros as $cadastro)
                 <tr>
-                    <td>{{ $cadastro->nome }}</td>
-                    <td>{{ $cadastro->cpf }}</td>
-                    <td>{{ $cadastro->telefone }}</td>
-                    <td>{{ $cadastro->cidade }}</td>
-                    <td>{{ $cadastro->estado }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td> -->
                     <td>
-                        <a href="#" class="btn btn-info edit-btn">
-                            <!-- <ion-icon name="create-outline"></ion-icon>Edit -->
-                            <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
-                        </a>
-                        <form action="/clientes/delete/{{ $cadastro->id }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger delete-btn">
-                                <!-- <ion-icon name="trash-outline"></ion-icon>Delete -->
-                                <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
-                            </button>
-                        </form>
-                        <a href="/visualizarCliente">
+                        <a href="/visualizarpagar">
                             <button class="btn btn-warning more-btn">
                                 <img src="{{ asset('/img/more.png') }}" alt="Mais">
                             </button>
                         </a>
                     </td>
                 </tr>
-                @endforeach
             </tbody>
         </table>
 
-        </form>
+        <br>
     </main>
 @endsection

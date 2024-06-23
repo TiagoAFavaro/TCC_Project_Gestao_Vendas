@@ -28,6 +28,11 @@ Route::get('/recuperarsenha', function () {
     return view('/recuperarSenha');
 });
 
+//ROTA PARA A CRIAÇÃO DE UMA NOVA SENHA
+Route::get('/novasenha', function () {
+    return view('/novaSenha');
+});
+
 
 
 //TODAS AS ROTAS OU PÁGINAS QUE NECESSITAM QUE O USUÁRIO ESTEJA LOGADO, DEVEM ESTAR DENTRO DO MIDDLEWARE ABAIXO:
@@ -40,7 +45,7 @@ Route::middleware([Autenticador::class])->group(function () {
         return view('welcome');
     });
 
-    //ROTA DE PPERFIL
+    //ROTA DE PERFIL
     Route::get('/perfil', function () {
         return view('perfil');
     });
@@ -48,6 +53,36 @@ Route::middleware([Autenticador::class])->group(function () {
     // ROTA PARA PÁGINA DE VENDAS
     Route::get('/vendas', function () {
         return view('vendas');
+    });
+
+    // ROTA PARA CONTAS A PAGAR
+    Route::get('/contaspagar', function () {
+        return view('contasAPagar');
+    });
+
+    // ROTA PARA CONTAS A RECEBER
+    Route::get('/contasreceber', function () {
+        return view('contasAReceber');
+    });
+
+    // ROTA PARA VISUALIZAR CONTAS A PAGAR
+    Route::get('/visualizarpagar', function () {
+        return view('visualizarPagar');
+    });
+
+    // ROTA PARA CONTAS A RECEBER
+    Route::get('/visualizarreceber', function () {
+        return view('visualizarReceber');
+    });
+
+    // ROTA PARA CADASTRO CONTAS A PAGAR
+    Route::get('/cadastropagar', function () {
+        return view('cadastroPagar');
+    });
+
+    // ROTA PARA CADASTRO CONTAS A RECEBER
+    Route::get('/cadastroreceber', function () {
+        return view('cadastroReceber');
     });
 
     // ROTAS CADASTRO DE CLIENTES

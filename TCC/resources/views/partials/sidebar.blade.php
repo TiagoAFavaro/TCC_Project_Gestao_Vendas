@@ -45,25 +45,6 @@
                             </div>
                             <hr>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#produtoCollapse" role="button" aria-expanded="false" aria-controls="produtoCollapse">
-                                <span class="align-middle">
-                                    <img src="{{ asset('/img/caixa.png') }}" class="menu_icon img-fluid icon-img" alt="Ícone">
-                                </span>
-                                Produtos
-                                <span class="seta">
-                                    <img src="{{ asset('/img/seta.png') }}" class="menu_icon img-fluid icon-img" alt="Seta">
-                                </span>
-                            </a>
-                            <div class="collapse" id="produtoCollapse">
-                                <ul class="list-unstyled">
-                                    <li><a class="dropdown-item" href="#">Subopção 1.1</a></li>
-                                    <li><a class="dropdown-item" href="#">Subopção 1.2</a></li>
-                                    <li><a class="dropdown-item" href="#">Subopção 1.3</a></li>
-                                </ul>
-                            </div>
-                            <hr>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#vendaCollapse" role="button" aria-expanded="false" aria-controls="vendaCollapse">
                                 <span class="align-middle">
@@ -84,8 +65,6 @@
                                             Venda de Produtos
                                         </a>
                                     </li>
-                                    <!-- <li><a class="dropdown-item" href="#">Subopção 1.2</a></li>
-                                    <li><a class="dropdown-item" href="#">Subopção 1.3</a></li> -->
                                 </ul>
                             </div>
                             <hr>
@@ -103,7 +82,7 @@
                             <div class="collapse" id="financeiroCollapse">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/contaspagar">
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/wallet.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>
@@ -118,30 +97,10 @@
                                             Contas a Receber
                                         </a>
                                     </li>
-                                    <!-- <li><a class="dropdown-item" href="#">Subopção 1.3</a></li> -->
                                 </ul>
                             </div>
                             <hr>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#notaCollapse" role="button" aria-expanded="false" aria-controls="notaCollapse">
-                                <span class="align-middle">
-                                    <img src="{{ asset('/img/nota.png') }}" class="menu_icon img-fluid icon-img" alt="Ícone">
-                                </span>
-                                Nota Fiscal
-                                <span class="seta">
-                                    <img src="{{ asset('/img/seta.png') }}" class="menu_icon img-fluid icon-img" alt="Seta">
-                                </span>
-                            </a>
-                            <div class="collapse" id="notaCollapse">
-                                <ul class="list-unstyled">
-                                    <li><a class="dropdown-item" href="#">Subopção 1.1</a></li>
-                                    <li><a class="dropdown-item" href="#">Subopção 1.2</a></li>
-                                    <li><a class="dropdown-item" href="#">Subopção 1.3</a></li>
-                                </ul>
-                            </div>
-                        </li> -->
-                        <!-- Adicione mais opções conforme necessário -->
                     </ul>
                 </div>
             </nav>
