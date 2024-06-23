@@ -65,7 +65,8 @@
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger delete-btn">
-                                <ion-icon name="trash-outline"></ion-icon>Delete
+                                <!-- <ion-icon name="trash-outline"></ion-icon>Delete -->
+                                <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
                             </button>
                         </form>
                         <a href="{{ url('/visualizarFornecedor/' . $cadastro->id) }}">
