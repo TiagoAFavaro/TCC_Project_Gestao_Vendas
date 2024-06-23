@@ -14,62 +14,58 @@
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
                 <span class="separator">&gt;</span>
-                <a href="/fornecedores/list">Clientes</a>
+                <a href="/fornecedores/list">Fornecedores</a>
                 <span class="separator">&gt;</span>
-                <a href="/visualizarForecedor">Visualizar</a>
+                <a href="{{ url('/visualizarFornecedor/' . $fornecedor->id) }}">Visualizar</a>
             </div>
         </div>
         <br>
-        <h1>"Nome do fornecedor"</h1>
+        <h1>{{ $fornecedor->nome }}</h1>
+    <form action="">
+        @csrf
+        @method('PUT')
         <div class="table-responsive">
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>Nome</td>
-                        <td></td>
+                        <td><label for="nome">Nome</label></td>
+                        <td><input type="text" class="form-control" id="nome" name="nome" value="{{ $fornecedor->nome }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>CNPJ</td>
-                        <td></td>
+                        <td><label for="cnpj">CNPJ</label></td>
+                        <td><input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ $fornecedor->cnpj }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>Contato</td>
-                        <td></td>
+                        <td><label for="contato">Contato</label></td>
+                        <td><input type="text" class="form-control" id="contato" name="contato" value="{{ $fornecedor->contato }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>Telefone</td>
-                        <td></td>
+                        <td><label for="telefone">Telefone</label></td>
+                        <td><input type="text" class="form-control" id="telefone" name="telefone" value="{{ $fornecedor->telefone }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>E-mail</td>
-                        <td></td>
+                        <td><label for="email">E-mail</label></td>
+                        <td><input type="email" class="form-control" id="email" name="email" value="{{ $fornecedor->email }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>CEP</td>
-                        <td></td>
+                        <td><label for="endereco">Endereço</label></td>
+                        <td><input type="text" class="form-control" id="endereco" name="endereco" value="{{ $fornecedor->endereco }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>Endereço</td>
-                        <td></td>
+                        <td><label for="numero">Número</label></td>
+                        <td><input type="text" class="form-control" id="numero" name="numero" value="{{ $fornecedor->numero }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>Número</td>
-                        <td></td>
+                        <td><label for="cidade">Cidade</label></td>
+                        <td><input type="text" class="form-control" id="cidade" name="cidade" value="{{ $fornecedor->cidade }}" disabled></td>
                     </tr>
                     <tr>
-                        <td>Bairro</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Cidade</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Estado</td>
-                        <td></td>
+                        <td><label for="estado">Estado</label></td>
+                        <td><input type="text" class="form-control" id="estado" name="estado" value="{{ $fornecedor->estado }}" disabled></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </form>
     </main>
 @endsection

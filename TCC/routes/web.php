@@ -55,21 +55,19 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/clientes/cadastro', [CadastroClienteController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_clientes', [CadastroClienteController::class, 'store']);
     Route::delete('/clientes/delete/{id}', [CadastroClienteController::class, 'destroy']);
-    Route::get('/visualizarCliente', function () {
-        return view('visualizarCliente');
-    });
-
-
+    Route::get('/visualizarCliente/{id}', [CadastroClienteController::class, 'visualizarClienteById']);
+    Route::get('/clientes/edit/{id}', [CadastroClienteController::class, 'edit']);
+    Route::put('/clientes/update/{id}', [CadastroClienteController::class, 'update']);
 
     // ROTAS CADASTRO DE FORNECEDORES
     Route::get('/fornecedores/list', [CadastroFornecedoresController::class, 'index']);
     Route::get('/fornecedores/cadastro', [CadastroFornecedoresController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_fornecedores', [CadastroFornecedoresController::class, 'store']);
     Route::delete('/fornecedores/delete/{id}', [CadastroFornecedoresController::class, 'destroy']);
-    Route::get('/visualizarFornecedor', function () {
-        return view('visualizarFornecedor');
-    });
-
+    Route::get('/visualizarFornecedor/{id}', [CadastroFornecedoresController::class, 'visualizarFornecedoresById']);
+    Route::get('/fornecedores/edit/{id}', [CadastroFornecedoresController::class, 'edit']);
+    Route::put('/fornecedores/update/{id}', [CadastroFornecedoresController::class, 'update']);
+    
     // ROTAS CADASTRO DE PRODUTOS
     Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
     Route::get('/produtos/cadastro', [CadastroProdutosController::class, 'paginaCadastro']);

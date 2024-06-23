@@ -60,7 +60,7 @@
                     <td>{{ $cadastro->telefone }}</td>
                     <td>{{ $cadastro->email }}</td>
                     <td>
-                        <a href="#" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon>Edit</a>
+                        <a href="{{ url('/fornecedores/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon>Edit</a>
                         <form action="/fornecedores/delete/{{ $cadastro->id }}" method="post">
                             @csrf
                             @method('delete')
@@ -68,7 +68,7 @@
                                 <ion-icon name="trash-outline"></ion-icon>Delete
                             </button>
                         </form>
-                        <a href="/visualizarFornecedor">
+                        <a href="{{ url('/visualizarFornecedor/' . $cadastro->id) }}">
                             <button class="btn btn-warning more-btn">
                                 <img src="{{ asset('/img/more.png') }}" alt="Mais">
                             </button>

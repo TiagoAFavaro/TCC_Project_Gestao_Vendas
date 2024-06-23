@@ -14,6 +14,13 @@ class CadastroFornecedoresController extends Controller
         return view('fornecedores')->with('cadastros', $cadastros);
     }
 
+    public function visualizarFornecedoresById($id)
+    {
+        $fornecedor = CadastroFornecedores::findOrFail($id);
+
+        return view('visualizarFornecedor',  ['fornecedor' => $fornecedor]);
+    }
+
     public function paginaCadastro()
     {
         return view('cadastrofornecedores');
@@ -46,9 +53,19 @@ class CadastroFornecedoresController extends Controller
         return redirect('/fornecedores/list');
     }
 
-    public function update(Request $request, string $id)
+    public function edit($id)
     {
-        //
+        $fornecedor = CadastroFornecedores::findOrFail($id);
+        return view('editFornecedor', ['fornecedor' => $fornecedor]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $cadastro = CadastroFornecedores::findOrFail($id);
+        $cadastro->fill($request->all());
+        
+        $cadastro->save();
+        return redirect('/fornecedores/list');
     }
 
     public function destroy($id)
