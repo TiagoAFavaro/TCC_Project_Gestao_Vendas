@@ -62,13 +62,13 @@
                 <td>{{ $cadastro->estado }}</td>
                 <td>
                     <a href="{{ url('clientes/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn">
-                        <ion-icon name="create-outline"></ion-icon>Edit
+                        <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
                     </a>
                     <form action="/clientes/delete/{{ $cadastro->id }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger delete-btn">
-                            <ion-icon name="trash-outline"></ion-icon>Delete
+                            <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
                         </button>
                     </form>
                     <a href="{{ url('/visualizarCliente/' . $cadastro->id) }}">

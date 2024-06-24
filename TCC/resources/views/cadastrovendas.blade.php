@@ -148,10 +148,10 @@
                         <input type="number" id="produtos" name="produtos" readonly>
                     </td>
                     <td>
-                        <input type="number" id="servicos" name="servicos" disabled>
+                        <input type="text" id="servicos" name="servicos">
                     </td>
                     <td>
-                        <input type="text" id="descontos" name="descontos" disabled>
+                        <input type="text" id="descontos" name="descontos">
                     </td>
                     <td>
                         <input type="text" id="valorTotal" name="valorTotal" readonly>
@@ -168,7 +168,7 @@
     </div>
     <hr>
     <p><i>Essa observação será impressa no recibo.</i></p>
-    <textarea id="observacoes" style="width: 50%;" name="observacoes" rows="4" cols="50" required></textarea>
+    <textarea id="observacoes" style="width: 50%;" name="observacoes" rows="4" cols="50"></textarea>
 </div>
 <div>
     <a>
@@ -251,8 +251,8 @@
 
         document.getElementById('produtos').value = totalQuantidade;
         document.getElementById('valorTotal').value = tornarString(total);
-        document.getElementById('servicos').value = '0';
-        document.getElementById('descontos').value = '0%';
+        document.getElementById('servicos').value = 'R$ 0';
+        document.getElementById('descontos').value = 'R$ 0';
     }   
 
      document.getElementById('quantidade').addEventListener('input', function() {

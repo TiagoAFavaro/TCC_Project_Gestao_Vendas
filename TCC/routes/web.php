@@ -108,6 +108,8 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/produtos/cadastro', [CadastroProdutosController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_produtos', [CadastroProdutosController::class, 'store']);
     Route::delete('/produtos/delete/{id}', [CadastroProdutosController::class, 'destroy']);
+    Route::get('/produtos/edit/{id}', [CadastroProdutosController::class, 'edit']);
+    Route::put('/produtos/update/{id}', [CadastroProdutosController::class, 'update']);
 
     // ROTAS CADASTRO DE VENDAS
     Route::get('/vendas/list', [CadastroVendasController::class, 'index']);

@@ -27,14 +27,37 @@ class CadastroProdutosController extends Controller
         $cadastro->precoCusto = $request->input('precoCusto');
         $cadastro->precoVenda = $request->input('precoVenda');
 
+        if (CadastroProdutos::where('descricao', $request->descricao)->exists()) {
+            return response()->json(['message', 'Produto ja cadastrado']);
+        }
+
         $cadastro->save();
 
         return redirect('/produtos/list');
     }
 
-    public function update(Request $request, string $id)
+    public function edit($id)
     {
-        //
+        $produto = CadastroProdutos::findOrFail($id);
+        return view('editProdutos', ['produto' => $produto]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $cadastro = CadastroProdutos::findOrFail($id);
+        $cadastro->fill($request->all());
+
+        $existeDescricao = CadastroProdutos::where('descricao', $request->descricao)
+            ->where('id', '!=', $id)
+            ->exists();
+
+        if ($existeDescricao) {
+            return response()->json(['message' => 'Produto ja cadastrado']);
+        }
+
+        $cadastro->save();
+        return redirect('/produtos/list');
     }
 
     public function destroy($id)

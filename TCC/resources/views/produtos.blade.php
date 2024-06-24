@@ -59,15 +59,13 @@
                 <td>{{ $cadastro->precoCusto }}</td>
                 <td>{{ $cadastro->precoVenda }}</td>
                 <td>
-                    <a href="#" class="btn btn-info edit-btn">
-                        <!-- <ion-icon name="create-outline"></ion-icon> -->
+                    <a href="{{ url('/produtos/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn">
                         <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
                     </a>
                     <form action="/produtos/delete/{{ $cadastro->id }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger delete-btn">
-                            <!-- <ion-icon name="trash-outline"></ion-icon>Delete -->
                             <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
                         </button>
                     </form>
