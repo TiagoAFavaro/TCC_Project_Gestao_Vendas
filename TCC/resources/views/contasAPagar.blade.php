@@ -3,87 +3,83 @@
 @section('title', 'Contas a Pagar')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style-registration-pages.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-registration-pages.css') }}">
 @endpush
 
 @section('content')
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <div class="sub_header">
-            <h1>
-                <span class="align-middle">
-                    <img src="{{ asset('/img/wallet.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
-                </span>
-                Contas a Pagar
-            </h1>
-            <div class="navegador">
-                <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-                <a href="/home">Início</a>
-                <span class="separator">&gt;</span>
-                <a href="/contaspagar">A Pagar</a>
-            </div>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="sub_header">
+        <h1>
+            <span class="align-middle">
+                <img src="{{ asset('/img/wallet.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
+            </span>
+            Contas a Pagar
+        </h1>
+        <div class="navegador">
+            <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
+            <a href="/home">Início</a>
+            <span class="separator">&gt;</span>
+            <a href="/contaspagar">A Pagar</a>
         </div>
+    </div>
 
-        <div class="container_cliente">
-            <div class="botoes">
-                <a href="cadastropagar">
-                    <button class="botoes_cliente" style="background-color: green;">
-                        <img src="{{ asset('/img/plus.png') }}" alt="Mais">
-                        Adicionar
-                    </button>
-                </a>
-            </div>
-
-            <div class="caixa_pesquisa">
-                <input type="text" id="input_pesquisa" placeholder="Buscar por nome">
-                <button id="botao_pesquisa">
-                    <img src="{{ asset('/img/lupa.png') }}" alt="Pesquisar">
+    <div class="container_cliente">
+        <div class="botoes">
+            <a href="/cadastropagar">
+                <button class="botoes_cliente" style="background-color: green;">
+                    <img src="{{ asset('/img/plus.png') }}" alt="Mais">
+                    Adicionar
                 </button>
-            </div>
+            </a>
         </div>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                    <!-- <th>Situação</th> -->
-                    <th>Data de Vencimento</th>
-                    <th>Juros</th>
-                    <!-- <th>Detalhes</th> -->
-                    <!-- <th>Quantidade</th>
-                    <th>Valor</th>
-                    <th>Desconto</th>
-                    <th>Subtotal</th>
-                    <th>Observações</th> -->
-                    <th>Total</th>
-                    <th>AÇÕES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <!-- <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td> -->
-                    <td>
-                        <a href="/visualizarpagar">
-                            <button class="btn btn-warning more-btn">
-                                <img src="{{ asset('/img/more.png') }}" alt="Mais">
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="caixa_pesquisa">
+            <input type="text" id="input_pesquisa" placeholder="Buscar por nome">
+            <button id="botao_pesquisa">
+                <img src="{{ asset('/img/lupa.png') }}" alt="Pesquisar">
+            </button>
+        </div>
+    </div>
 
-        <br>
-    </main>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DESCRIÇÃO</th>
+                <th>FORMA DE PAGAMENTO</th>
+                <th>PAGAMENTO QUITADO ?</th>
+                <th>DATA DE VENCIMENTO</th>
+                <th>VALOR</th>
+                <th>AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($cadastros as $cadastro)
+            <tr>
+                <td>{{ $cadastro->descricaoPagamento }}</td>
+                <td>{{ $cadastro->formaPagamento }}</td>
+                <td>{{ $cadastro->pagamentoQuitado }}</td>
+                <td>{{ $cadastro->vencimento }}</td>
+                <td>{{ $cadastro->valorBruto }}</td>
+                <td>
+                    <a href="" class="btn btn-info edit-btn">
+                        <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
+                    </a>
+                    <form action="" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger delete-btn">
+                            <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
+                        </button>
+                    </form>
+                    <a href="/visualizarpagar">
+                        <button class="btn btn-warning more-btn">
+                            <img src="{{ asset('/img/more.png') }}" alt="Mais">
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+    </table>
+    <br>
+</main>
 @endsection

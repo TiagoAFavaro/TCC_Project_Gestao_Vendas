@@ -82,7 +82,7 @@
                             <div class="collapse" id="financeiroCollapse">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a class="dropdown-item" href="/contaspagar">
+                                        <a class="dropdown-item" href="/contas_a_pagar/list">
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/wallet.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CadastroClienteController;
+use App\Http\Controllers\CadastroContasaPagarController;
 use App\Http\Controllers\CadastroFornecedoresController;
 use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
@@ -54,36 +55,35 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas', function () {
         return view('vendas');
     });
-
-    // ROTA PARA CONTAS A PAGAR
-    Route::get('/contaspagar', function () {
-        return view('contasAPagar');
-    });
+    
 
     // ROTA PARA CONTAS A RECEBER
     Route::get('/contasreceber', function () {
         return view('contasAReceber');
     });
-
-    // ROTA PARA VISUALIZAR CONTAS A PAGAR
-    Route::get('/visualizarpagar', function () {
-        return view('visualizarPagar');
-    });
+   
 
     // ROTA PARA CONTAS A RECEBER
     Route::get('/visualizarreceber', function () {
         return view('visualizarReceber');
     });
-
-    // ROTA PARA CADASTRO CONTAS A PAGAR
-    Route::get('/cadastropagar', function () {
-        return view('cadastroPagar');
-    });
+  
 
     // ROTA PARA CADASTRO CONTAS A RECEBER
     Route::get('/cadastroreceber', function () {
         return view('cadastroReceber');
     });
+
+    // ROTAS CONTAS A PAGAR
+    Route::get('/cadastropagar', function () {
+        return view('cadastroPagar');
+    });
+    Route::get('/visualizarpagar', function () {
+        return view('visualizarPagar');
+    });
+    Route::post('/cadastrar_nova_conta', [CadastroContasaPagarController::class, 'store']);
+    Route::get('/contas_a_pagar/list', [CadastroContasaPagarController::class, 'index']);
+
 
     // ROTAS CADASTRO DE CLIENTES
     Route::get('/clientes/list', [CadastroClienteController::class, 'index']);
