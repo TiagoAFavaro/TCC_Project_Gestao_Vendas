@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CadastroCliente;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class CadastroClienteController extends Controller
 {
@@ -27,100 +29,62 @@ class CadastroClienteController extends Controller
         return view('cadastrocliente');
     }
 
-    // public function store(Request $request)
-    // {
-    //     $cadastro = new CadastroCliente();
-    //     $cadastro->nome = $request->input('nome');
-    //     $cadastro->telefone = $request->input('telefone');
-    //     $cadastro->cpf = $request->input('cpf');
-    //     $cadastro->email = $request->input('email');
-    //     $cadastro->cep = $request->input('cep');
-    //     $cadastro->endereco = $request->input('endereco');
-    //     $cadastro->numeroCasa = $request->input('numeroCasa');
-    //     $cadastro->cidade = $request->input('cidade');
-    //     $cadastro->estado = $request->input('estado');
-
-    //     $cpf = preg_replace('/[^0-9]/', '', $request->input('cpf'));
-
-    //     if (strlen($cpf) != 11 || preg_match('/([0-9])\1{10}/', $cpf)) {
-    //         return response()->json(['message', 'CPF Invalido, verifique e tente novamente']);
-    //     }
-
-    //     $verificaDig1 = $cpf[9];
-    //     $sum = 0;
-    //     $number_to_multiplicate = 10;
-
-    //     for ($index = 0; $index < 9; $index++) {
-    //         $sum += $cpf[$index] * ($number_to_multiplicate--);
-    //     }
-
-    //     $result = (($sum * 10) % 11);
-
-    //     if ($result != $verificaDig1) {
-    //         return response()->json(['message', 'CPF NAO E VALIDO']);
-    //     }
-
-    //     if (CadastroCliente::where('cpf', $request->cpf)->exists()) {
-    //         return response()->json(['message', 'CPF ja cadastro']);
-    //     }
-
-    //     if (CadastroCliente::where('email', $request->email)->exists()) {
-    //         return response()->json(['message', 'email ja cadastro']);
-    //     }
-
-
-    //     $cadastro->save();
-
-    //     return redirect('/clientes/list');
-    // }
-
     public function store(Request $request)
     {
+        // Validação personalizada
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required',
+            'telefone' => ['required', 'unique:cadastro_clientes,telefone'],
+            'cpf' => ['nullable', 'unique:cadastro_clientes,cpf'],
+            'email' => 'nullable|email|unique:cadastro_clientes,email',
+            'cep' => 'nullable',
+            'endereco' => 'nullable',
+            'numeroCasa' => 'nullable',
+            'cidade' => 'nullable',
+            'estado' => 'nullable',
+        ], [
+            'telefone.unique' => 'Telefone já cadastrado',
+            'cpf.unique' => 'CPF já cadastrado',
+            'email.unique' => 'E-mail já cadastrado',
+        ]);
+
+        $validator->after(function ($validator) use ($request) {
+            $cpf = preg_replace('/[^0-9]/', '', $request->input('cpf'));
+
+            if (!empty($cpf)) {
+                if (strlen($cpf) != 11 || preg_match('/([0-9])\1{10}/', $cpf)) {
+                    $validator->errors()->add('cpf', 'CPF inválido');
+                }
+
+                $verificaDig1 = $cpf[9];
+                $sum = 0;
+                $number_to_multiplicate = 10;
+
+                for ($index = 0; $index < 9; $index++) {
+                    $sum += $cpf[$index] * ($number_to_multiplicate--);
+                }
+
+                $result = (($sum * 10) % 11);
+
+                if ($result != $verificaDig1) {
+                    $validator->errors()->add('cpf', 'CPF inválido');
+                }
+            }
+        });
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                            ->withErrors($validator)
+                            ->withInput();
+        }
 
         $cadastro = new CadastroCliente();
-        $cadastro->nome = $request->input('nome');
-        $cadastro->telefone = $request->input('telefone');
-        $cadastro->cpf = $request->input('cpf');
-        $cadastro->email = $request->input('email');
-        $cadastro->cep = $request->input('cep');
-        $cadastro->endereco = $request->input('endereco');
-        $cadastro->numeroCasa = $request->input('numeroCasa');
-        $cadastro->cidade = $request->input('cidade');
-        $cadastro->estado = $request->input('estado');
-
-        $cpf = preg_replace('/[^0-9]/', '', $request->input('cpf'));
-
-        if (strlen($cpf) != 11 || preg_match('/([0-9])\1{10}/', $cpf)) {
-            return response()->json(['message', 'CPF Invalido, verifique e tente novamente']);
-        }
-
-        $verificaDig1 = $cpf[9];
-        $sum = 0;
-        $number_to_multiplicate = 10;
-
-        for ($index = 0; $index < 9; $index++) {
-            $sum += $cpf[$index] * ($number_to_multiplicate--);
-        }
-
-        $result = (($sum * 10) % 11);
-
-        if ($result != $verificaDig1) {
-            return response()->json(['message', 'CPF NAO E VALIDO']);
-        }
-
-        if (CadastroCliente::where('cpf', $request->cpf)->exists()) {
-            return response()->json(['message', 'CPF ja cadastro']);
-        }
-
-        if (CadastroCliente::where('email', $request->email)->exists()) {
-            return response()->json(['message', 'email ja cadastro']);
-        }
-
-
+        $cadastro->fill($request->all());
         $cadastro->save();
 
         return redirect('/clientes/list');
     }
+
 
     public function edit($id)
     {
