@@ -19,13 +19,13 @@
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
                 <a href="/home">Início</a>
                 <span class="separator">&gt;</span>
-                <a href="/contasreceber">A Receber</a>
+                <a href="/contasreceber/list">A Receber</a>
             </div>
         </div>
 
         <div class="container_cliente">
             <div class="botoes">
-                <a href="cadastroreceber">
+                <a href="/cadastroreceber">
                     <button class="botoes_cliente" style="background-color: green;">
                         <img src="{{ asset('/img/plus.png') }}" alt="Mais">
                         Adicionar
@@ -44,45 +44,43 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                    <!-- <th>Situação</th> -->
-                    <th>Data de Vencimento</th>
-                    <th>Juros</th>
-                    <!-- <th>Detalhes</th> -->
-                    <!-- <th>Quantidade</th>
-                    <th>Valor</th>
-                    <th>Desconto</th>
-                    <th>Subtotal</th>
-                    <th>Observações</th> -->
-                    <th>Total</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>FORMA DE RECEBIMENTO</th>
+                    <th>PAGAMENTO QUITADO ?</th>
+                    <th>DATA DE VENCIMENTO</th>
+                    <th>VALOR</th>
                     <th>AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <!-- <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td> -->
-                    <td>
-                        <a href="/visualizarreceber">
-                            <button class="btn btn-warning more-btn">
-                                <img src="{{ asset('/img/more.png') }}" alt="Mais">
-                            </button>
-                        </a>
-                    </td>
-                </tr>
+                @foreach ($cadastros as $cadastro)
+                    <tr>
+                        <td>{{ $cadastro->descricaoRecebimento }}</td>
+                        <td>{{ $cadastro->formaRecebimento }}</td>
+                        <td>{{ $cadastro->pagamentoRecebido }}</td>
+                        <td>{{ $cadastro->vencimento }}</td>
+                        <td>R$ {{ $cadastro->valorBruto }}</td>
+                        <td>
+                            <a href="{{ url('/contas_a_receber/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn">
+                                <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
+                            </a>
+                            <form action="/contas_a_receber/delete/{{ $cadastro->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger delete-btn">
+                                    <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
+                                </button>
+                            </form>
+                            <a href="{{ url('/visualizarareceber/' . $cadastro->id) }}">
+                                <button class="btn btn-warning more-btn">
+                                    <img src="{{ asset('/img/more.png') }}" alt="Mais">
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
-
         <br>
     </main>
 @endsection

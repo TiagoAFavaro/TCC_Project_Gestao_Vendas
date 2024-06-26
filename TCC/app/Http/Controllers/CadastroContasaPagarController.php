@@ -22,6 +22,11 @@ class CadastroContasaPagarController extends Controller
         return view('visualizarPagar',  ['aPagar' => $aPagar]);
     }
 
+    public function paginaCadastro()
+    {
+        return view('cadastroPagar');
+    }
+
     public function store(Request $request)
     {
         $cadastro = new CadastroContasaPagar();
