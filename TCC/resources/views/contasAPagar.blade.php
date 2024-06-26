@@ -61,17 +61,17 @@
                 <td>{{ $cadastro->vencimento }}</td>
                 <td>R$ {{ $cadastro->valorBruto }}</td>
                 <td>
-                    <a href="" class="btn btn-info edit-btn">
+                    <a href="{{ url('/contas_a_pagar/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn">
                         <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
                     </a>
-                    <form action="" method="post">
+                    <form action="/contas_a_pagar/delete/{{ $cadastro->id }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger delete-btn">
                             <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
                         </button>
                     </form>
-                    <a href="/visualizarpagar">
+                    <a href="{{ url('/visualizarContas/' . $cadastro->id) }}">
                         <button class="btn btn-warning more-btn">
                             <img src="{{ asset('/img/more.png') }}" alt="Mais">
                         </button>

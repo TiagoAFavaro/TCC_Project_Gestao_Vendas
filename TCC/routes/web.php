@@ -78,11 +78,12 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/cadastropagar', function () {
         return view('cadastroPagar');
     });
-    Route::get('/visualizarpagar', function () {
-        return view('visualizarPagar');
-    });
     Route::post('/cadastrar_nova_conta', [CadastroContasaPagarController::class, 'store']);
     Route::get('/contas_a_pagar/list', [CadastroContasaPagarController::class, 'index']);
+    Route::delete('/contas_a_pagar/delete/{id}', [CadastroContasaPagarController::class, 'destroy']);
+    Route::get('/visualizarContas/{id}', [CadastroContasaPagarController::class, 'visualizarContasPagarById']);
+    Route::get('/contas_a_pagar/edit/{id}', [CadastroContasaPagarController::class, 'edit']);
+    Route::put('/contas_a_pagar/update/{id}', [CadastroContasaPagarController::class, 'update']);
 
 
     // ROTAS CADASTRO DE CLIENTES
