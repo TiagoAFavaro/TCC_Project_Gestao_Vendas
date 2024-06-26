@@ -55,19 +55,19 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas', function () {
         return view('vendas');
     });
-    
+
 
     // ROTA PARA CONTAS A RECEBER
     Route::get('/contasreceber', function () {
         return view('contasAReceber');
     });
-   
+
 
     // ROTA PARA CONTAS A RECEBER
     Route::get('/visualizarreceber', function () {
         return view('visualizarReceber');
     });
-  
+
 
     // ROTA PARA CADASTRO CONTAS A RECEBER
     Route::get('/cadastroreceber', function () {
@@ -103,7 +103,7 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/visualizarFornecedor/{id}', [CadastroFornecedoresController::class, 'visualizarFornecedoresById']);
     Route::get('/fornecedores/edit/{id}', [CadastroFornecedoresController::class, 'edit']);
     Route::put('/fornecedores/update/{id}', [CadastroFornecedoresController::class, 'update']);
-    
+
     // ROTAS CADASTRO DE PRODUTOS
     Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
     Route::get('/produtos/cadastro', [CadastroProdutosController::class, 'paginaCadastro']);

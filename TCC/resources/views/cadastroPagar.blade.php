@@ -13,7 +13,7 @@
         <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
         <a href="/home">Início</a>
         <span class="separator">&gt;</span>
-        <a href="/contaspagar">A Pagar</a>
+        <a href="/contas_a_pagar/list">A Pagar</a>
         <span class="separator">&gt;</span>
         <a href="/cadastropagar">Cadastro de Contas a Pagar</a>
     </div>
@@ -89,8 +89,8 @@
     <a>
         <button class="botao_endpage" style="background-color: green; color: white; margin-left: 20px;">CADASTRAR</button>
     </a>
-    <a>
-        <button class="botao_endpage" style="background-color: red; color: white;">CANCELAR</button>
+    <a href="/contas_a_pagar/list">
+        <button type="button" class="botao_endpage" style="background-color: red; color: white;" onclick="window.location.href='/contas_a_pagar/list'">CANCELAR</button>
     </a>
 </div>
 </form>

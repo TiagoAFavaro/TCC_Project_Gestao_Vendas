@@ -10,7 +10,7 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
     <div class="container01">
         <div class="receber-dashboard">
-            <h3>A receber hoje:</h3>
+            <h3>Pendente de Recebimento</h3>
             <h1>
                 <br />
                 R$ 0,00
@@ -19,22 +19,15 @@
         </div>
 
         <div class="pagar-dashboard">
-            <h3>A pagar hoje:</h3>
+            <h3>Previsão de Pagamentos a Fornecedores</h3>
             <h1>
                 <br />
                 R$ 0,00
             </h1>
-            <button>Ir para contas a pagar -></button>
+            <a href="/contas_a_pagar/list">
+                <button>Ir para contas a pagar -></button>
+            </a>
         </div>
-
-        <!-- <div class="dashboardMensal">
-            <h3>
-                <br />
-                Recebimentos do mês: Pagamentos do mês:
-            </h3>
-            <p>Realizado: R$ 0,00 Falta: R$ 0,00 Previsto: R$ 0,00</p>
-            <button>Ir para o fluxo de caixa -></button>
-        </div> -->
     </div>
     <div class="grafico-container">
         <div class="col-md-6 col-sm-12 grafico ">
