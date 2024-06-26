@@ -50,8 +50,8 @@
                     @endif
                 </div>
                 <div class="table_form">
-                    <label class="obg" for="telefone">Telefone</label>
-                    <input type="text" id="telefone" name="telefone" maxlength="15" required value="{{ old('telefone') }}">
+                    <label class="obg" for="tel">Telefone</label>
+                    <input type="text" id="tel" name="telefone" maxlength="15" required value="{{ old('telefone') }}">
                     @if ($errors->has('telefone'))
                         <span class="text-danger">{{ $errors->first('telefone') }}</span>
                     @endif

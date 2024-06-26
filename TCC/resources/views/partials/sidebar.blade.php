@@ -6,6 +6,15 @@
                     <hr>
                     <ul class="nav flex-column custom-dropdown">
                         <li class="nav-item">
+                            <a class="nav-link" href="/home">
+                                <span class="align-middle">
+                                    <img src="{{ asset('/img/dash.png') }}" class="menu_icon img-fluid icon-img" alt="Ícone">
+                                </span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#cadastroCollapse" role="button" aria-expanded="false" aria-controls="cadastroCollapse" id="cadastroDropdown">
                                 <span class="align-middle">
                                     <img src="{{ asset('/img/cadastro.png') }}" class="menu_icon img-fluid icon-img" alt="Ícone">
