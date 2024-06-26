@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CadastroClienteController;
+use App\Http\Controllers\CadastroContasaPagarController;
 use App\Http\Controllers\CadastroFornecedoresController;
 use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
@@ -54,62 +55,61 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas', function () {
         return view('vendas');
     });
-
-    // ROTA PARA CONTAS A PAGAR
-    Route::get('/contaspagar', function () {
-        return view('contasAPagar');
-    });
+    
 
     // ROTA PARA CONTAS A RECEBER
     Route::get('/contasreceber', function () {
         return view('contasAReceber');
     });
-
-    // ROTA PARA VISUALIZAR CONTAS A PAGAR
-    Route::get('/visualizarpagar', function () {
-        return view('visualizarPagar');
-    });
+   
 
     // ROTA PARA CONTAS A RECEBER
     Route::get('/visualizarreceber', function () {
         return view('visualizarReceber');
     });
-
-    // ROTA PARA CADASTRO CONTAS A PAGAR
-    Route::get('/cadastropagar', function () {
-        return view('cadastroPagar');
-    });
+  
 
     // ROTA PARA CADASTRO CONTAS A RECEBER
     Route::get('/cadastroreceber', function () {
         return view('cadastroReceber');
     });
 
+    // ROTAS CONTAS A PAGAR
+    Route::get('/cadastropagar', function () {
+        return view('cadastroPagar');
+    });
+    Route::get('/visualizarpagar', function () {
+        return view('visualizarPagar');
+    });
+    Route::post('/cadastrar_nova_conta', [CadastroContasaPagarController::class, 'store']);
+    Route::get('/contas_a_pagar/list', [CadastroContasaPagarController::class, 'index']);
+
+
     // ROTAS CADASTRO DE CLIENTES
     Route::get('/clientes/list', [CadastroClienteController::class, 'index']);
     Route::get('/clientes/cadastro', [CadastroClienteController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_clientes', [CadastroClienteController::class, 'store']);
     Route::delete('/clientes/delete/{id}', [CadastroClienteController::class, 'destroy']);
-    Route::get('/visualizarCliente', function () {
-        return view('visualizarCliente');
-    });
-
-
+    Route::get('/visualizarCliente/{id}', [CadastroClienteController::class, 'visualizarClienteById']);
+    Route::get('/clientes/edit/{id}', [CadastroClienteController::class, 'edit']);
+    Route::put('/clientes/update/{id}', [CadastroClienteController::class, 'update']);
 
     // ROTAS CADASTRO DE FORNECEDORES
     Route::get('/fornecedores/list', [CadastroFornecedoresController::class, 'index']);
     Route::get('/fornecedores/cadastro', [CadastroFornecedoresController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_fornecedores', [CadastroFornecedoresController::class, 'store']);
     Route::delete('/fornecedores/delete/{id}', [CadastroFornecedoresController::class, 'destroy']);
-    Route::get('/visualizarFornecedor', function () {
-        return view('visualizarFornecedor');
-    });
-
+    Route::get('/visualizarFornecedor/{id}', [CadastroFornecedoresController::class, 'visualizarFornecedoresById']);
+    Route::get('/fornecedores/edit/{id}', [CadastroFornecedoresController::class, 'edit']);
+    Route::put('/fornecedores/update/{id}', [CadastroFornecedoresController::class, 'update']);
+    
     // ROTAS CADASTRO DE PRODUTOS
     Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
     Route::get('/produtos/cadastro', [CadastroProdutosController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_produtos', [CadastroProdutosController::class, 'store']);
     Route::delete('/produtos/delete/{id}', [CadastroProdutosController::class, 'destroy']);
+    Route::get('/produtos/edit/{id}', [CadastroProdutosController::class, 'edit']);
+    Route::put('/produtos/update/{id}', [CadastroProdutosController::class, 'update']);
 
     // ROTAS CADASTRO DE VENDAS
     Route::get('/vendas/list', [CadastroVendasController::class, 'index']);

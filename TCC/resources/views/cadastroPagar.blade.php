@@ -3,7 +3,7 @@
 @section('title', 'Cadastro de Contas a Pagar')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
 @endpush
 
 @section('content')
@@ -25,15 +25,16 @@
         <h5>Dados Gerais</h5>
     </div>
     <hr>
-    <form>
+    <form id="cadastrarContas" action="/cadastrar_nova_conta" method="post">
+        @csrf
         <div class="forms">
             <div class="table_form">
-                <label class="obg" for="descricao_pagamento">Descrição do Pagamento</label>
-                <input type="text" id="descricao_pagamento" name="descricao_pagamento" required>
+                <label class="obg" for="descricaoPagamento">Descrição do Pagamento</label>
+                <input type="text" id="descricaoPagamento" name="descricaoPagamento" required>
             </div>
             <div class="table_form">
-                <label class="obg" for="forma_pagamento">Forma de Pagamento</label>
-                <select id="forma_pagamento" name="forma_pagamento" required>
+                <label class="obg" for="formaPagamento">Forma de Pagamento</label>
+                <select id="formaPagamento" name="formaPagamento" required>
                     <option value="" disabled selected>Selecione a forma de pagamento</option>
                     <option value="boleto">Boleto</option>
                     <option value="cartao">Cartão</option>
@@ -41,8 +42,8 @@
                 </select>
             </div>
             <div class="table_form">
-                <label for="pagamento_quitado">Pagamento Quitado</label>
-                <select id="pagamento_quitado" name="pagamento_quitado">
+                <label for="pagamentoQuitado">Pagamento Quitado</label>
+                <select id="pagamentoQuitado" name="pagamentoQuitado">
                     <option value="" disabled selected>Selecione</option>
                     <option value="sim">Sim</option>
                     <option value="nao">Não</option>
@@ -53,8 +54,8 @@
                 <input type="date" id="vencimento" name="vencimento" required>
             </div>
             <div class="table_form">
-                <label class="obg" for="conta">Conta Bancária</label>
-                <input type="text" id="conta" name="conta" required>
+                <label class="obg" for="contaBancaria">Conta Bancária</label>
+                <input type="text" id="contaBancaria" name="contaBancaria" required>
             </div>
         </div>
 </div>
@@ -67,20 +68,20 @@
     <hr>
     <div class="forms">
         <div class="table_form">
-            <label class="obg" for="valor_bruto">Valor Bruto</label>
-            <input type="number" id="valor_bruto" name="valor_bruto" required>
+            <label class="obg" for="valorBruto">Valor Bruto em R$</label>
+            <input type="number" id="valorBruto" name="valorBruto" step="0.01" required>
         </div>
         <div class="table_form">
-            <label for="juros">Juros</label>
-            <input type="number" id="juros" name="juros">
+            <label for="juros">Juros em R$</label>
+            <input type="number" id="juros" name="juros" step="0.01">
         </div>
         <div class="table_form">
-            <label for="desconto">Desconto</label>
-            <input type="number" id="desconto" name="desconto">
+            <label for="desconto">Desconto em R$</label>
+            <input type="number" id="desconto" name="desconto" step="0.01">
         </div>
         <div class="table_form">
-            <label for="valor_total">Valor Total</label>
-            <input type="number" id="valor_total" name="valor_total">
+            <label for="valorTotal">Valor Total em R$</label>
+            <input type="number" id="valorTotal" name="valorTotal" step="0.01">
         </div>
     </div>
 </div>

@@ -1,9 +1,18 @@
 @extends('layouts.app_sem_sidebar')
 
 @section('title', 'Cadastro de Produtos')
-    
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
+    <style>
+        .currency-container {
+            display: flex;
+            align-items: center;
+        }
+        .currency-container span {
+            margin-right: 5px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -38,11 +47,17 @@
                 </div>
                 <div class="table_form01">
                     <label class="obg" for="precoCusto">Preço de Custo</label>
-                    <input type="number" id="precoCusto" name="precoCusto" required>
+                    <div class="currency-container">
+                        <span>R$</span>
+                        <input type="number" id="precoCusto" name="precoCusto" step="0.01" required>
+                    </div>
                 </div>
                 <div class="table_form01">
                     <label class="obg" for="precoVenda">Preço de Venda</label>
-                    <input type="number" id="precoVenda" name="precoVenda" required>
+                    <div class="currency-container">
+                        <span>R$</span>
+                        <input type="number" id="precoVenda" name="precoVenda" step="0.01" required>
+                    </div>
                 </div>
                 <div class="button-container" style="margin-top: 20px;">
                     <button type="submit" style="color: white;">CADASTRAR</button>
