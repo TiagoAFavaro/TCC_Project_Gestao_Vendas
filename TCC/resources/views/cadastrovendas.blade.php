@@ -175,7 +175,7 @@
         <button class="botao_endpage" style="background-color: green; color: white; margin-left: 20px;">CADASTRAR</button>
     </a>
     <a>
-        <button class="botao_endpage" style="background-color: red; color: white;">CANCELAR</button>
+        <button type="button" class="botao_endpage" style="background-color: red; color: white;" onclick="window.location.href='/vendas/list'">CANCELAR</button>
     </a>
 </div>
 </form>
@@ -197,11 +197,11 @@
         } else {
             const valorString01 = valorFloat.toFixed(2);
             const valorString02 = valorString01.replace('.', ',');
-            const valorString = 'R$ ' + valorString02; 
+            const valorString = 'R$ ' + valorString02;
             return valorString;
         }
     }
-    
+
     function populateClienteData(clienteId) {
         const clienteSelect = document.querySelector(`#cliente_nome option[value="${clienteId}"]`);
         const cadastro = JSON.parse(clienteSelect.getAttribute('data-cadastro'));
@@ -253,15 +253,15 @@
         document.getElementById('valorTotal').value = tornarString(total);
         document.getElementById('servicos').value = 'R$ 0';
         document.getElementById('descontos').value = 'R$ 0';
-    }   
+    }
 
      document.getElementById('quantidade').addEventListener('input', function() {
          const quantidadeInput = document.getElementById('quantidade');
          const precoVendaText = document.getElementById('precoVenda').value;
-        
+
          let quantidade = parseFloat(quantidadeInput.value);
          if (isNaN(quantidade)) {
-             quantidade = 0; 
+             quantidade = 0;
          }
 
          const precoVenda = tornarFloat(precoVendaText)
@@ -387,7 +387,7 @@
         subtotalElement.value = tornarString(subtotal);
 
         atualizarDados();
-    }   
+    }
 
     // Event listeners para a primeira linha
     document.getElementById('quantidade').addEventListener('input', function() {

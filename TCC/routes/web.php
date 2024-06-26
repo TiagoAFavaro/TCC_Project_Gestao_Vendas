@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CadastroClienteController;
 use App\Http\Controllers\CadastroContasaPagarController;
+use App\Http\Controllers\CadastroContasaReceberController;
 use App\Http\Controllers\CadastroFornecedoresController;
 use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
@@ -55,29 +56,18 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas', function () {
         return view('vendas');
     });
-    
 
-    // ROTA PARA CONTAS A RECEBER
-    Route::get('/contasreceber', function () {
-        return view('contasAReceber');
-    });
-   
-
-    // ROTA PARA CONTAS A RECEBER
-    Route::get('/visualizarreceber', function () {
-        return view('visualizarReceber');
-    });
-  
-
-    // ROTA PARA CADASTRO CONTAS A RECEBER
-    Route::get('/cadastroreceber', function () {
-        return view('cadastroReceber');
-    });
+    // ROTAS CONTAS A RECEBER
+    Route::get('/cadastroreceber', [CadastroContasaReceberController::class, 'paginaCadastro']);
+    Route::post('/cadastrar_novo_recebimento', [CadastroContasaReceberController::class, 'store']);
+    Route::get('/contasreceber/list', [CadastroContasaReceberController::class, 'index']);
+    Route::delete('/contas_a_receber/delete/{id}', [CadastroContasaReceberController::class, 'destroy']);
+    Route::get('/visualizarareceber/{id}', [CadastroContasaReceberController::class, 'visualizarContasPagarById']);
+    Route::get('/contas_a_receber/edit/{id}', [CadastroContasaReceberController::class, 'edit']);
+    Route::put('/contas_a_receber/update/{id}', [CadastroContasaReceberController::class, 'update']);
 
     // ROTAS CONTAS A PAGAR
-    Route::get('/cadastropagar', function () {
-        return view('cadastroPagar');
-    });
+    Route::get('/cadastropagar', [CadastroContasaPagarController::class, 'paginaCadastro']);
     Route::post('/cadastrar_nova_conta', [CadastroContasaPagarController::class, 'store']);
     Route::get('/contas_a_pagar/list', [CadastroContasaPagarController::class, 'index']);
     Route::delete('/contas_a_pagar/delete/{id}', [CadastroContasaPagarController::class, 'destroy']);
@@ -103,7 +93,7 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/visualizarFornecedor/{id}', [CadastroFornecedoresController::class, 'visualizarFornecedoresById']);
     Route::get('/fornecedores/edit/{id}', [CadastroFornecedoresController::class, 'edit']);
     Route::put('/fornecedores/update/{id}', [CadastroFornecedoresController::class, 'update']);
-    
+
     // ROTAS CADASTRO DE PRODUTOS
     Route::get('/produtos/list', [CadastroProdutosController::class, 'index']);
     Route::get('/produtos/cadastro', [CadastroProdutosController::class, 'paginaCadastro']);

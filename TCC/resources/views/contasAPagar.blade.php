@@ -19,7 +19,7 @@
             <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
             <a href="/home">Início</a>
             <span class="separator">&gt;</span>
-            <a href="/contaspagar">A Pagar</a>
+            <a href="/contas_a_pagar/list">A Pagar</a>
         </div>
     </div>
 
