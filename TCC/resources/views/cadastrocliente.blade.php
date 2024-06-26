@@ -1,7 +1,7 @@
 @extends('layouts.app_sem_sidebar')
 
-@section('title', 'Cadastro de Produtos')
-    
+@section('title', 'Cadastro de Clientes')
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
 @endpush
@@ -27,7 +27,7 @@
         <hr>
         <div class="forms">
             <form id="cadastrarClientes" action="/criar_cadastro_clientes" method="post">
-            @csrf
+                @csrf
                 <div class="table_form">
                     <label class="obg" for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
@@ -62,7 +62,36 @@
                 </div>
                 <div class="table_form">
                     <label for="estado">Estado</label>
-                    <input type="text" id="estado" name="estado">
+                    <select id="estado" name="estado">
+                        <option value="">Selecione o estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
                 </div>
                 <div class="button-container">
                     <button type="submit" style="color: white;">CADASTRAR</button>
@@ -70,4 +99,39 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('cadastrarClientes');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => { throw new Error(data.message); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(data.message); // Mensagem de sucesso
+            window.location.href = '/clientes/list'; // Redireciona para a lista de clientes
+        })
+        .catch(error => {
+            alert(error.message); // Exibe a mensagem de erro
+        });
+    });
+});
+
+
+    </script>
 @endsection

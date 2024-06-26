@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CadastroFornecedores;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CadastroFornecedoresController extends Controller
 {
@@ -21,6 +22,26 @@ class CadastroFornecedoresController extends Controller
 
     public function store(Request $request)
     {
+        // Validation rules
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|string|max:255',
+            'contato' => 'required|string|max:255',
+            'telefone' => 'required|string|max:15',
+            'cnpj' => 'required|string|max:18|unique:cadastro_fornecedores',
+            'email' => 'required|string|email|max:255|unique:cadastro_fornecedores',
+            'cep' => 'nullable|string|max:9',
+            'endereco' => 'nullable|string|max:255',
+            'numero' => 'nullable|string|max:255',
+            'cidade' => 'nullable|string|max:255',
+            'estado' => 'nullable|string|max:2',
+        ]);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Create new CadastroFornecedores instance
         $cadastro = new CadastroFornecedores();
         $cadastro->nome = $request->input('nome');
         $cadastro->contato = $request->input('contato');
@@ -33,28 +54,22 @@ class CadastroFornecedoresController extends Controller
         $cadastro->cidade = $request->input('cidade');
         $cadastro->estado = $request->input('estado');
 
-        if (CadastroFornecedores::where('cnpj', $request->cnpj)->exists()) {
-            return response()->json(['message', 'CNPJ JA CADASTRADO']);
-        }
-
-        if (CadastroFornecedores::where('email', $request->email)->exists()){
-            return response()->json('message', 'EMAIL JA CADASTRADO');
-        }
-
+        // Save the record
         $cadastro->save();
 
-        return redirect('/fornecedores/list');
+        // Return success response
+        return response()->json(['success' => true]);
     }
 
     public function update(Request $request, string $id)
     {
-        //
+        // Implement update logic if needed
     }
 
     public function destroy($id)
     {
         CadastroFornecedores::findOrFail($id)->delete();
 
-        return redirect('/fornecedores/list')->with('msg', 'Cadastro excluido com sucesso !');
+        return redirect('/fornecedores/list')->with('msg', 'Cadastro excluído com sucesso!');
     }
 }

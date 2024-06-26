@@ -29,11 +29,12 @@ document.getElementById('cpf').addEventListener('input', function (e) {
      e.target.value = cpf;
  });
 
- document.getElementById('tel').addEventListener('input', function (e) {
-     var tel = e.target.value.replace(/\D/g, ''); 
-     tel = tel.replace(/(\d{2})(\d)/, '($1) $2'); 
-     tel = tel.replace(/(\d{5})(\d)/, '$1-$2');
-     e.target.value = tel;
+ document.getElementById('telefone').addEventListener('input', function (e) {
+     var telefone = e.target.value.replace(/\D/g, ''); 
+     telefone = telefone.replace(/(\d{2})(\d)/, '($1) $2'); 
+     telefone = telefone.replace(/(\d{5})(\d)/, '$1-$2');
+     e.target.value = telefone;
+     console.log("Funcionando");
  });
 
 // Função para remover formatação antes de enviar para o banco de dados

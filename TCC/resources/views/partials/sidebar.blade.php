@@ -90,7 +90,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/contasreceber">
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/money.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>
