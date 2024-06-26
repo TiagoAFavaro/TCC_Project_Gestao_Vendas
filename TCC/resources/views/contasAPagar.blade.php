@@ -59,7 +59,7 @@
                 <td>{{ $cadastro->formaPagamento }}</td>
                 <td>{{ $cadastro->pagamentoQuitado }}</td>
                 <td>{{ $cadastro->vencimento }}</td>
-                <td>{{ $cadastro->valorBruto }}</td>
+                <td>R$ {{ $cadastro->valorBruto }}</td>
                 <td>
                     <a href="" class="btn btn-info edit-btn">
                         <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">

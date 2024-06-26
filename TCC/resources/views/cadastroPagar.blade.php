@@ -68,20 +68,20 @@
     <hr>
     <div class="forms">
         <div class="table_form">
-            <label class="obg" for="valorBruto">Valor Bruto</label>
-            <input type="number" id="valorBruto" name="valorBruto" required>
+            <label class="obg" for="valorBruto">Valor Bruto em R$</label>
+            <input type="number" id="valorBruto" name="valorBruto" step="0.01" required>
         </div>
         <div class="table_form">
-            <label for="juros">Juros</label>
-            <input type="number" id="juros" name="juros">
+            <label for="juros">Juros em R$</label>
+            <input type="number" id="juros" name="juros" step="0.01">
         </div>
         <div class="table_form">
-            <label for="desconto">Desconto</label>
-            <input type="number" id="desconto" name="desconto">
+            <label for="desconto">Desconto em R$</label>
+            <input type="number" id="desconto" name="desconto" step="0.01">
         </div>
         <div class="table_form">
-            <label for="valorTotal">Valor Total</label>
-            <input type="number" id="valorTotal" name="valorTotal">
+            <label for="valorTotal">Valor Total em R$</label>
+            <input type="number" id="valorTotal" name="valorTotal" step="0.01">
         </div>
     </div>
 </div>
