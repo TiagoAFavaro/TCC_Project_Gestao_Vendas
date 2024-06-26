@@ -133,4 +133,55 @@
             </form>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function formatCNPJ(value) {
+                    return value
+                        .replace(/\D/g, '') // Remove caracteres não numéricos
+                        .replace(/^(\d{2})(\d)/, '$1.$2') // Adiciona ponto após os primeiros 2 dígitos
+                        .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3') // Adiciona ponto após os primeiros 5 dígitos
+                        .replace(/\.(\d{3})(\d)/, '.$1/$2') // Adiciona barra após os primeiros 8 dígitos
+                        .replace(/(\d{4})(\d)/, '$1-$2') // Adiciona traço após os primeiros 12 dígitos
+                        .slice(0, 18); // Limita a 18 caracteres (formato do CNPJ)
+                }
+
+                function formatPhone(value) {
+                    return value
+                        .replace(/\D/g, '') // Remove caracteres não numéricos
+                        .replace(/^(\d{2})(\d)/, '($1) $2') // Adiciona parênteses em volta dos primeiros 2 dígitos
+                        .replace(/(\d{5})(\d)/, '$1-$2') // Adiciona traço após os primeiros 5 dígitos
+                        .slice(0, 15); // Limita a 15 caracteres (formato do telefone)
+                }
+
+                function formatCEP(value) {
+                    return value
+                        .replace(/\D/g, '') // Remove caracteres não numéricos
+                        .replace(/^(\d{5})(\d)/, '$1-$2') // Adiciona traço após os primeiros 5 dígitos
+                        .slice(0, 9); // Limita a 9 caracteres (formato do CEP)
+                }
+
+                const cnpjInput = document.getElementById('cnpj');
+                const phoneInput = document.getElementById('tel');
+                const contactInput = document.getElementById('contato');
+                const cepInput = document.getElementById('cep');
+
+                cnpjInput.addEventListener('input', function() {
+                    this.value = formatCNPJ(this.value);
+                });
+
+                phoneInput.addEventListener('input', function() {
+                    this.value = formatPhone(this.value);
+                });
+
+                contactInput.addEventListener('input', function() {
+                    this.value = formatPhone(this.value);
+                });
+
+                cepInput.addEventListener('input', function() {
+                    this.value = formatCEP(this.value);
+                });
+            });
+        </script>
+    @endpush
 @endsection
