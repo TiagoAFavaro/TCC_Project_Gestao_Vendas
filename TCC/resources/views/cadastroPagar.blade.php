@@ -69,19 +69,19 @@
     <div class="forms">
         <div class="table_form">
             <label class="obg" for="valorBruto">Valor Bruto em R$</label>
-            <input type="number" id="valorBruto" name="valorBruto" step="0.01" required>
+            <input type="number" id="valorBruto" name="valorBruto" step="0.01" required oninput="calcularValorTotal()">
         </div>
         <div class="table_form">
             <label for="juros">Juros em R$</label>
-            <input type="number" id="juros" name="juros" step="0.01" required>
+            <input type="number" id="juros" name="juros" step="0.01" required oninput="calcularValorTotal()">
         </div>
         <div class="table_form">
             <label for="desconto">Desconto em R$</label>
-            <input type="number" id="desconto" name="desconto" step="0.01" required>
+            <input type="number" id="desconto" name="desconto" step="0.01" required oninput="calcularValorTotal()">
         </div>
         <div class="table_form">
             <label for="valorTotal">Valor Total em R$</label>
-            <input type="number" id="valorTotal" name="valorTotal" step="0.01" required>
+            <input type="number" id="valorTotal" name="valorTotal" step="0.01" required readonly>
         </div>
     </div>
 </div>
@@ -95,3 +95,22 @@
 </div>
 </form>
 @endsection
+@push('scripts')
+<script>
+function calcularValorTotal() {
+    var valorBruto = parseFloat(document.getElementById('valorBruto').value) || 0;
+    var juros = parseFloat(document.getElementById('juros').value) || 0;
+    var desconto = parseFloat(document.getElementById('desconto').value) || 0;
+
+    var valorTotal = valorBruto - desconto + juros;
+    
+    // Verifica se o valor total é menor que 0 e define como 0 se for o caso
+    if (valorTotal < 0) {
+        valorTotal = 0;
+    }
+
+    document.getElementById('valorTotal').value = valorTotal.toFixed(2);
+}
+</script>
+@endpush
+
