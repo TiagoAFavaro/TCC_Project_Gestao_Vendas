@@ -74,15 +74,15 @@
             </div>
             <div class="table_form">
                 <label for="juros">Juros</label>
-                <input type="number" id="juros" name="juros">
+                <input type="number" id="juros" name="juros" required>
             </div>
             <div class="table_form">
                 <label for="desconto">Desconto</label>
-                <input type="number" id="desconto" name="desconto">
+                <input type="number" id="desconto" name="desconto" required>
             </div>
             <div class="table_form">
                 <label for="valorTotal">Valor Total</label>
-                <input type="number" id="valorTotal" name="valorTotal">
+                <input type="number" id="valorTotal" name="valorTotal" required>
             </div>
         </div>
     </div>

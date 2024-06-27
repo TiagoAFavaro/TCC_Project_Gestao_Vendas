@@ -82,5 +82,9 @@
             </tbody>
         </table>
         <br>
+        <div class="total-contas">
+            <h3>Total das Contas a Receber: R$ {{ number_format($totalContasReceber, 2, ',', '.') }}</h3>
+        </div>
+        <br>
     </main>
 @endsection

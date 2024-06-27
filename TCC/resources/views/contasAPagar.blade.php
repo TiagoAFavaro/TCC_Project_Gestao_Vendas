@@ -81,5 +81,9 @@
             @endforeach
     </table>
     <br>
+    <div class="total-contas">
+        <h3>Total das Contas a Pagar: R$ {{ number_format($totalContasPagar, 2, ',', '.') }}</h3>
+    </div>
+    <br>
 </main>
 @endsection

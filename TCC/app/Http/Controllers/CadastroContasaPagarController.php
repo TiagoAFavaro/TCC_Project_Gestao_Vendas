@@ -8,12 +8,25 @@ use App\Models\CadastroContasaPagar;
 
 class CadastroContasaPagarController extends Controller
 {
+    // public function index()
+    // {
+    //     $cadastros = CadastroContasaPagar::all();
+
+    //     return view('contasAPagar')->with('cadastros', $cadastros);
+    // }
     public function index()
     {
         $cadastros = CadastroContasaPagar::all();
 
-        return view('contasAPagar')->with('cadastros', $cadastros);
+        // Calcular o total das contas a pagar
+        $totalContasPagar = $cadastros->sum('valorBruto');
+
+        return view('contasAPagar')->with([
+            'cadastros' => $cadastros,
+            'totalContasPagar' => $totalContasPagar
+        ]);
     }
+
 
     public function visualizarContasPagarById($id)
     {

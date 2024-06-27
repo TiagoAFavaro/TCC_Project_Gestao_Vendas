@@ -56,8 +56,8 @@
             <tr>
                 <td>{{ $cadastro->descricao }}</td>
                 <td>{{ $cadastro->fornecedor }}</td>
-                <td>R$ {{ $cadastro->precoCusto }}</td>
-                <td>R$ {{ $cadastro->precoVenda }}</td>
+                <td>R$ {{ number_format($cadastro->precoCusto, 2, ',', '.') }}</td>
+                <td>R$ {{ number_format($cadastro->precoVenda, 2, ',', '.') }}</td>
                 <td>
                     <a href="{{ url('/produtos/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn">
                         <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
@@ -76,6 +76,5 @@
     </table>
     </form>
     <br>
-    Mostrando 1 a 1 de um total de 1
 </main>
 @endsection

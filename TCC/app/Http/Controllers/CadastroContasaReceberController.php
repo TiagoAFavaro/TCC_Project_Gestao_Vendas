@@ -7,11 +7,23 @@ use Illuminate\Http\Request;
 
 class CadastroContasaReceberController extends Controller
 {
+    // public function index()
+    // {
+    //     $cadastros = CadastroContasaReceber::all();
+
+    //     return view('contasAReceber')->with('cadastros', $cadastros);
+    // }
     public function index()
     {
         $cadastros = CadastroContasaReceber::all();
 
-        return view('contasAReceber')->with('cadastros', $cadastros);
+        // Calcular o total das contas a receber
+        $totalContasReceber = $cadastros->sum('valorBruto');
+
+        return view('contasAReceber')->with([
+            'cadastros' => $cadastros,
+            'totalContasReceber' => $totalContasReceber
+        ]);
     }
 
     public function visualizarContasPagarById($id)
