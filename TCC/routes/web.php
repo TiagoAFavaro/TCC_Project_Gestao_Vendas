@@ -110,6 +110,9 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/visualizarVendas', function () {
         return view('visualizarVendas');
     });
+    Route::get('/editvendas', function () {
+        return view('editVendas');
+    });
 
     // ROTAS VINCULAR VENDAS E PRODUTOS
     Route::get('/vendas', [CadastroVendasController::class, 'index'])->name('vendas.index');
