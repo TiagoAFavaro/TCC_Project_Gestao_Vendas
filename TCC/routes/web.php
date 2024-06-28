@@ -8,6 +8,7 @@ use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +60,9 @@ Route::middleware([Autenticador::class])->group(function () {
     });
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+    Route::post('/upload/logo', [LogoController::class, 'upload'])->name('upload.logo');    
 
     // ROTAS CONTAS A RECEBER
     Route::get('/cadastroreceber', [CadastroContasaReceberController::class, 'paginaCadastro']);
