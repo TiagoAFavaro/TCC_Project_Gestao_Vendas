@@ -44,10 +44,7 @@
                 </div>
                 <div class="table_form">
                     <label class="obg" for="contato">Contato</label>
-                    <input type="text" id="contato" name="contato" required value="{{ old('contato') }}">
-                    @if ($errors->has('contato'))
-                        <span class="text-danger">{{ $errors->first('contato') }}</span>
-                    @endif
+                    <input type="text" id="contato" name="contato" required>
                 </div>
                 <div class="table_form">
                     <label class="obg" for="tel">Telefone</label>
@@ -163,7 +160,6 @@
 
                 const cnpjInput = document.getElementById('cnpj');
                 const phoneInput = document.getElementById('tel');
-                const contactInput = document.getElementById('contato');
                 const cepInput = document.getElementById('cep');
 
                 cnpjInput.addEventListener('input', function() {
