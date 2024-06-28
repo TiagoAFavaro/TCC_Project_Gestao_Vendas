@@ -12,7 +12,7 @@
             <h4>Meu Perfil</h4>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-                <a href="/home">Início</a>
+                <a href="/dashboard">Início</a>
                 <span class="separator">&gt;</span>
                 <a href="/perfil">Perfil</a>
             </div>

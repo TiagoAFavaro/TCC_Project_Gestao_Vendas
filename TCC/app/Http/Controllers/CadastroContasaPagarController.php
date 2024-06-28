@@ -14,9 +14,22 @@ class CadastroContasaPagarController extends Controller
 
     //     return view('contasAPagar')->with('cadastros', $cadastros);
     // }
-    public function index()
+    public function index(Request $request)
     {
-        $cadastros = CadastroContasaPagar::all();
+        // Aplicar filtros se existirem
+        $query = CadastroContasaPagar::query();
+
+        if ($request->has('filtro_descricao')) {
+            $query->where('descricaoPagamento', 'like', '%'.$request->input('filtro_descricao').'%');
+        }
+
+        if ($request->has('filtro_forma_pagamento')) {
+            $query->where('formaPagamento', $request->input('filtro_forma_pagamento'));
+        }
+
+        // Outros filtros podem ser adicionados conforme necessário
+
+        $cadastros = $query->get();
 
         // Calcular o total das contas a pagar
         $totalContasPagar = $cadastros->sum('valorBruto');

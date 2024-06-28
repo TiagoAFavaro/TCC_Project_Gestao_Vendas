@@ -10,7 +10,7 @@ class CadastroVendas extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome',
+        'cliente_id',
         'situacao',
         'dataEntregaMercadoria',
         'dataRecebimento',
@@ -20,8 +20,6 @@ class CadastroVendas extends Model
 
     public function produtos()
     {
-        return $this->belongsToMany(CadastroProdutos::class, 'venda_produto')
-            ->withPivot('detalhes', 'quantidade', 'desconto', 'subtotal', 'valor')
-            ->withTimestamps();
+        return $this->hasMany(CadastroVendaProdutos::class, 'venda_id');
     }
 }

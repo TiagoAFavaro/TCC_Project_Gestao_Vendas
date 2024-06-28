@@ -11,7 +11,7 @@
         <h4>Cadastre a sua Conta</h4>
         <div class="navegador">
             <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-            <a href="/home">Início</a>
+            <a href="/dashboard">Início</a>
             <span class="separator">&gt;</span>
             <a href="/contasreceber/list">A Receber</a>
             <span class="separator">&gt;</span>

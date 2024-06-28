@@ -19,7 +19,7 @@ class LoginController extends Controller
             return redirect()->back()->withErrors(['message' => 'Usuário ou senha inválidos']);
         }
 
-        return redirect('/home');
+        return redirect('/dashboard');
     }
 
     public function destroy() {

@@ -6,7 +6,7 @@
                     <hr>
                     <ul class="nav flex-column custom-dropdown">
                         <li class="nav-item">
-                            <a class="nav-link" href="/home">
+                            <a class="nav-link" href="/dashboard">
                                 <span class="align-middle">
                                     <img src="{{ asset('/img/dash.png') }}" class="menu_icon img-fluid icon-img" alt="Ícone">
                                 </span>
@@ -83,7 +83,7 @@
                                 <span class="align-middle">
                                     <img src="{{ asset('/img/financeiro.png') }}" class="menu_icon img-fluid icon-img" alt="Ícone">
                                 </span>
-                                Financeiro
+                                Compras
                                 <span class="seta">
                                     <img src="{{ asset('/img/seta.png') }}" class="menu_icon img-fluid icon-img" alt="Seta">
                                 </span>
@@ -95,7 +95,7 @@
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/wallet.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>
-                                            Contas a Pagar
+                                            Produtos
                                         </a>
                                     </li>
                                     <li>

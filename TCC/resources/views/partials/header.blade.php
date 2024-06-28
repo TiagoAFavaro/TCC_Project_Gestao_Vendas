@@ -1,5 +1,5 @@
 <nav id="head" class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-    <a class="navbar-brand" href="/home">
+    <a class="navbar-brand" href="/dashboard">
         <img class="logo inline align-top" src="{{ asset('/img/logo_img_corte.jpg') }}" alt="Logotipo">
     </a>
     <div class="container">
