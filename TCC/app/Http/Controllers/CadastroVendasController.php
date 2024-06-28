@@ -79,7 +79,7 @@ class CadastroVendasController extends Controller
     public function edit($id)
     {
         $venda = CadastroVendas::with('cliente', 'produtos.produto')->findOrFail($id);
-        $clientes = CadastroCliente::all(); // Obtendo todos os clientes para o select
+        $clientes = CadastroCliente::all();
 
         return view('editVendas', compact('venda', 'clientes'));
     }
@@ -88,9 +88,8 @@ class CadastroVendasController extends Controller
     {
         $venda = CadastroVendas::findOrFail($id);
 
-        // Atualiza os campos da venda
         $venda->update([
-            'cliente_id' => $request->input('cliente_id'), // Certifique-se de que está pegando o ID do cliente
+            'cliente_id' => $request->input('cliente_id'),
             'situacao' => $request->input('situacao'),
             'dataEntregaMercadoria' => $request->input('dataEntregaMercadoria'),
             'dataRecebimento' => $request->input('dataRecebimento'),
@@ -98,7 +97,6 @@ class CadastroVendasController extends Controller
             'observacoes' => $request->input('observacoes')
         ]);
 
-        // Atualiza os produtos da venda
         foreach ($request->input('produtos') as $produto_id => $produto_data) {
             $produto = CadastroVendaProdutos::findOrFail($produto_id);
             $produto->update([
@@ -113,7 +111,6 @@ class CadastroVendasController extends Controller
     }
 
 
-    // Função para converter valores monetários para float
     private function convertCurrencyToFloat($value)
     {
         $value = str_replace('.', '', $value);
