@@ -12,9 +12,9 @@ class CadastroVendasController extends Controller
 {
     public function index()
     {
-        $cadastros = CadastroVendas::all();
+        $cadastros = CadastroVendas::with('cliente')->get();
 
-        return view('vendas')->with('cadastros', $cadastros);
+        return view('vendas', compact('cadastros'));
     }
 
     public function paginaCadastro()

@@ -18,8 +18,14 @@ class CadastroVendas extends Model
         'valorTotal'
     ];
 
+    public function cliente()
+    {
+        return $this->belongsTo(CadastroCliente::class, 'cliente_id');
+    }
+
     public function produtos()
     {
         return $this->hasMany(CadastroVendaProdutos::class, 'venda_id');
     }
 }
+
