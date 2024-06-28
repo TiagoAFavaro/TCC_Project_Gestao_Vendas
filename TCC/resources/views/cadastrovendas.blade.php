@@ -195,7 +195,6 @@
                 return isNaN(valorFloat) ? valorString : valorFloat;
             }
         }
-
         function tornarString(valorFloat) {
             if (typeof valorFloat !== 'number') {
                 return valorFloat;
@@ -206,7 +205,6 @@
                 return valorString;
             }
         }
-
         function populateClienteData(clienteId) {
             const clienteSelect = document.querySelector(`#cliente_nome option[value="${clienteId}"]`);
             const cadastro = JSON.parse(clienteSelect.getAttribute('data-cadastro'));
@@ -216,7 +214,6 @@
             document.getElementById('endereco_cidade').value = cadastro.cidade;
             document.getElementById('endereco_estado').value = cadastro.estado;
         }
-
         function populateProductData(produtoId) {
             const produtoSelect = document.querySelector(`#produto_descricao option[value="${produtoId}"]`);
             const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));

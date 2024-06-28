@@ -43,8 +43,8 @@
                     @endif
                 </div>
                 <div class="table_form">
-                    <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" maxlength="14" value="{{ old('cpf') }}">
+                    <label class="obg" for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" maxlength="14" required value="{{ old('cpf') }}">
                     @if ($errors->has('cpf'))
                         <span class="text-danger">{{ $errors->first('cpf') }}</span>
                     @endif
