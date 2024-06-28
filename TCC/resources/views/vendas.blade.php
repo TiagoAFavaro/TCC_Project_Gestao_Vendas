@@ -61,17 +61,17 @@
                 <td>{{ $cadastro->dataRecebimento }}</td>
                 <td>{{ $cadastro->valorTotal }}</td>
                 <td>
-                    <a href="" class="btn btn-info edit-btn">
+                    <a href="{{ url('/editarVendas/' . $cadastro->id) }}" class="btn btn-info edit-btn">
                         <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
                     </a>
-                    <form action="/clientes/delete/{{ $cadastro->id }}" method="post">
+                    <form action="/vendas/delete/{{ $cadastro->id }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger delete-btn">
                             <img src="{{ asset('/img/trash.png') }}" class="icone_botao" alt="Deletar">
                         </button>
                     </form>
-                    <a href="">
+                    <a href="{{ url('/visualizarVendas/' . $cadastro->id) }}">
                         <button class="btn btn-warning more-btn">
                             <img src="{{ asset('/img/more.png') }}" alt="Mais">
                         </button>

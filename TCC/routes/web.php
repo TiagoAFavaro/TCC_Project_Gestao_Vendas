@@ -110,12 +110,16 @@ Route::middleware([Autenticador::class])->group(function () {
     Route::get('/vendas/cadastro', [CadastroVendasController::class, 'paginaCadastro']);
     Route::post('/criar_cadastro_vendas', [CadastroVendasController::class, 'store']);
     Route::delete('/vendas/delete/{id}', [CadastroVendasController::class, 'destroy']);
-    Route::get('/visualizarVendas', function () {
-        return view('visualizarVendas');
-    });
     Route::get('/editvendas', function () {
         return view('editVendas');
     });
+    Route::get('/visualizarVendas/{id}', [CadastroVendasController::class, 'show'])->name('vendas.show');
+    // Rota para exibir o formulário de edição
+    Route::get('/editarVendas/{id}', [CadastroVendasController::class, 'edit'])->name('vendas.edit');
+
+    // Rota para atualizar a venda
+    Route::put('/vendas/edit/{id}', [CadastroVendasController::class, 'update'])->name('vendas.update');
+
 
     // ROTAS VINCULAR VENDAS E PRODUTOS
     Route::get('/vendas', [CadastroVendasController::class, 'index'])->name('vendas.index');

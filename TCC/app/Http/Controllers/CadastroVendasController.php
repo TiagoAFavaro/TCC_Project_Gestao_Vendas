@@ -25,6 +25,12 @@ class CadastroVendasController extends Controller
         return view('cadastrovendas', compact('cadastrosClientes', 'cadastrosProdutos'));
     }
 
+    public function show($id)
+    {
+        $venda = CadastroVendas::with(['cliente', 'produtos.produto'])->findOrFail($id);
+        return view('visualizarVendas', compact('venda'));
+    }
+
     public function store(Request $request)
     {
         $venda = CadastroVendas::create([
@@ -70,10 +76,52 @@ class CadastroVendasController extends Controller
         return $valor_float;
     }
 
-    public function update(Request $request, string $id)
+    public function edit($id)
     {
-        //
+        $venda = CadastroVendas::with('cliente', 'produtos.produto')->findOrFail($id);
+        $clientes = CadastroCliente::all(); // Obtendo todos os clientes para o select
+
+        return view('editVendas', compact('venda', 'clientes'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $venda = CadastroVendas::findOrFail($id);
+
+        // Atualiza os campos da venda
+        $venda->update([
+            'cliente_id' => $request->input('cliente_id'), // Certifique-se de que está pegando o ID do cliente
+            'situacao' => $request->input('situacao'),
+            'dataEntregaMercadoria' => $request->input('dataEntregaMercadoria'),
+            'dataRecebimento' => $request->input('dataRecebimento'),
+            'valorTotal' => $this->convertCurrencyToFloat($request->input('valorTotal')),
+            'observacoes' => $request->input('observacoes')
+        ]);
+
+        // Atualiza os produtos da venda
+        foreach ($request->input('produtos') as $produto_id => $produto_data) {
+            $produto = CadastroVendaProdutos::findOrFail($produto_id);
+            $produto->update([
+                'detalhes' => $produto_data['detalhes'],
+                'quantidade' => $produto_data['quantidade'],
+                'valor' => $this->convertCurrencyToFloat($produto_data['valor']),
+                'subtotal' => $this->convertCurrencyToFloat($produto_data['subtotal'])
+            ]);
+        }
+
+        return redirect()->route('vendas.index')->with('success', 'Venda atualizada com sucesso!');
+    }
+
+
+    // Função para converter valores monetários para float
+    private function convertCurrencyToFloat($value)
+    {
+        $value = str_replace('.', '', $value);
+        $value = str_replace(',', '.', $value);
+        return floatval($value);
+    }
+
+
 
     public function destroy($id)
     {
