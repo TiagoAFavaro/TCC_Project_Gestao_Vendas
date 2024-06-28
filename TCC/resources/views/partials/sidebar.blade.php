@@ -95,17 +95,17 @@
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/wallet.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>
-                                            Produtos
+                                            Compra de Produtos
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a class="dropdown-item" href="/contasreceber/list">
                                             <span class="align-middle">
                                                 <img src="{{ asset('/img/money.png') }}" class="option_icon img-fluid icon-img" alt="Ícone">
                                             </span>
                                             Contas a Receber
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                             <hr>
