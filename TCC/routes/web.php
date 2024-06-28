@@ -6,6 +6,7 @@ use App\Http\Controllers\CadastroContasaReceberController;
 use App\Http\Controllers\CadastroFornecedoresController;
 use App\Http\Controllers\CadastroProdutosController;
 use App\Http\Controllers\CadastroVendasController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\Autenticador;
@@ -17,7 +18,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('store');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/dashboard');
 });
 
 //ROTA PARA CADASTRAR USUARIO
@@ -43,7 +44,7 @@ Route::middleware([Autenticador::class])->group(function () {
 
 
     //ROTA DE HOMEPAGE
-    Route::get('/home', function () {
+    Route::get('/dashboard', function () {
         return view('welcome');
     });
 
@@ -57,12 +58,14 @@ Route::middleware([Autenticador::class])->group(function () {
         return view('vendas');
     });
 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     // ROTAS CONTAS A RECEBER
     Route::get('/cadastroreceber', [CadastroContasaReceberController::class, 'paginaCadastro']);
     Route::post('/cadastrar_novo_recebimento', [CadastroContasaReceberController::class, 'store']);
     Route::get('/contasreceber/list', [CadastroContasaReceberController::class, 'index']);
     Route::delete('/contas_a_receber/delete/{id}', [CadastroContasaReceberController::class, 'destroy']);
-    Route::get('/visualizarareceber/{id}', [CadastroContasaReceberController::class, 'visualizarContasPagarById']);
+    Route::get('/visualizarareceber/{id}', [CadastroContasaReceberController::class, 'visualizarContasReceberById']);
     Route::get('/contas_a_receber/edit/{id}', [CadastroContasaReceberController::class, 'edit']);
     Route::put('/contas_a_receber/update/{id}', [CadastroContasaReceberController::class, 'update']);
 

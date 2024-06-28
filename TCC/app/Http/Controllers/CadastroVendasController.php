@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CadastroCliente;
 use App\Models\CadastroProdutos;
+use App\Models\CadastroVendaProdutos;
 use App\Models\CadastroVendas;
 use Illuminate\Http\Request;
 
@@ -26,39 +27,47 @@ class CadastroVendasController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'cliente_id' => 'required|exists:cadastro_clientes,id',
-            'produto_id' => 'required|exists:cadastro_produtos,id',
-            'situacao' => 'required|string|max:255',
-            'dataEntregaMercadoria' => 'required|date',
-            'dataRecebimento' => 'required|date',
-            'detalhes' => 'required|string|max:255',
-            'quantidade' => 'required|integer|min:1',
-            'valor' => 'required|numeric|min:0',
-            'desconto' => 'nullable|numeric|min:0',
-            'subtotal' => 'required|numeric|min:0',
-            'observacoes' => 'nullable|string',
-            'valorTotal' => 'required|numeric|min:0',
-        ]);
-
         $venda = CadastroVendas::create([
-            'cliente_id' => $request->input('cliente_id'),
+            'cliente_id' => $request->input('cliente_nome'),
             'situacao' => $request->input('situacao'),
             'dataEntregaMercadoria' => $request->input('dataEntregaMercadoria'),
             'dataRecebimento' => $request->input('dataRecebimento'),
             'observacoes' => $request->input('observacoes'),
-            'valorTotal' => $request->input('valorTotal'),
+            'valorTotal' => $this->convert($request->input('valorTotal'))
         ]);
 
-        $venda->produtos()->attach($request->input('produto_id'), [
-            'detalhes' => $request->input('detalhes'),
-            'quantidade' => $request->input('quantidade'),
-            'desconto' => $request->input('desconto') ?? 0,
-            'subtotal' => $request->input('subtotal'),
-            'valor' => $request->input('valor'),
-        ]);
+        $produtos = $request->input('produto_descricao');
+        $detalhes = $request->input('detalhes');
+        $quantidades = $request->input('quantidade');
+        $valores = $request->input('precoVenda');
+        $subtotais = $request->input('subtotal');
+
+        foreach ($produtos as $index => $produto_id) {
+            CadastroVendaProdutos::create([
+                'venda_id' => $venda->id,
+                'produto_id' => $produto_id,
+                'detalhes' => $detalhes[$index],
+                'quantidade' => $quantidades[$index],
+                'valor' => $this->convert($valores[$index]),
+                'subtotal' => $this->convert($subtotais[$index])
+            ]);
+        }
 
         return redirect('/vendas/list');
+    }
+
+
+    public function convert($string)
+    {
+        $sem_sifrao = str_replace("R$", "", $string);
+
+        $sem_sifrao = str_replace(",", ".", $sem_sifrao);
+
+        $sem_sifrao = trim($sem_sifrao);
+
+        $valor_float = floatval($sem_sifrao);
+
+        return $valor_float;
     }
 
     public function update(Request $request, string $id)

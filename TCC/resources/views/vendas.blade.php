@@ -17,7 +17,7 @@
             </h1>
             <div class="navegador">
                 <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-                <a href="/home">Início</a>
+                <a href="/dashboard">Início</a>
                 <span class="separator">&gt;</span>
                 <a href="/vendas">Vendas</a>
             </div>

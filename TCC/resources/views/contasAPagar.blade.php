@@ -4,6 +4,26 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/style-registration-pages.css') }}">
+<style>
+    .filtro-concretizado {
+        margin-top: 5px; /* Adiciona margem para separar da caixa de pesquisa */
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        margin-left: 82%;
+    }
+
+    .filtro-concretizado label {
+        margin-left: 10px; /* Espaçamento entre o label e o select */
+    }
+
+    .filtro-concretizado select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -13,11 +33,11 @@
             <span class="align-middle">
                 <img src="{{ asset('/img/wallet.png') }}" class="page_icon img-fluid icon-img" alt="Ícone">
             </span>
-            Contas a Pagar
+            Compras
         </h1>
         <div class="navegador">
             <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-            <a href="/home">Início</a>
+            <a href="/dashboard">Início</a>
             <span class="separator">&gt;</span>
             <a href="/contas_a_pagar/list">A Pagar</a>
         </div>
@@ -41,12 +61,21 @@
         </div>
     </div>
 
+    <div class="filtro-concretizado">
+            <select id="filtroConcretizado">
+                <option value="">Todos</option>
+                <option value="sim">sim</option>
+                <option value="nao">nao</option>
+            </select>
+            <label for="filtroConcretizado">Filtrar por Concretizado:</label>
+        </div>
+
     <table class="table">
         <thead>
             <tr>
                 <th>DESCRIÇÃO</th>
                 <th>FORMA DE PAGAMENTO</th>
-                <th>PAGAMENTO QUITADO ?</th>
+                <th>CONCRETIZADO</th>
                 <th>DATA DE VENCIMENTO</th>
                 <th>VALOR</th>
                 <th>AÇÕES</th>
@@ -86,4 +115,23 @@
     </div>
     <br>
 </main>
+
+<script>
+    // Script para filtrar por "Concretizado"
+    document.getElementById('filtroConcretizado').addEventListener('change', function() {
+        var filtro = this.value;
+        var linhas = document.querySelectorAll('.table tbody tr');
+
+        linhas.forEach(function(linha) {
+            var concretizado = linha.querySelector('td:nth-child(3)').textContent;
+
+            if (filtro === '' || concretizado === filtro) {
+                linha.style.display = '';
+            } else {
+                linha.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 @endsection

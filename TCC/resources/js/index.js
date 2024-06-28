@@ -1,3 +1,8 @@
+const Chart = require('chart.js/auto');
+
+// Seu código JavaScript para inicializar gráficos ou outras funcionalidades
+
+
 // Seleciona todos os botões de dropdown
 var dropdownButtons = document.querySelectorAll('.nav-link[data-bs-toggle="collapse"]');
 

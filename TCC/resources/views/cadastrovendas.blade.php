@@ -3,74 +3,76 @@
 @section('title', 'Cadastro de Vendas')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-forms.css') }}">
 @endpush
 
 @section('content')
-    <div class="sub_header">
-        <h4>Cadastre a sua Venda</h4>
-        <div class="navegador">
-            <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-            <a href="/home">Início</a>
-            <span class="separator">&gt;</span>
-            <a href="/vendas">Vendas</a>
-            <span class="separator">&gt;</span>
-            <a href="/cadastrar-vendas">Cadastro de Vendas</a>
-        </div>
+<div class="sub_header">
+    <h4>Cadastre a sua Venda</h4>
+    <div class="navegador">
+        <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
+        <a href="/home">Início</a>
+        <span class="separator">&gt;</span>
+        <a href="/vendas">Vendas</a>
+        <span class="separator">&gt;</span>
+        <a href="/cadastrar-vendas">Cadastro de Vendas</a>
     </div>
-    <br>
+</div>
+<br>
+
+<form id="cadastrarVendas" action="/criar_cadastro_vendas" method="post">
+    @csrf
     <div class="cadastro">
         <div style="display: flex;">
             <img src="{{ asset('/img/edit.png') }}">
             <h5>Dados Gerais</h5>
         </div>
         <hr>
-        <form id="cadastrarVendas" action="/criar_cadastro_vendas" method="post">
-            @csrf
-            <div class="forms">
-                <div class="table_form">
-                    <label class="obg" for="cliente_nome">Cliente</label>
-                    <select id="cliente_nome" name="cliente_nome" onchange="populateClienteData(this.value)" required>
-                        <option value="" disabled selected>Selecione o cliente</option>
-                        @foreach ($cadastrosClientes as $cadastro)
-                            <option value="{{ $cadastro->id }}" data-cadastro="{{ json_encode($cadastro) }}">
-                                {{ $cadastro->nome }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="table_form">
-                    <label for="endereco_rua">Rua</label>
-                    <input type="text" id="endereco_rua" name="endereco_rua" disabled>
-                </div>
-                <div class="table_form">
-                    <label for="endereco_numero">Número</label>
-                    <input type="text" id="endereco_numero" name="endereco_numero" disabled>
-                </div>
-                <div class="table_form">
-                    <label for="endereco_cidade">Cidade</label>
-                    <input type="text" id="endereco_cidade" name="endereco_cidade" disabled>
-                </div>
-                <div class="table_form">
-                    <label for="endereco_estado">Estado</label>
-                    <input type="text" id="endereco_estado" name="endereco_estado" disabled>
-                </div>
-                <div class="table_form">
-                    <label class="obg" for="data_entrega">Data de Entrega</label>
-                    <input type="date" id="data_entrega" name="data_entrega" required>
-                </div>
-                <div class="table_form">
-                    <label class="obg" for="data_retorno">Data de Retorno</label>
-                    <input type="date" id="data_recebimento" name="data_recebimento" required>
-                </div>
-                <div class="table_form">
-                    <label class="obg" for="situacao">Situação</label>
-                    <select id="situacao" name="situacao" required>
-                        <option value="paga">Paga</option>
-                        <option value="em_aberto">Em Aberto</option>
-                        <option value="a_pagar">A Pagar</option>
-                    </select>
-                </div>
+        <div class="forms">
+            <div class="table_form">
+                <label class="obg" for="cliente_nome">Cliente</label>
+                <select id="cliente_nome" name="cliente_nome" onchange="populateClienteData(this.value)" required>
+                    <option value="" disabled selected>Selecione o cliente</option>
+                    @foreach ($cadastrosClientes as $cadastro)
+                    <option value="{{ $cadastro->id }}" data-cadastro="{{ json_encode($cadastro) }}">
+                        {{ $cadastro->nome }}
+                    </option>
+                    @endforeach
+                </select>
             </div>
+            <div class="table_form">
+                <label for="endereco_rua">Rua</label>
+                <input type="text" id="endereco_rua" name="endereco_rua" disabled>
+            </div>
+            <div class="table_form">
+                <label for="endereco_numero">Número</label>
+                <input type="text" id="endereco_numero" name="endereco_numero" disabled>
+            </div>
+            <div class="table_form">
+                <label for="endereco_cidade">Cidade</label>
+                <input type="text" id="endereco_cidade" name="endereco_cidade" disabled>
+            </div>
+            <div class="table_form">
+                <label for="endereco_estado">Estado</label>
+                <input type="text" id="endereco_estado" name="endereco_estado" disabled>
+            </div>
+            <div class="table_form">
+                <label class="obg" for="dataEntregaMercadoria">Data de Entrega</label>
+                <input type="date" id="dataEntregaMercadoria" name="dataEntregaMercadoria" required>
+            </div>
+            <div class="table_form">
+                <label class="obg" for="dataRecebimento">Data de Recebimento</label>
+                <input type="date" id="dataRecebimento" name="dataRecebimento" required>
+            </div>
+            <div class="table_form">
+                <label class="obg" for="situacao">Situação</label>
+                <select id="situacao" name="situacao" required>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Entregue">Entregue</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+            </div>
+        </div>
     </div>
 
     <div class="cadastro">
@@ -79,91 +81,42 @@
             <h5>Produtos</h5>
         </div>
         <hr>
-        <div class="forms">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produto<span style="color: red;"> *</span></th>
-                        <th>Detalhes</th>
-                        <th>Quantidade<span style="color: red;"> *</span></th>
-                        <th>Valor</th>
-                        <th>Subtotal</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <select id="produto_descricao" name="produto_descricao"
-                                onchange="populateProductData(this.value)" required>
-                                <option value="" disabled selected>Selecione o produto</option>
-                                @foreach ($cadastrosProdutos as $produto)
-                                    <option value="{{ $produto->id }}" data-produto="{{ json_encode($produto) }}">
-                                        {{ $produto->descricao }}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                            <input type="text" id="detalhes" name="detalhes">
-                        </td>
-                        <td>
-                            <input type="number" id="quantidade" name="quantidade" required>
-                        </td>
-                        <td>
-                            <input type="text" id="precoVenda" name="precoVenda" readonly>
-                        </td>
-                        <td>
-                            <input type="text" id="subtotal" name="subtotal" readonly>
-                        </td>
-                        <td>
-                            <a href="">
-                                <img src="{{ asset('/img/x.png') }}" style="max-width: 25px;">
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button id="addRowButton" class="add-row-button">
-                <img src="{{ asset('/img/plus.png') }}" alt="Mais">
-                Adicionar
-            </button>
+        <div id="produtos_container">
+            <div class="produto">
+                <div class="forms">
+                    <div class="table_form">
+                        <label class="obg" for="produto_descricao_0">Produto</label>
+                        <select id="produto_descricao_0" name="produto_descricao[]" onchange="populateProdutoData(this, 0)" required>
+                            <option value="" disabled selected>Selecione o produto</option>
+                            @foreach ($cadastrosProdutos as $produto)
+                            <option value="{{ $produto->id }}" data-produto="{{ json_encode($produto) }}">
+                                {{ $produto->descricao }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="table_form">
+                        <label for="detalhes_0">Detalhes</label>
+                        <input type="text" id="detalhes_0" name="detalhes[]">
+                    </div>
+                    <div class="table_form">
+                        <label class="obg" for="quantidade_0">Quantidade</label>
+                        <input type="number" id="quantidade_0" name="quantidade[]" oninput="updateSubtotal(0)" required>
+                    </div>
+                    <div class="table_form">
+                        <label class="obg" for="precoVenda_0">Preço Unitário</label>
+                        <input type="text" id="precoVenda_0" name="precoVenda[]" oninput="updateSubtotal(0)" required>
+                    </div>
+                    <div class="table_form">
+                        <label class="obg" for="subtotal_0">Subtotal</label>
+                        <input type="text" id="subtotal_0" name="subtotal[]" readonly required>
+                    </div>
+                </div>
+            </div>
         </div>
+        <button type="button" class="add-row-button" onclick="addProduto()">Adicionar Produto</button>
     </div>
-    <div class="cadastro">
-        <div style="display: flex;">
-            <img src="{{ asset('/img/dindin.png') }}">
-            <h5>Total</h5>
-        </div>
-        <hr>
-        <div class="forms">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produtos</th>
-                        <th>Serviços</th>
-                        <th>Descontos</th>
-                        <th>Valor Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="number" id="produtos" name="produtos" readonly>
-                        </td>
-                        <td>
-                            <input type="text" id="servicos" name="servicos">
-                        </td>
-                        <td>
-                            <input type="text" id="descontos" name="descontos">
-                        </td>
-                        <td>
-                            <input type="text" id="valorTotal" name="valorTotal" readonly>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
     <div class="cadastro">
         <div style="display: flex;">
             <img src="{{ asset('/img/notes.png') }}">
@@ -173,235 +126,161 @@
         <p><i>Essa observação será impressa no recibo.</i></p>
         <textarea id="observacoes" style="width: 50%;" name="observacoes" rows="4" cols="50"></textarea>
     </div>
-    <div>
-        <a>
-            <button class="botao_endpage"
-                style="background-color: green; color: white; margin-left: 20px;">CADASTRAR</button>
-        </a>
-        <a>
+
+    <div class="cadastro">
+        <div style="display: flex;">
+            <img src="{{ asset('/img/dindin.png') }}">
+            <h5>Total</h5>
+        </div>
+        <hr>
+        <div class="forms">
+            <div class="table_form">
+                <label for="valorTotal">Quantidade de Produtos</label>
+                <input type="number" id="qnt_produtos" name="qnt_produtos" readonly>
+            </div>
+            <div class="table_form" style="margin-right: auto; margin-left: 10px;">
+                <label for="valorTotal">Valor Total</label>
+                <input type="text" id="valorTotal" name="valorTotal" readonly required>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex;">
+        <button type="submit" class="botao_endpage" style="background-color: green; color: white; margin-left: 20px;">
+            CADASTRAR
+        </button>
+
+        
             <button type="button" class="botao_endpage" style="background-color: red; color: white;"
                 onclick="window.location.href='/vendas/list'">CANCELAR</button>
-        </a>
+        
     </div>
-    </form>
-    <script>
-        function tornarFloat(valorString) {
-            if (typeof valorString !== 'string') {
-                return valorString;
-            } else {
-                const valorFloat01 = valorString.replace('R$ ', '');
-                const valorFloat02 = valorFloat01.replace(',', '.');
-                const valorFloat = parseFloat(valorFloat02);
-                return isNaN(valorFloat) ? valorString : valorFloat;
-            }
+</form>
+
+<script>
+    let produtoIndex = 1;
+
+    function tornarString(valorFloat) {
+        if (typeof valorFloat !== 'number') {
+            return valorFloat;
+        } else {
+            const valorString01 = valorFloat.toFixed(2);
+            const valorString02 = valorString01.replace('.', ',');
+            const valorString = 'R$ ' + valorString02;
+            return valorString;
         }
+    }
 
-        function tornarString(valorFloat) {
-            if (typeof valorFloat !== 'number') {
-                return valorFloat;
-            } else {
-                const valorString01 = valorFloat.toFixed(2);
-                const valorString02 = valorString01.replace('.', ',');
-                const valorString = 'R$ ' + valorString02;
-                return valorString;
-            }
+    function tornarFloat(valorString) {
+        if (typeof valorString !== 'string') {
+            return valorString;
+        } else {
+            const valorFloat01 = valorString.replace('R$ ', '');
+            const valorFloat02 = valorFloat01.replace(',', '.');
+            const valorFloat = parseFloat(valorFloat02);
+            return isNaN(valorFloat) ? valorString : valorFloat;
         }
+    }
 
-        function populateClienteData(clienteId) {
-            const clienteSelect = document.querySelector(`#cliente_nome option[value="${clienteId}"]`);
-            const cadastro = JSON.parse(clienteSelect.getAttribute('data-cadastro'));
+    function populateClienteData(clienteId) {
+        const clienteSelect = document.querySelector(`#cliente_nome option[value="${clienteId}"]`);
+        const cadastro = JSON.parse(clienteSelect.getAttribute('data-cadastro'));
 
-            document.getElementById('endereco_rua').value = cadastro.endereco;
-            document.getElementById('endereco_numero').value = cadastro.numeroCasa;
-            document.getElementById('endereco_cidade').value = cadastro.cidade;
-            document.getElementById('endereco_estado').value = cadastro.estado;
-        }
+        document.getElementById('endereco_rua').value = cadastro.endereco;
+        document.getElementById('endereco_numero').value = cadastro.numeroCasa;
+        document.getElementById('endereco_cidade').value = cadastro.cidade;
+        document.getElementById('endereco_estado').value = cadastro.estado;
+    }
 
-        function populateProductData(produtoId) {
-            const produtoSelect = document.querySelector(`#produto_descricao option[value="${produtoId}"]`);
-            const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));
+    function populateProdutoData(select, index) {
+        const produto = JSON.parse(select.options[select.selectedIndex].dataset.produto);
+        const precoFormatado = tornarString(produto.precoVenda);
+        document.getElementById(`precoVenda_${index}`).value = precoFormatado;
+        updateSubtotal(index);
+    }
 
-            const valorFormatado = tornarString(produto.precoVenda);
-            document.getElementById('precoVenda').value = valorFormatado;
-        }
+    function updateSubtotal(index) {
+        const quantidade = parseFloat(document.getElementById(`quantidade_${index}`).value) || 0;
+        const precoVenda = tornarFloat(document.getElementById(`precoVenda_${index}`).value);
+        const subtotal = quantidade * precoVenda;
+        document.getElementById(`subtotal_${index}`).value = tornarString(subtotal);
+        calcularTotais();
+    }
 
-        function atualizarDados() {
-            const linhasTabela = document.querySelectorAll('table tbody tr');
-            let totalQuantidade = 0;
-            let total = 0;
+    function calcularTotais() {
+        let totalQuantidade = 0;
+        let totalValor = 0;
 
-            linhasTabela.forEach((row, index) => {
-                let quantidade, subtotal;
+        const quantidades = document.getElementsByName('quantidade[]');
+        const precos = document.getElementsByName('precoVenda[]');
 
-                if (index === 0) {
-                    // Primeira linha com IDs fixos
-                    quantidade = document.getElementById('quantidade');
-                    subtotal = document.getElementById('subtotal');
-                } else {
-                    // Linhas adicionadas com IDs dinâmicos
-                    let rowId = index; // IDs dinâmicos começam em 1
-                    quantidade = document.getElementById(`quantidade_${rowId}`);
-                    subtotal = document.getElementById(`subtotal_${rowId}`);
-                }
-
-                // Verifique se os elementos existem antes de tentar acessar seus valores
-                if (quantidade && subtotal) {
-                    let valorQnt = parseFloat(quantidade.value);
-                    totalQuantidade += isNaN(valorQnt) ? 0 : valorQnt;
-
-                    let valorSubtotal = parseFloat(subtotal.value.replace('R$', '').replace(',', '.'));
-                    total += isNaN(valorSubtotal) ? 0 : valorSubtotal;
-                }
-            });
-
-            document.getElementById('produtos').value = totalQuantidade;
-            document.getElementById('valorTotal').value = tornarString(total);
-            document.getElementById('servicos').value = 'R$ 0';
-            document.getElementById('descontos').value = 'R$ 0';
-        }
-
-        document.getElementById('quantidade').addEventListener('input', function() {
-            const quantidadeInput = document.getElementById('quantidade');
-            const precoVendaText = document.getElementById('precoVenda').value;
-
-            let quantidade = parseFloat(quantidadeInput.value);
-            if (isNaN(quantidade)) {
-                quantidade = 0;
-            }
-
-            const precoVenda = tornarFloat(precoVendaText)
-
-            if (!isNaN(quantidade) && !isNaN(precoVenda)) {
-                let subtotal = quantidade * precoVenda;
-
-                const subtotalFormatado = tornarString(subtotal);
-                document.getElementById('subtotal').value = subtotalFormatado;
-            } else {
-                document.getElementById('subtotal').value = "0";
-            }
-
-            atualizarDados();
+        quantidades.forEach((element, index) => {
+            const quantidade = parseFloat(element.value) || 0;
+            const precoVenda = tornarFloat(precos[index].value);
+            totalQuantidade += quantidade;
+            totalValor += quantidade * precoVenda;
         });
 
-        // Event listener para adicionar nova linha
-        document.getElementById('addRowButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            var table = document.querySelector('table tbody');
-            var newRow = table.insertRow();
-            var rowId = table.rows.length; // Número da nova linha
+        document.getElementById('qnt_produtos').value = totalQuantidade;
+        document.getElementById('valorTotal').value = tornarString(totalValor);
+    }
 
-            var cells = ['produto', 'detalhes', 'quantidade', 'precoVenda', 'subtotal'];
-            cells.forEach(function(cell, index) {
-                var newCell = newRow.insertCell();
-                var input;
+    function addProduto() {
+        const produtosContainer = document.getElementById('produtos_container');
 
-                if (index === 0) {
-                    input = document.createElement('select');
-                    input.id = cell + '_' + rowId;
-                    input.name = cell + '[]';
-                    input.required = true;
+        const novoProduto = `
+        <div class="produto">
+            <div class="forms">
+                <div class="table_form">
+                    <label class="obg" for="produto_descricao_${produtoIndex}">Produto</label>
+                    <select id="produto_descricao_${produtoIndex}" name="produto_descricao[]" onchange="populateProdutoData(this, ${produtoIndex})" required>
+                        <option value="" disabled selected>Selecione o produto</option>
+                        @foreach ($cadastrosProdutos as $produto)
+                        <option value="{{ $produto->id }}" data-produto="{{ json_encode($produto) }}">
+                            {{ $produto->descricao }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="table_form">
+                    <label for="detalhes_${produtoIndex}">Detalhes</label>
+                    <input type="text" id="detalhes_${produtoIndex}" name="detalhes[]">
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="quantidade_${produtoIndex}">Quantidade</label>
+                    <input type="number" id="quantidade_${produtoIndex}" name="quantidade[]" oninput="updateSubtotal(${produtoIndex})" required>
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="precoVenda_${produtoIndex}">Preço Unitário</label>
+                    <input type="text" id="precoVenda_${produtoIndex}" name="precoVenda[]" oninput="updateSubtotal(${produtoIndex})" required>
+                </div>
+                <div class="table_form">
+                    <label class="obg" for="subtotal_${produtoIndex}">Subtotal</label>
+                    <input type="text" id="subtotal_${produtoIndex}" name="subtotal[]" readonly required>
+                </div>
+            </div>
+        </div>
+        `;
 
-                    var optionDefault = document.createElement('option');
-                    optionDefault.value = '';
-                    optionDefault.text = 'Selecione um produto';
-                    optionDefault.disabled = true;
-                    optionDefault.selected = true;
-                    input.appendChild(optionDefault);
+        produtosContainer.insertAdjacentHTML('beforeend', novoProduto);
+        produtoIndex++;
+    }
 
-                    input.addEventListener('change', function(e) {
-                        const produtoId = e.target.value;
-                        const produtoSelect = document.querySelector(
-                            `#produto_descricao option[value="${produtoId}"]`);
-                        const produto = JSON.parse(produtoSelect.getAttribute('data-produto'));
+    // Inicializa os eventos e cálculos iniciais
+    document.addEventListener('DOMContentLoaded', () => {
+        const quantidadeInputs = document.getElementsByName('quantidade[]');
+        const precoInputs = document.getElementsByName('precoVenda[]');
 
-                        const precoString = tornarString(produto.precoVenda);
-                        document.getElementById('precoVenda_' + rowId).value = precoString;
-
-                        atualizarSubtotal(
-                            rowId); // Atualiza subtotal quando o produto é selecionado
-                    });
-
-                    @foreach ($cadastrosProdutos as $produto)
-                        var option = document.createElement('option');
-                        option.value = '{{ $produto->id }}';
-                        option.text = '{{ $produto->descricao }}';
-                        input.appendChild(option);
-                    @endforeach
-
-                } else {
-                    input = document.createElement('input');
-                    if (cell === 'quantidade') {
-                        input.type = 'number';
-                        input.step = '1';
-                        input.min = '0';
-                    } else {
-                        input.type = 'text';
-                        input.readOnly = cell === 'precoVenda' || cell === 'subtotal';
-                    }
-                    input.id = cell + '_' + rowId;
-                    input.name = cell + '[]';
-                    input.required = true;
-                }
-
-                switch (cell) {
-                    case "quantidade":
-                    case "precoVenda":
-                        input.addEventListener('input', function() {
-                            atualizarSubtotal(rowId);
-                        });
-                        break;
-                }
-
-                input.style.width = '100%';
-                input.style.height = '30px';
-                input.style.borderRadius = '5px';
-                input.style.border = '1px solid rgb(211, 205, 205)';
-                input.style.boxSizing = 'border-box';
-                newCell.appendChild(input);
-            });
-
-            // Adiciona o botão de remover na nova linha
-            var actionCell = newRow.insertCell();
-            var removeButton = document.createElement('a');
-            var removeImg = document.createElement('img');
-            removeImg.src = "{{ asset('/img/x.png') }}";
-            removeImg.style.maxWidth = '25px';
-            removeButton.appendChild(removeImg);
-            removeButton.href = '#';
-            removeButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                table.removeChild(newRow);
-                atualizarDados(); // Atualiza os dados após remover a linha
-            });
-            actionCell.appendChild(removeButton);
+        quantidadeInputs.forEach((element, index) => {
+            element.addEventListener('input', () => updateSubtotal(index));
         });
 
-        // Função para atualizar subtotal
-        function atualizarSubtotal(rowId) {
-            let quantidade, precoVenda, subtotalElement;
-
-            if (rowId === 1) { // Verifica se é a primeira linha
-                quantidade = document.getElementById('quantidade').value;
-                precoVenda = tornarFloat(document.getElementById('precoVenda').value);
-                subtotalElement = document.getElementById('subtotal');
-            } else { // Linhas dinâmicas
-                quantidade = document.getElementById('quantidade_' + rowId).value;
-                precoVenda = tornarFloat(document.getElementById('precoVenda_' + rowId).value);
-                subtotalElement = document.getElementById('subtotal_' + rowId);
-            }
-
-            const subtotal = quantidade * precoVenda;
-            subtotalElement.value = tornarString(subtotal);
-
-            atualizarDados();
-        }
-
-        // Event listeners para a primeira linha
-        document.getElementById('quantidade').addEventListener('input', function() {
-            atualizarSubtotal(1);
+        precoInputs.forEach((element, index) => {
+            element.addEventListener('input', () => updateSubtotal(index));
         });
-        document.getElementById('precoVenda').addEventListener('input', function() {
-            atualizarSubtotal(1);
-        });
-    </script>
+
+        calcularTotais();
+    });
+</script>
+
 @endsection

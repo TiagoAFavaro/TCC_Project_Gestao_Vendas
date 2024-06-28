@@ -11,7 +11,7 @@
     <h4>Cadastre a sua Conta</h4>
     <div class="navegador">
         <img src="{{ asset('/img/velo.png') }}" style="width: 23px;">
-        <a href="/home">Início</a>
+        <a href="/dashboard">Início</a>
         <span class="separator">&gt;</span>
         <a href="/contas_a_pagar/list">A Pagar</a>
         <span class="separator">&gt;</span>
@@ -29,33 +29,37 @@
         @csrf
         <div class="forms">
             <div class="table_form">
-                <label class="obg" for="descricaoPagamento">Descrição do Pagamento</label>
+                <label class="obg" for="descricaoPagamento">Fornecedor</label>
                 <input type="text" id="descricaoPagamento" name="descricaoPagamento" required>
             </div>
             <div class="table_form">
                 <label class="obg" for="formaPagamento">Forma de Pagamento</label>
                 <select id="formaPagamento" name="formaPagamento" required>
                     <option value="" disabled selected>Selecione a forma de pagamento</option>
-                    <option value="boleto">Boleto</option>
-                    <option value="cartao">Cartão</option>
-                    <option value="transferencia">Transferência</option>
+                    <option value="A vista">A vista</option>
+                    <option value="A Prazo">A prazo</option>
+                    <option value="A negociar">A negociar</option>
                 </select>
             </div>
             <div class="table_form">
                 <label for="pagamentoQuitado">Pagamento Quitado</label>
                 <select id="pagamentoQuitado" name="pagamentoQuitado">
                     <option value="" disabled selected>Selecione</option>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
+                    <option value="sim">sim</option>
+                    <option value="nao">nao</option>
                 </select>
             </div>
             <div class="table_form">
-                <label class="obg" for="vencimento">Vencimento</label>
+                <label class="obg" for="vencimento">Data Compra</label>
                 <input type="date" id="vencimento" name="vencimento" required>
             </div>
             <div class="table_form">
-                <label class="obg" for="contaBancaria">Conta Bancária</label>
+                <label class="obg" for="contaBancaria">Número da Nota</label>
                 <input type="text" id="contaBancaria" name="contaBancaria" required>
+            </div>
+            <div class="table_form">
+                <label class="obg" for="vencimento">Data Vencimento</label>
+                <input type="date" id="vencimento" name="vencimento" required>
             </div>
         </div>
 </div>
