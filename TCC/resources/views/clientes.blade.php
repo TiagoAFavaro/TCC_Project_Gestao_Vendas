@@ -61,7 +61,7 @@
                 <td>{{ $cadastro->cidade }}</td>
                 <td>{{ $cadastro->estado }}</td>
                 <td>
-                    <a href="{{ url('/editarVendas/' . $cadastro->id) }}" class="btn btn-info edit-btn">
+                    <a href="{{ url('/clientes/edit/' . $cadastro->id) }}" class="btn btn-info edit-btn">
                         <img src="{{ asset('/img/lapis.png') }}" class="icone_botao" alt="Editar">
                     </a>
                     <form action="/clientes/delete/{{ $cadastro->id }}" method="post">
