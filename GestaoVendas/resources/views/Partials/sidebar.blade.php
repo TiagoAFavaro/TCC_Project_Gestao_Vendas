@@ -1,17 +1,18 @@
 <div class="container-fluid">
     <div class="row">
         <nav id="sidebar01" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <!-- Imagem do Logo -->
-                <img src="{{ asset('img/Seu_Logo.png') }}" class="seu_logo img-fluid mb-3" alt="Imagem do Menu" id="trocarLogo">
 
-                <!-- Formulário de Upload -->
+            <div class="sidebar-sticky">
+                @php
+                $logoPath = \App\Models\Logo::latest()->first()->path ?? asset('img/Seu_Logo.png');
+                @endphp
+                <img src="{{ asset($logoPath) }}" class="seu_logo img-fluid mb-3" alt="Imagem do Menu" id="trocarLogo">
+
                 <div class="mt-3">
                     <form action="{{ route('upload.logo') }}" method="POST" enctype="multipart/form-data" id="formUploadLogo">
                         @csrf
                         <div class="input-group mb-3">
                             <input type="file" name="logo" id="logoUpload" accept="image/*" class="form-control">
-                            <!-- <label class="input-group-text" for="logoUpload">Escolher arquivo</label> -->
                         </div>
                     </form>
                 </div>
@@ -142,7 +143,7 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.path) {
-                            trocarLogo.src = '/' + data.path; // ajuste conforme necessário o caminho da imagem no servidor
+                            trocarLogo.src = '/' + data.path;
                         } else {
                             alert('Falha ao atualizar a imagem.');
                         }
